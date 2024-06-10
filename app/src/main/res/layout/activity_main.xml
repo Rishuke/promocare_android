@@ -99,7 +99,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="© 2023 Aen | Tous droits réservés"
+            android:text="© 2024 PC | Tous droits réservés"
             android:textColor="#000000"
             android:gravity="center" />
 
