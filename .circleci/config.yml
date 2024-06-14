@@ -18,6 +18,9 @@ jobs:
             sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
             sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
             java -version
+      - run:
+          name: Give gradlew execute permissions
+          command: chmod +x ./gradlew
       - android/run-tests:
           test-command: ./gradlew lint testDebug --continue
       - run:
@@ -30,8 +33,7 @@ jobs:
       # And finally run the release build
       - run:
           name: Assemble release build
-          command: |
-            ./gradlew assembleRelease
+          command: ./gradlew assembleRelease
 
   build-and-upload:
     executor:
@@ -45,10 +47,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Give gradlew execute permissions
+          command: chmod +x ./gradlew
+      - run:
           name: Assemble debug build
-          command: |
-            chmod +x gradlew assembleDebug
-
+          command: ./gradlew assembleDebug
       - run:
           name: Upload to TestApp.io
           command: |
