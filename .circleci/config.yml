@@ -47,7 +47,7 @@ jobs:
       - run:
           name: Assemble debug build
           command: |
-            ./gradlew assembleDebug
+            chmod +x gradlew assembleDebug
 
       - run:
           name: Upload to TestApp.io
