@@ -1,38 +1,36 @@
-# This config was automatically generated from your source code
-# Stacks detected: deps:java:.,tool:gradle:
 version: 2.1
+
+orbs:
+  android: circleci/android@2.4.0
+
 jobs:
-  test-java:
-    docker:
-      - image: cimg/openjdk:17.0
+  build-and-test:
+    executor:
+      name: android/android-machine
+      tag: default
+
     steps:
       - checkout
       - run:
-          name: Calculate cache key
-          command: |-
-            find . -name 'pom.xml' -o -name 'gradlew*' -o -name '*.gradle*' | \
-                    sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
-      - restore_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
+          name: Set execute permissions for gradlew
+          command: chmod +x gradlew
       - run:
-          command: ./gradlew check
-      - store_test_results:
-          path: build/test-results
-      - save_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
-          paths:
-            - ~/.gradle/caches
-      - store_artifacts:
-          path: build/reports
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
-    docker:
-      - image: cimg/base:stable
-    steps:
-      # Replace this with steps to deploy to users
+          name: Install OpenJDK 17
+          command: |
+            sudo apt-get update && sudo apt-get install -y openjdk-17-jdk
+            sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+            sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
+            java -version
       - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
+          name: Assemble debug build
+          command: ./gradlew assembleDebug
+      - android/start-emulator-and-run-tests:
+          test-command: ./gradlew connectedDebugAndroidTest
+          system-image: system-images;android-30;google_apis;x86
+      - run:
+          name: Assemble release build
+          command: ./gradlew assembleRelease
+
 workflows:
   build-and-test:
     jobs:
