@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:color="#FFA622" /> <!-- Couleur lorsque le bouton est enfoncé -->
+    <item android:state_focused="true" android:color="#FFAB2E" /> <!-- Couleur lorsque le bouton est en surbrillance -->
+    <item android:color="#FFB03B" /> <!-- Couleur par défaut du bouton -->
+    <corners android:radius="20dp" />
+</selector>
