@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">promocare_android</string>
+    <string name="connection_user_button_text">Se connecter</string>
+    <string name="connection_bottom_text">Mentions légales</string>
+    <string name="connection_bottom_text_date">© 2024 PC | Tous droits réservés</string>
+    <string name="connection_user_placeholder">Mot de passe</string>
+    <string name="user_connection_email_placeholder">E-mail</string>
+    <string name="user_connection_title">Bienvenue</string>
 </resources>
