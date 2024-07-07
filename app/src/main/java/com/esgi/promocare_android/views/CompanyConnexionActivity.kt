@@ -15,22 +15,20 @@ import com.esgi.promocare_android.data.InscriptionConnexion
 import com.esgi.promocare_android.models.login.LoginRequest
 import com.esgi.promocare_android.network.Credential
 
-class MainActivity : AppCompatActivity() {
+class CompanyConnexionActivity: AppCompatActivity() {
 
     private lateinit var usernameText: EditText
     private lateinit var passwordText: EditText
     private lateinit var errorText: TextView
     private lateinit var goToInscription: TextView
-    private lateinit var goToCompany: TextView
+    private lateinit var goToUser: TextView
     private lateinit var sendConnexion : Button
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.connection_user_username)) { v, insets ->
+        setContentView(R.layout.company_connexion)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.connection_company_username)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -40,18 +38,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpView(){
-        usernameText = findViewById(R.id.connection_user_username)
-        passwordText = findViewById(R.id.connection_user_password)
-        errorText = findViewById(R.id.connection_user_error)
-        sendConnexion = findViewById(R.id.connection_user_button)
-        goToInscription = findViewById(R.id.connection_user_register_user)
-        goToCompany = findViewById(R.id.connection_user_go_to_company_connection)
+        usernameText = findViewById(R.id.connection_company_username)
+        passwordText = findViewById(R.id.connection_company_password)
+        errorText = findViewById(R.id.connection_company_error)
+        sendConnexion = findViewById(R.id.connection_company_button)
+        goToInscription = findViewById(R.id.connection_company_register_company)
+        goToUser = findViewById(R.id.connection_company_go_to_user_connection)
     }
+
 
     private fun setButtons(){
         sendConnection()
         goToInscription()
-        goToCompany()
+        goToUser()
     }
 
     private fun sendConnection(){
@@ -61,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 errorText.visibility = TextView.VISIBLE
                 return@setOnClickListener
             }
-            InscriptionConnexion.getLoginViewModel().sendLoginRequest(
+            InscriptionConnexion.getLoginViewModel().sendCompanyLoginRequest(
                 LoginRequest(usernameText.text.toString(), passwordText.text.toString()),
                 errorText
             )
@@ -70,14 +69,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun goToInscription(){
         goToInscription.setOnClickListener {
-            //startActivity(Intent(this, InscriptionActivity::class.java))
+            //val intent = Intent(this, InscriptionActivity::class.java)
+            //startActivity(intent)
         }
     }
 
-    private fun goToCompany(){
-        goToCompany.setOnClickListener {
-            startActivity(Intent(this, CompanyConnexionActivity::class.java))
+    private fun goToUser(){
+        goToUser.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
-
 }

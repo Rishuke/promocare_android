@@ -6,4 +6,11 @@
     <string name="connection_user_placeholder">Mot de passe</string>
     <string name="user_connection_email_placeholder">E-mail</string>
     <string name="user_connection_title">Bienvenue</string>
+    <string name="user_connection_empty_error">Veuillez remplir les champs</string>
+    <string name="user_connection_no_connection_error">Un problème s est produit veuillez réessayer</string>
+    <string name="user_connection_wrong_credentials_error">Les données renseigner ne sont pas correctes</string>
+    <string name="user_connexion_go_to_inscription">Inscrivez-vous</string>
+    <string name="connexion_user_go_to_company">Connectez vous sur votre espace entreprise</string>
+    <string name="connexion_company_title">Accéder à votre espace entreprise</string>
+    <string name="connexion_company_go_to_user">Se connecter en tant qu\'utilisateur</string>
 </resources>

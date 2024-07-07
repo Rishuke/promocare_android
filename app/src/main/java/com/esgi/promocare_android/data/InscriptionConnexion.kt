@@ -3,7 +3,7 @@ package com.esgi.promocare_android.data
 import com.esgi.promocare_android.network.inscriptionConnexion.InscriptionConnexionRepository
 import com.esgi.promocare_android.network.inscriptionConnexion.InscriptionConnexionServices
 import com.esgi.promocare_android.network.Retrofit
-import com.esgi.promocare_android.viewmodel.inscriptionConnexion.UserConnectionViewModel
+import com.esgi.promocare_android.viewmodel.inscriptionConnexion.InscriptionConnectionViewModel
 
 
 object InscriptionConnexion {
@@ -11,7 +11,7 @@ object InscriptionConnexion {
         createInscriptionConnexionService()
     }
 
-    private val userConnectionViewModel: UserConnectionViewModel by lazy {
+    private val inscriptionConnectionViewModel: InscriptionConnectionViewModel by lazy {
         initUserConnectionViewModel()
     }
 
@@ -19,11 +19,10 @@ object InscriptionConnexion {
         return Retrofit.getRetrofitClient().create(InscriptionConnexionServices::class.java)
     }
 
-    fun getInscriptionConnexionServices() = inscriptionConnexionService
-
-    private fun initUserConnectionViewModel(): UserConnectionViewModel {
-        return UserConnectionViewModel(InscriptionConnexionRepository(inscriptionConnexionService))
+    private fun initUserConnectionViewModel(): InscriptionConnectionViewModel {
+        return InscriptionConnectionViewModel(InscriptionConnexionRepository(inscriptionConnexionService))
     }
 
-    fun getUserConnectionViewModel() = userConnectionViewModel
+    fun getLoginViewModel() = inscriptionConnectionViewModel
+
 }

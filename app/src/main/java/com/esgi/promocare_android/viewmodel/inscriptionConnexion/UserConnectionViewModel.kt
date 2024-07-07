@@ -1,7 +1,0 @@
-package com.esgi.promocare_android.viewmodel.inscriptionConnexion
-
-import com.esgi.promocare_android.network.inscriptionConnexion.InscriptionConnexionRepository
-
-class UserConnectionViewModel(private val inscriptionConnexionRepository: InscriptionConnexionRepository){
-
-}
