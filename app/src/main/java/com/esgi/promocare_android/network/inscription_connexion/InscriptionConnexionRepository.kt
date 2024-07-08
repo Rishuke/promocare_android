@@ -1,4 +1,4 @@
-package com.esgi.promocare_android.network.inscriptionConnexion
+package com.esgi.promocare_android.network.inscription_connexion
 
 import com.esgi.promocare_android.models.login.LoginRequest
 import com.esgi.promocare_android.models.login.LoginResponse

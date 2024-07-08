@@ -63,7 +63,8 @@ class MainActivity : AppCompatActivity() {
             }
             InscriptionConnexion.getLoginViewModel().sendLoginRequest(
                 LoginRequest(usernameText.text.toString(), passwordText.text.toString()),
-                errorText
+                errorText,
+                this
             )
         }
     }

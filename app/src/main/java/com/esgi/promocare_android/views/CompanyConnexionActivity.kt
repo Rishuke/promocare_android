@@ -62,7 +62,8 @@ class CompanyConnexionActivity: AppCompatActivity() {
             }
             InscriptionConnexion.getLoginViewModel().sendCompanyLoginRequest(
                 LoginRequest(usernameText.text.toString(), passwordText.text.toString()),
-                errorText
+                errorText,
+                this
             )
         }
     }

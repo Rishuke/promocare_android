@@ -1,9 +1,9 @@
 package com.esgi.promocare_android.data
 
-import com.esgi.promocare_android.network.inscriptionConnexion.InscriptionConnexionRepository
-import com.esgi.promocare_android.network.inscriptionConnexion.InscriptionConnexionServices
+import com.esgi.promocare_android.network.inscription_connexion.InscriptionConnexionRepository
+import com.esgi.promocare_android.network.inscription_connexion.InscriptionConnexionServices
 import com.esgi.promocare_android.network.Retrofit
-import com.esgi.promocare_android.viewmodel.inscriptionConnexion.InscriptionConnectionViewModel
+import com.esgi.promocare_android.viewmodel.inscription_connexion.InscriptionConnectionViewModel
 
 
 object InscriptionConnexion {

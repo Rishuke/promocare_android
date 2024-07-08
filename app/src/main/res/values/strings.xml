@@ -13,4 +13,11 @@
     <string name="connexion_user_go_to_company">Connectez vous sur votre espace entreprise</string>
     <string name="connexion_company_title">Accéder à votre espace entreprise</string>
     <string name="connexion_company_go_to_user">Se connecter en tant qu\'utilisateur</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description_add_button">Add an annonce</string>
+    <string name="annonce_image">Annonce_image</string>
+    <string name="description_logo_reduction">Logo_reduction</string>
+    <string name="button_text_delete_annonce_company">Supprimer l\'annonce</string>
+    <string name="modify_button_text_annonce">Modifier l\'annonce</string>
 </resources>
