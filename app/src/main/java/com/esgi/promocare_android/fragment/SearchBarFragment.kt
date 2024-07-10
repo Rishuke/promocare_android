@@ -24,13 +24,14 @@ class SearchBarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.searchBar = view.findViewById(R.id.fragment_search_bar)
+
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                //appeler une fonction de l'interface
+                (activity as searchBarHandler).textChange(newText!!)
                 return true
             }
         })
@@ -45,4 +46,8 @@ class SearchBarFragment : Fragment() {
                 }
             }
     }
+}
+
+interface searchBarHandler{
+    fun textChange(newText:String)
 }

@@ -19,6 +19,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
+            android:textStyle="bold"
             />
 
         <androidx.fragment.app.FragmentContainerView
@@ -29,6 +30,13 @@
             android:layout_marginBottom="15dp"
             android:name="com.esgi.promocare_android.fragment.SearchBarFragment"
             />
+
+        <TextView
+            android:id="@+id/company_annonce_no_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_result_text"
+            android:visibility="gone"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/company_annonce_recycler_view"
@@ -48,6 +56,29 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:contentDescription="@string/description_add_button" />
+
+    <ProgressBar
+        android:id="@+id/company_annonce_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/company_annonce_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/error"
+        android:text="@string/error_text"
+        android:visibility="gone"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

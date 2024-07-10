@@ -29,7 +29,7 @@ class InscriptionConnectionViewModel(private val inscriptionConnexionRepository:
                     error.setText(R.string.user_connection_wrong_credentials_error)
                     error.visibility = TextView.VISIBLE
                 }
-                Credential.token = response.body()?.token.toString()
+                Credential.token = "Bearer " +response.body()?.token.toString()
             }
         })
     }
@@ -50,7 +50,7 @@ class InscriptionConnectionViewModel(private val inscriptionConnexionRepository:
                     error.setText(R.string.user_connection_wrong_credentials_error)
                     error.visibility = TextView.VISIBLE
                 }
-                Credential.token = response.body()?.token.toString()
+                Credential.token = "Bearer " +response.body()?.token.toString()
                 startActivity(context,nextScreen,null)
             }
         })

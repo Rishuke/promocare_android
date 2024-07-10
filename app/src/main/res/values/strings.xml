@@ -20,4 +20,7 @@
     <string name="description_logo_reduction">Logo_reduction</string>
     <string name="button_text_delete_annonce_company">Supprimer l\'annonce</string>
     <string name="modify_button_text_annonce">Modifier l\'annonce</string>
+    <string name="formatage_price">%.2f€</string>
+    <string name="no_result_text">Pas de résultat pour cette recherche</string>
+    <string name="error_text">Une erreur est survenue veuillez réessayer</string>
 </resources>
