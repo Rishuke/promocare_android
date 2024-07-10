@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">promocare_android</string>
+    <string name="connection_user_button_text">Se connecter</string>
+    <string name="connection_bottom_text">Mentions légales</string>
+    <string name="connection_bottom_text_date">© 2024 PC | Tous droits réservés</string>
+    <string name="connection_user_placeholder">Mot de passe</string>
+    <string name="user_connection_email_placeholder">E-mail</string>
+    <string name="user_connection_title">Bienvenue</string>
+    <string name="user_connection_empty_error">Veuillez remplir les champs</string>
+    <string name="user_connection_no_connection_error">Un problème s est produit veuillez réessayer</string>
+    <string name="user_connection_wrong_credentials_error">Les données renseigner ne sont pas correctes</string>
+    <string name="user_connexion_go_to_inscription">Inscrivez-vous</string>
+    <string name="connexion_user_go_to_company">Connectez vous sur votre espace entreprise</string>
+    <string name="connexion_company_title">Accéder à votre espace entreprise</string>
+    <string name="connexion_company_go_to_user">Se connecter en tant qu\'utilisateur</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description_add_button">Add an annonce</string>
+    <string name="annonce_image">Annonce_image</string>
+    <string name="description_logo_reduction">Logo_reduction</string>
+    <string name="button_text_delete_annonce_company">Supprimer l\'annonce</string>
+    <string name="modify_button_text_annonce">Modifier l\'annonce</string>
+    <string name="formatage_price">%.2f€</string>
+    <string name="no_result_text">Pas de résultat pour cette recherche</string>
+    <string name="error_text">Une erreur est survenue veuillez réessayer</string>
 </resources>
