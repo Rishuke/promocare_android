@@ -55,6 +55,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/create_annonce"
+        android:src="@drawable/add"
         android:contentDescription="@string/description_add_button" />
 
     <ProgressBar
