@@ -13,6 +13,7 @@ data class AnnonceDto(
     val promo: Int? = null,
     val status: String? = null,
     val title: String? = null,
+    val description:String? = null,
     val type: String? = null,
     val view_time: Int? = null,
     val updated_at: String? = null,

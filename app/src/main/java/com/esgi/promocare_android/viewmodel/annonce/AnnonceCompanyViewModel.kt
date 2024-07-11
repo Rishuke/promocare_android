@@ -38,6 +38,7 @@ class AnnonceCompanyViewModel(private val annonceRepository: AnnonceRepository) 
                         it.promo,
                         it.status,
                         it.title,
+                        it.description,
                         it.type,
                         it.view_time,
                         it.updated_at,

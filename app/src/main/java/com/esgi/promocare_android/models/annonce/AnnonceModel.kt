@@ -8,6 +8,7 @@ data class AnnonceModel(
     val promo: Int? = null,
     val status: String? = null,
     val title: String? = null,
+    val description:String? = null,
     val type: String? = null,
     val viewTime: Int? = null,
     val updatedAt: String? = null,
