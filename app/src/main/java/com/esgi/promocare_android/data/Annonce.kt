@@ -4,6 +4,7 @@ import com.esgi.promocare_android.network.Retrofit
 import com.esgi.promocare_android.network.annonce_services.AnnonceRepository
 import com.esgi.promocare_android.network.annonce_services.AnnonceServices
 import com.esgi.promocare_android.viewmodel.annonce.AnnonceCompanyViewModel
+import com.esgi.promocare_android.viewmodel.annonce.CreateAnnonceViewModel
 
 object Annonce {
     private val annonceServices: AnnonceServices by lazy {
@@ -12,6 +13,10 @@ object Annonce {
 
     private val annonceCompanyViewModel: AnnonceCompanyViewModel by lazy {
         initViewModel()
+    }
+
+    private val createAnnonceCompanyViewModel: CreateAnnonceViewModel by lazy {
+        initCreateAnnonceViewModel()
     }
 
     private fun createServices(): AnnonceServices {
@@ -23,4 +28,10 @@ object Annonce {
     }
 
     fun getViewModel() = annonceCompanyViewModel
+
+    private fun initCreateAnnonceViewModel(): CreateAnnonceViewModel {
+        return CreateAnnonceViewModel()
+    }
+
+    fun getCreateAnnonceViewModel() = createAnnonceCompanyViewModel
 }

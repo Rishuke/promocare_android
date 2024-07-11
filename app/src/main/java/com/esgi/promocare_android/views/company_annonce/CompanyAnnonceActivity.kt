@@ -1,5 +1,6 @@
 package com.esgi.promocare_android.views.company_annonce
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ProgressBar
@@ -14,6 +15,7 @@ import com.esgi.promocare_android.fragment.searchBarHandler
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.searchInAnnonce
+import com.esgi.promocare_android.views.company_annonce.create_annonce.ChoseTitle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class CompanyAnnonceActivity: AppCompatActivity(), searchBarHandler {
@@ -35,6 +37,7 @@ class CompanyAnnonceActivity: AppCompatActivity(), searchBarHandler {
         setUpView()
         Annonce.getViewModel().getAnnonceCompany(Credential.token, loader, errorTextView)
         observeRecyclerView()
+        addAnnonce()
     }
 
     private fun setUpView(){
@@ -46,6 +49,12 @@ class CompanyAnnonceActivity: AppCompatActivity(), searchBarHandler {
         this.noResultTextView = findViewById(R.id.company_annonce_no_result)
         this.loader = findViewById(R.id.company_annonce_progress_bar)
         this.errorTextView = findViewById(R.id.company_annonce_error)
+    }
+
+    private fun addAnnonce(){
+        this.addAnnonce.setOnClickListener {
+            startActivity(Intent(this, ChoseTitle::class.java))
+        }
     }
 
     private fun setRecyclerView(annonces: MutableList<AnnonceModel>) {

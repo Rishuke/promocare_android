@@ -23,4 +23,7 @@
     <string name="formatage_price">%.2f€</string>
     <string name="no_result_text">Pas de résultat pour cette recherche</string>
     <string name="error_text">Une erreur est survenue veuillez réessayer</string>
+    <string name="votre_titre_d_annonce">Votre titre d\'annonce</string>
+    <string name="choississez_votre_titre">Choississez votre titre</string>
+    <string name="enregistrer_ce_titre">Enregistrer ce titre</string>
 </resources>
