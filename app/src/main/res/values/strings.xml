@@ -26,4 +26,6 @@
     <string name="votre_titre_d_annonce">Votre titre d\'annonce</string>
     <string name="choississez_votre_titre">Choississez votre titre</string>
     <string name="enregistrer_ce_titre">Enregistrer ce titre</string>
+    <string name="enregistrer_cette_description">Enregistrer cette description</string>
+    <string name="votre_description">Votre description</string>
 </resources>

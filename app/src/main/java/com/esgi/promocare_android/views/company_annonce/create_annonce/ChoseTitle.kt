@@ -1,5 +1,6 @@
 package com.esgi.promocare_android.views.company_annonce.create_annonce
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -38,6 +39,7 @@ class ChoseTitle:AppCompatActivity() {
                 return@setOnClickListener
             }
             Annonce.getCreateAnnonceViewModel().title = title
+            startActivity(Intent(this, ChoseDescription::class.java))
         }
     }
 }
