@@ -15,6 +15,7 @@ import com.esgi.promocare_android.fragment.searchBarHandler
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.searchInAnnonce
+import com.esgi.promocare_android.views.company_annonce.create_annonce.ChosePrice
 import com.esgi.promocare_android.views.company_annonce.create_annonce.ChoseTitle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 

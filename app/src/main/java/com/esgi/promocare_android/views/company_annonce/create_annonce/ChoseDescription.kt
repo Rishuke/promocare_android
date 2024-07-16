@@ -1,5 +1,6 @@
 package com.esgi.promocare_android.views.company_annonce.create_annonce
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -30,13 +31,13 @@ class ChoseDescription: AppCompatActivity(){
                 error.visibility = TextView.VISIBLE
                 return@setOnClickListener
             }
-            if (description == "" || description == null || description.length < 100) {
-                this.error.text = "La description ne doit pas être vide ou inférieur à 100 caractères"
+            if (description == "" || description == null || description.length < 25) {
+                this.error.text = "La description ne doit pas être vide ou inférieur à 25 caractères"
                 error.visibility = TextView.VISIBLE
                 return@setOnClickListener
             }
             Annonce.getCreateAnnonceViewModel().description = description
-            //startActivity(Intent(this, ChoseDescription::class.java))
+            startActivity(Intent(this, ChoseCategory::class.java))
         }
     }
 }

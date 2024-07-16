@@ -28,4 +28,21 @@
     <string name="enregistrer_ce_titre">Enregistrer ce titre</string>
     <string name="enregistrer_cette_description">Enregistrer cette description</string>
     <string name="votre_description">Votre description</string>
+    <string name="button_category_text">Menage à domicile</string>
+    <string name="title_add_annonce_category">Choississez une catégorie</string>
+    <string name="cuisine_domicile">Cuisine à domicile</string>
+    <string name="conducteur_personnel">Conducteur personnel</string>
+    <string name="soin_personnalis">Soin personnalisé</string>
+    <string name="ou_tes_vous_localiser">Ou êtes vous localiser ?</string>
+    <string name="localisation">Localisation</string>
+    <string name="enregistrer_cette_localisation">Enregistrer cette localisation</string>
+    <string name="passer_cette_tape">Passer cette étape</string>
+    <string name="prix">Prix</string>
+    <string name="votre_prix">Votre prix</string>
+    <string name="device_in_price">€</string>
+    <string name="votre_promo_en">Votre promo (en %)</string>
+    <string name="percentage_in_promo">%</string>
+    <string name="promo">Promo</string>
+    <string name="le_prix_est_de_error">Le prix est de : Error</string>
+    <string name="validez_le_prix">Validez le prix</string>
 </resources>

@@ -19,6 +19,9 @@
         <activity android:name=".views.company_annonce.CompanyAnnonceActivity" />
         <activity android:name=".views.company_annonce.create_annonce.ChoseTitle" />
         <activity android:name=".views.company_annonce.create_annonce.ChoseDescription" />
+        <activity android:name=".views.company_annonce.create_annonce.ChoseCategory" />
+        <activity android:name=".views.company_annonce.create_annonce.ChoseLocation" />
+        <activity android:name=".views.company_annonce.create_annonce.ChosePrice" />
         <activity
             android:name=".views.MainActivity"
             android:exported="true">
