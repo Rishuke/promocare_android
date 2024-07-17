@@ -1,5 +1,10 @@
 package com.esgi.promocare_android.models.annonce
 
+data class ReturnAllAnnonceDto(
+    val message : String?,
+    val items: List<AnnonceDto>?
+)
+
 data class ReturnAnnonceDto(
     val message : String?,
     val item: List<AnnonceDto>?

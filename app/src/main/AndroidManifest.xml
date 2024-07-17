@@ -22,6 +22,8 @@
         <activity android:name=".views.company_annonce.create_annonce.ChoseCategory" />
         <activity android:name=".views.company_annonce.create_annonce.ChoseLocation" />
         <activity android:name=".views.company_annonce.create_annonce.ChosePrice" />
+        <activity android:name=".views.user_annonce.AnnonceUserActivity"/>
+        <activity android:name=".views.user_annonce.AnnonceUserDetailActivity"/>
         <activity
             android:name=".views.MainActivity"
             android:exported="true">

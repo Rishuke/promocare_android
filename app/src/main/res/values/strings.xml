@@ -45,4 +45,7 @@
     <string name="promo">Promo</string>
     <string name="le_prix_est_de_error">Le prix est de : Error</string>
     <string name="validez_le_prix">Mise en ligne de l\'annonce</string>
+    <string name="la_liste_d_annonce">La liste d\'annonce</string>
+    <string name="detail_de_l_annonce">Detail de l\'annonce</string>
+    <string name="contactez_l_auteur_de_cette_annonce">Contactez l\'auteur de cette annonce</string>
 </resources>
