@@ -44,5 +44,5 @@
     <string name="percentage_in_promo">%</string>
     <string name="promo">Promo</string>
     <string name="le_prix_est_de_error">Le prix est de : Error</string>
-    <string name="validez_le_prix">Mise en ligne de l'annonce</string>
+    <string name="validez_le_prix">Mise en ligne de l\'annonce</string>
 </resources>
