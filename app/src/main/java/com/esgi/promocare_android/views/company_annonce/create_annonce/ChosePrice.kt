@@ -1,14 +1,17 @@
 package com.esgi.promocare_android.views.company_annonce.create_annonce
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Annonce
+import com.esgi.promocare_android.views.company_annonce.CompanyAnnonceActivity
 
 class ChosePrice:AppCompatActivity() {
     private lateinit var price: EditText
@@ -36,7 +39,7 @@ class ChosePrice:AppCompatActivity() {
         }
         val price = this.price.text.toString().toDouble()
         val promo = this.promo.text.toString().toDouble()
-        if(!price.isNaN() || !promo.isNaN()){
+        if(price.isNaN() || promo.isNaN()){
             this.realPrice.text = "Erreur dans le calcul du prix"
         }
         val priceWithPromo = price - (price * (promo / 100))
@@ -46,9 +49,6 @@ class ChosePrice:AppCompatActivity() {
     private fun calculPrice():Float{
         val price = this.price.text.toString().toDouble()
         val promo = this.promo.text.toString().toDouble()
-        if(!price.isNaN() || !promo.isNaN()){
-            this.realPrice.text = "Erreur dans le calcul du prix"
-        }
         val priceWithPromo = price - (price * (promo / 100))
         return priceWithPromo.toFloat()
     }
@@ -81,11 +81,13 @@ class ChosePrice:AppCompatActivity() {
                 return@setOnClickListener
             }
             if(calculPrice() < 0){
-                this.realPrice.text = "Réduction supérieur à 100 ou inférieur à 0 n'est pas autorisé"
+                this.realPrice.text = "Une réduction supérieur à 100 ou inférieur à 0 n'est pas autorisé"
                 return@setOnClickListener
             }
             Annonce.getCreateAnnonceViewModel().price = this.price.text.toString().toFloat()
             Annonce.getCreateAnnonceViewModel().promo = this.promo.text.toString().toInt()
+            Annonce.getCreateAnnonceViewModel().postAnnonceCompany(this)
+
         }
     }
 }

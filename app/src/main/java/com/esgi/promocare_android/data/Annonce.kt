@@ -30,7 +30,7 @@ object Annonce {
     fun getViewModel() = annonceCompanyViewModel
 
     private fun initCreateAnnonceViewModel(): CreateAnnonceViewModel {
-        return CreateAnnonceViewModel()
+        return CreateAnnonceViewModel(AnnonceRepository(annonceServices))
     }
 
     fun getCreateAnnonceViewModel() = createAnnonceCompanyViewModel

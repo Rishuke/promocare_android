@@ -5,6 +5,11 @@ data class ReturnAnnonceDto(
     val item: List<AnnonceDto>?
 )
 
+data class ReturnCreateAnnonceDto(
+    val message : String?,
+    val item: AnnonceDto?
+)
+
 data class AnnonceDto(
     val uuid: String? = null,
     val company_id: String? = null,
