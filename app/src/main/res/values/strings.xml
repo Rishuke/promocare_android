@@ -48,4 +48,7 @@
     <string name="la_liste_d_annonce">La liste d\'annonce</string>
     <string name="detail_de_l_annonce">Detail de l\'annonce</string>
     <string name="contactez_l_auteur_de_cette_annonce">Contactez l\'auteur de cette annonce</string>
+    <string name="entamer_la_conversation">Entamer la conversation</string>
+    <string name="votre_message">Votre message</string>
+    <string name="send_message">SEND MESSAGE</string>
 </resources>

@@ -25,6 +25,10 @@
         <activity android:name=".views.user_annonce.AnnonceUserActivity"/>
         <activity android:name=".views.user_annonce.AnnonceUserDetailActivity"/>
         <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name=".views.conversations.user.PostUserFirstConv"
+            />
+        <activity
             android:name=".views.MainActivity"
             android:exported="true">
             <intent-filter>
