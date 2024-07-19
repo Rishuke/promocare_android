@@ -2,19 +2,20 @@ package com.esgi.promocare_android.views.conversations.user
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Conversation
+import com.esgi.promocare_android.models.conversations.ConvFrom
 import com.esgi.promocare_android.models.conversations.PostConversationDto
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserDetailActivity
 
-class PostUserFirstConv: AppCompatActivity(){
+class PostUserFirstConvActivity: AppCompatActivity(){
 
     //for API request
     private lateinit var annonceId : String
@@ -22,6 +23,7 @@ class PostUserFirstConv: AppCompatActivity(){
 
     //layout and view
     private lateinit var conversationRecyclerView: RecyclerView
+    private lateinit var conversationListAdapter: ConversationListAdapter
     private lateinit var noResultTextView: TextView
     private lateinit var messageEditText : EditText
     private lateinit var sendButton : ImageView
@@ -33,6 +35,7 @@ class PostUserFirstConv: AppCompatActivity(){
         getIntentExtra()
         setUpView()
         Conversation.getPostFirstConvUserViewModel().verifyNoConv(Credential.token, annonceId,noResultTextView)
+        observeRecyclerView()
         handleSend()
     }
 
@@ -43,15 +46,30 @@ class PostUserFirstConv: AppCompatActivity(){
         conversationRecyclerView = findViewById(R.id.conversation_recycler_view)
     }
 
+    private fun setRecyclerView(conversations: MutableList<ConvFrom>) {
+        this.conversationListAdapter = ConversationListAdapter(conversations)
+
+        this.conversationRecyclerView.layoutManager = GridLayoutManager(this, 1)
+
+        this.conversationRecyclerView.setAdapter(conversationListAdapter)
+    }
+
+    private fun observeRecyclerView() {
+        Conversation.getPostFirstConvUserViewModel().conversationList.observe(this) { conversations ->
+            this.setRecyclerView(conversations)
+        }
+    }
+
     private fun handleSend(){
         sendButton.setOnClickListener {
-            Log.d("SLEEP", "handleSend: ")
             if(messageEditText.text.isEmpty()){
                 return@setOnClickListener
             }
             if(Conversation.getPostFirstConvUserViewModel().conversationList.value.isNullOrEmpty()){
+                Log.d("ERROR IS EMPTY","conversationList is null")
                 val messageToPost = PostConversationDto(messageEditText.text.toString())
-                Conversation.getPostFirstConvUserViewModel().postConvFirstUser(Credential.token,messageToPost,annonceId)
+                Conversation.getPostFirstConvUserViewModel().postConvFirstUser(Credential.token,messageToPost,annonceId,noResultTextView)
+                Conversation.getPostFirstConvUserViewModel().getConvId(Credential.token,annonceId,noResultTextView)
                 return@setOnClickListener
             }
 

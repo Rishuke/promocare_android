@@ -8,9 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.utils.handleDate
-import com.esgi.promocare_android.views.conversations.user.PostUserFirstConv
+import com.esgi.promocare_android.views.conversations.user.PostUserFirstConvActivity
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity.Companion.ANNONCE_MODEL_EXTRA
-import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity.Companion.POSITION
 
 class AnnonceUserDetailActivity:AppCompatActivity() {
     companion object {
@@ -47,7 +46,7 @@ class AnnonceUserDetailActivity:AppCompatActivity() {
 
     private fun goToContact(){
         this.contactCompany.setOnClickListener {
-            Intent(this, PostUserFirstConv::class.java).also {
+            Intent(this, PostUserFirstConvActivity::class.java).also {
                 it.putExtra(ANNONCE_ID, annonceModel.uuid)
                 startActivity(it)
             }

@@ -2,11 +2,7 @@ package com.esgi.promocare_android.viewmodel.conversation
 
 import android.util.Log
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.MutableLiveData
-import com.esgi.promocare_android.models.annonce.AnnonceDto
-import com.esgi.promocare_android.models.annonce.AnnonceModel
-import com.esgi.promocare_android.models.annonce.ReturnCreateAnnonceDto
 import com.esgi.promocare_android.models.conversations.ConvFrom
 import com.esgi.promocare_android.models.conversations.ConvFromDto
 import com.esgi.promocare_android.models.conversations.NoConvDto
@@ -20,7 +16,7 @@ import retrofit2.Response
 
 class PostFirstConvUserViewModel(private val conversationRepository: ConversationRepository) {
 
-    var conversationList: MutableLiveData<MutableList<ConvFrom>> = MutableLiveData()
+    var conversationList: MutableLiveData<ArrayList<ConvFrom>> = MutableLiveData()
 
     fun verifyNoConv(token: String, annonceId: String,noResult:TextView) {
         val apiResponse = conversationRepository.verifyNoConv(token, annonceId)
@@ -31,18 +27,17 @@ class PostFirstConvUserViewModel(private val conversationRepository: Conversatio
             }
 
             override fun onResponse(p0: Call<NoConvDto>, response: Response<NoConvDto>) {
-                Log.d("SUCCESS CREATE", "onResponse: ${response.body()?.convId}")
                 if(response.code()==200){
                     noResult.visibility = TextView.VISIBLE
                 }
                 else{
-                    getConv(token,response.body()?.convId.toString())
+                    getConvId(token,response.body()?.convId.toString(),noResult)
                 }
             }
         })
     }
 
-    fun postConvFirstUser(token: String,postFirstMessage: PostConversationDto,annonceId: String){
+    fun postConvFirstUser(token: String,postFirstMessage: PostConversationDto,annonceId: String, noResult: TextView){
         val apiResponse = conversationRepository.postFirstConvUser(token,postFirstMessage,annonceId)
 
         apiResponse.enqueue(object : Callback<ReturnPostFirstConvDto> {
@@ -51,22 +46,25 @@ class PostFirstConvUserViewModel(private val conversationRepository: Conversatio
             }
 
             override fun onResponse(p0: Call<ReturnPostFirstConvDto>, response: Response<ReturnPostFirstConvDto>) {
-                getConv(token,response.body()?.item?.uuid.toString())
+                /**val convId = response.body()?.item?.uuid.toString()
+                Log.d("ID DE LA CONV", "onResponse: $convId")
+                getConvId(token,convId,noResult)**/
             }
         })
 
     }
 
-    fun getConv(token: String,convId: String){
+    fun getConvId(token: String, convId: String, noResult: TextView){
         val apiResponse = conversationRepository.getConvId(token,convId)
 
         apiResponse.enqueue(object : Callback<ReturnConvFromDto> {
             override fun onFailure(p0: Call<ReturnConvFromDto>, t: Throwable) {
-
+                Log.d("ERROR CREATE", "onFailure: $t")
             }
 
             override fun onResponse(p0: Call<ReturnConvFromDto>, response: Response<ReturnConvFromDto>) {
                 val responseBody: List<ConvFromDto> = response.body()?.conversations ?: listOf()
+                Log.d("ResponseBody", "onResponse: $responseBody")
                 val mappedResponse = responseBody.map {
                     ConvFrom(
                         it.annonce_id,
@@ -81,7 +79,16 @@ class PostFirstConvUserViewModel(private val conversationRepository: Conversatio
                         it.uuid
                     )
                 }
+                Log.d("MAPPED", "onResponse: $mappedResponse")
                 conversationList.value = ArrayList(mappedResponse)
+                Log.d("CONVERSATION LIST","$conversationList"
+                )
+                if((conversationList.value as ArrayList<ConvFrom>).isNotEmpty()){
+                    noResult.visibility = TextView.GONE
+                }
+                else{
+                    noResult.visibility = TextView.VISIBLE
+                }
             }
         })
 
