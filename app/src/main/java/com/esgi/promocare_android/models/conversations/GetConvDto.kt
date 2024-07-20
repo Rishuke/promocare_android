@@ -25,6 +25,10 @@ data class LatestConvDto(
     val conversation:ConvFromDto?
 )
 
+data class ListLatestConvDto(
+    val latestConv:List<LatestConvDto>
+)
+
 data class LatestConv(
     val annonce:AnnonceDto?,
     val conversation:ConvFromDto?
