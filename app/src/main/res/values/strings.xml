@@ -66,5 +66,10 @@
     <string name="inscription_bottom_text">Votre texte de bas de page ici</string>
     <string name="inscription_bottom_text_date">Date ici</string>
     <string name="inscriptiopn_user">S\'inscrire</string>
+    <string name="error_invalid_siret_number">Votre numéro SIRET doit comporter 14 caractères.</string>
+    <string name="error_invalid_email">Veuillez utiliser un format d\'email valide.</string>
+    <string name="user_registration_no_connection_error">Erreur de connexion. Veuillez vérifier votre connexion Internet.</string>
+    <string name="user_registration_error">Erreur lors de l\'inscription. Veuillez réessayer.</string>
+
 
 </resources>
