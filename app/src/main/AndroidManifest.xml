@@ -24,6 +24,7 @@
         <activity android:name=".views.company_annonce.create_annonce.ChosePrice" />
         <activity android:name=".views.user_annonce.AnnonceUserActivity"/>
         <activity android:name=".views.user_annonce.AnnonceUserDetailActivity"/>
+        <activity android:name=".views.InscriptionActivity" />
         <activity
             android:windowSoftInputMode="adjustResize"
             android:name=".views.conversations.user.PostUserFirstConvActivity"
@@ -35,7 +36,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
