@@ -70,8 +70,8 @@ class CompanyConnexionActivity: AppCompatActivity() {
 
     private fun goToInscription(){
         goToInscription.setOnClickListener {
-            //val intent = Intent(this, InscriptionActivity::class.java)
-            //startActivity(intent)
+            val intent = Intent(this, InscriptionCompanyActivity::class.java)
+            startActivity(intent)
         }
     }
 

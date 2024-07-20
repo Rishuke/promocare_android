@@ -24,6 +24,8 @@
         <activity android:name=".views.company_annonce.create_annonce.ChosePrice" />
         <activity android:name=".views.user_annonce.AnnonceUserActivity"/>
         <activity android:name=".views.user_annonce.AnnonceUserDetailActivity"/>
+        <activity android:name=".views.InscriptionActivity" />
+        <activity android:name=".views.InscriptionCompanyActivity" />
         <activity
             android:windowSoftInputMode="adjustResize"
             android:name=".views.conversations.user.PostUserFirstConvActivity"
