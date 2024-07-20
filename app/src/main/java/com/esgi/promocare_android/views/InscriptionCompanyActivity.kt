@@ -79,7 +79,7 @@ class InscriptionCompanyActivity : AppCompatActivity() {
             errorText.visibility = TextView.INVISIBLE
             val subscribeCompanyRequest = SubscribeCompanyRequest(email, password, companyName, siretNumber, location)
             // Log the request body
-            Log.d("InscriptionCompanyActivi ty", "Request Body: $subscribeCompanyRequest")
+            Log.d("InscriptionCompanyActivity", "Request Body: $subscribeCompanyRequest")
             sendInscription(subscribeCompanyRequest)
         }
     }
