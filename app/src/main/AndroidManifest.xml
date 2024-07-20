@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.esgi.promocare_android">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -24,16 +23,15 @@
         <activity android:name=".views.company_annonce.create_annonce.ChosePrice" />
         <activity android:name=".views.user_annonce.AnnonceUserActivity"/>
         <activity android:name=".views.user_annonce.AnnonceUserDetailActivity"/>
+        <activity android:name=".views.InscriptionActivity" />
         <activity
             android:windowSoftInputMode="adjustResize"
-            android:name=".views.conversations.user.conversation.PostUserFirstConvActivity"
-            />
+            android:name=".views.conversations.user.conversation.PostUserFirstConvActivity" />
         <activity
             android:name=".views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

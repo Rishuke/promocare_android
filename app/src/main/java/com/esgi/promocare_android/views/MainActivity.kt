@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun goToInscription(){
         goToInscription.setOnClickListener {
-            //startActivity(Intent(this, InscriptionActivity::class.java))
+            startActivity(Intent(this, InscriptionActivity::class.java))
         }
     }
 
