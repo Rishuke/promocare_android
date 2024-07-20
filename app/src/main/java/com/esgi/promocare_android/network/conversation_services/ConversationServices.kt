@@ -1,5 +1,6 @@
 package com.esgi.promocare_android.network.conversation_services
 
+import com.esgi.promocare_android.models.conversations.LatestConvDto
 import com.esgi.promocare_android.models.conversations.NoConvDto
 import com.esgi.promocare_android.models.conversations.PostConversationDto
 import com.esgi.promocare_android.models.conversations.ReturnConvFromDto
@@ -34,4 +35,9 @@ interface ConversationServices {
         @Body postConversationDto: PostConversationDto,
         @Path("convId") convId: String,
         @Path("annonceId") annonceId: String): Call<ReturnPostFirstConvDto>
+
+    @GET("getFirstConvUser")
+    fun getLatestConvUser(
+        @Header("Authorization") token: String
+    ): Call<LatestConvDto>
 }

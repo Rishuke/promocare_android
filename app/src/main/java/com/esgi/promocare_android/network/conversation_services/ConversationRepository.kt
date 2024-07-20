@@ -1,5 +1,6 @@
 package com.esgi.promocare_android.network.conversation_services
 
+import com.esgi.promocare_android.models.conversations.LatestConvDto
 import com.esgi.promocare_android.models.conversations.NoConvDto
 import com.esgi.promocare_android.models.conversations.PostConversationDto
 import com.esgi.promocare_android.models.conversations.ReturnConvFromDto
@@ -17,5 +18,13 @@ class ConversationRepository(private val conversationServices: ConversationServi
 
     fun getConvId(token: String, convId: String): Call<ReturnConvFromDto> {
         return conversationServices.getConvId(token,convId)
+    }
+
+    fun postConv(token: String, postConversationDto: PostConversationDto, convId: String, annonceId: String): Call<ReturnPostFirstConvDto> {
+        return conversationServices.postConv(token,postConversationDto,convId,annonceId)
+    }
+
+    fun getLatestConvUser(token: String): Call<LatestConvDto> {
+        return conversationServices.getLatestConvUser(token)
     }
 }

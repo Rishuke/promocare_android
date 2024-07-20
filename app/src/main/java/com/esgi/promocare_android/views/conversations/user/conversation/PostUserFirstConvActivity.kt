@@ -1,4 +1,4 @@
-package com.esgi.promocare_android.views.conversations.user
+package com.esgi.promocare_android.views.conversations.user.conversation
 
 import android.os.Bundle
 import android.util.Log
@@ -19,7 +19,6 @@ class PostUserFirstConvActivity: AppCompatActivity(){
 
     //for API request
     private lateinit var annonceId : String
-    private lateinit var convId : String
 
     //layout and view
     private lateinit var conversationRecyclerView: RecyclerView
@@ -35,8 +34,7 @@ class PostUserFirstConvActivity: AppCompatActivity(){
         getIntentExtra()
         setUpView()
         handleSend()
-        //Conversation.getPostFirstConvUserViewModel().verifyNoConv(Credential.token, annonceId,noResultTextView)
-        Conversation.getPostFirstConvUserViewModel().getConvId(Credential.token,"03c73fb5-3c64-4bda-b738-12e707b458dd",noResultTextView)
+        Conversation.getPostFirstConvUserViewModel().verifyNoConv(Credential.token, annonceId,noResultTextView)
         observeRecyclerView()
     }
 
@@ -67,12 +65,13 @@ class PostUserFirstConvActivity: AppCompatActivity(){
                 return@setOnClickListener
             }
             if(Conversation.getPostFirstConvUserViewModel().conversationList.value.isNullOrEmpty()){
-                Log.d("ERROR IS EMPTY","conversationList is null")
                 val messageToPost = PostConversationDto(messageEditText.text.toString())
                 Conversation.getPostFirstConvUserViewModel().postConvFirstUser(Credential.token,messageToPost,annonceId,noResultTextView)
                 return@setOnClickListener
             }
 
+            val messageToPost = PostConversationDto(messageEditText.text.toString())
+            Conversation.getPostFirstConvUserViewModel().postConv(Credential.token,messageToPost,annonceId,noResultTextView)
         }
     }
 

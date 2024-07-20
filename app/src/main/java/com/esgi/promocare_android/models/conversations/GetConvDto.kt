@@ -20,7 +20,13 @@ data class ReturnConvFromDto(
     val conversations: List<ConvFromDto>,
 )
 
-data class AnnonceConvDto(
+data class LatestConvDto(
     val annonce:AnnonceDto?,
     val conversation:ConvFromDto?
 )
+
+data class LatestConv(
+    val annonce:AnnonceDto?,
+    val conversation:ConvFromDto?
+)
+

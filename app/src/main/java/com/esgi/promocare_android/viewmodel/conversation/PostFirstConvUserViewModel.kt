@@ -17,6 +17,7 @@ import retrofit2.Response
 class PostFirstConvUserViewModel(private val conversationRepository: ConversationRepository) {
 
     var conversationList: MutableLiveData<ArrayList<ConvFrom>> = MutableLiveData()
+    var convId: String = ""
 
     fun verifyNoConv(token: String, annonceId: String,noResult:TextView) {
         val apiResponse = conversationRepository.verifyNoConv(token, annonceId)
@@ -32,6 +33,7 @@ class PostFirstConvUserViewModel(private val conversationRepository: Conversatio
                 }
                 else{
                     getConvId(token,response.body()?.convId.toString(),noResult)
+                    convId = response.body()?.convId.toString()
                 }
             }
         })
@@ -46,25 +48,37 @@ class PostFirstConvUserViewModel(private val conversationRepository: Conversatio
             }
 
             override fun onResponse(p0: Call<ReturnPostFirstConvDto>, response: Response<ReturnPostFirstConvDto>) {
-                val convId = response.body()?.item?.uuid.toString()
+                convId = response.body()?.item?.uuid.toString()
                 getConvId(token,convId,noResult)
             }
         })
 
     }
 
+    fun postConv(token: String,postMessage: PostConversationDto,annonceId: String,noResult: TextView){
+        val apiResponse = conversationRepository.postConv(token,postMessage,this.convId,annonceId)
+
+        apiResponse.enqueue(object : Callback<ReturnPostFirstConvDto> {
+            override fun onFailure(p0: Call<ReturnPostFirstConvDto>, t: Throwable) {
+
+            }
+
+            override fun onResponse(p0: Call<ReturnPostFirstConvDto>, response: Response<ReturnPostFirstConvDto>) {
+                getConvId(token,convId,noResult)
+            }
+        })
+    }
+
     fun getConvId(token: String, convId: String, noResult: TextView){
-        Log.d("GET CONV ID", "getConvId: $convId")
         val apiResponse = conversationRepository.getConvId(token,convId)
 
         apiResponse.enqueue(object : Callback<ReturnConvFromDto> {
             override fun onFailure(p0: Call<ReturnConvFromDto>, t: Throwable) {
-                Log.d("ERROR CREATE", "onFailure: $t")
+
             }
 
             override fun onResponse(p0: Call<ReturnConvFromDto>, response: Response<ReturnConvFromDto>) {
                 val responseBody: List<ConvFromDto> = response.body()?.conversations ?: listOf()
-                Log.d("ResponseBody", "onResponse: $responseBody")
                 val mappedResponse = responseBody.map {
                     ConvFrom(
                         it.annonce_id,
@@ -79,15 +93,12 @@ class PostFirstConvUserViewModel(private val conversationRepository: Conversatio
                         it.uuid
                     )
                 }
-                Log.d("MAPPED", "onResponse: $mappedResponse")
                 conversationList.value = ArrayList(mappedResponse)
-                Log.d("CONVERSATION LIST","${conversationList.value!!.size}"
-                )
-                if((conversationList.value as ArrayList<ConvFrom>).isNotEmpty()){
-                    noResult.visibility = TextView.GONE
+                if((conversationList.value as ArrayList<ConvFrom>).isEmpty()){
+                    noResult.visibility = TextView.VISIBLE
                 }
                 else{
-                    noResult.visibility = TextView.VISIBLE
+                    noResult.visibility = TextView.GONE
                 }
             }
         })
