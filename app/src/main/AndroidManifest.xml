@@ -28,6 +28,10 @@
             android:windowSoftInputMode="adjustResize"
             android:name=".views.conversations.user.PostUserFirstConvActivity"
             />
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name=".views.conversations.company.ConversationCompanyActivity"
+            />
         <activity android:name=".views.conversations.user.LatestConvUserAcitivity"/>
         <activity android:name=".views.conversations.company.LatestConvCompanyActivity"/>
         <activity
