@@ -3,6 +3,8 @@ package com.esgi.promocare_android.viewmodel.conversation
 import android.util.Log
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
+import com.esgi.promocare_android.models.annonce.AnnonceDto
+import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.conversations.ConvFrom
 import com.esgi.promocare_android.models.conversations.ConvFromDto
 import com.esgi.promocare_android.models.conversations.NoConvDto
@@ -14,9 +16,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PostFirstConvUserViewModel(private val conversationRepository: ConversationRepository) {
+class ConvViewModel(private val conversationRepository: ConversationRepository) {
 
     var conversationList: MutableLiveData<ArrayList<ConvFrom>> = MutableLiveData()
+    var annonce:AnnonceModel? = null
     var convId: String = ""
 
     fun verifyNoConv(token: String, annonceId: String,noResult:TextView) {
@@ -93,6 +96,22 @@ class PostFirstConvUserViewModel(private val conversationRepository: Conversatio
                         it.uuid
                     )
                 }
+
+                annonce = AnnonceModel(
+                    response.body()?.annonce?.uuid,
+                    response.body()?.annonce?.title,
+                    response.body()?.annonce?.location,
+                    response.body()?.annonce?.price,
+                    response.body()?.annonce?.promo,
+                    response.body()?.annonce?.status,
+                    response.body()?.annonce?.title,
+                    response.body()?.annonce?.description,
+                    response.body()?.annonce?.type,
+                    response.body()?.annonce?.view_time,
+                    response.body()?.annonce?.updated_at,
+                    response.body()?.annonce?.created_at,
+                )
+
                 conversationList.value = ArrayList(mappedResponse)
                 if((conversationList.value as ArrayList<ConvFrom>).isEmpty()){
                     noResult.visibility = TextView.VISIBLE

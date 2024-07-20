@@ -25,14 +25,14 @@
         <activity android:name=".views.user_annonce.AnnonceUserActivity"/>
         <activity android:name=".views.user_annonce.AnnonceUserDetailActivity"/>
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".views.conversations.user.PostUserFirstConvActivity"
             />
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".views.conversations.company.ConversationCompanyActivity"
             />
-        <activity android:name=".views.conversations.user.LatestConvUserAcitivity"/>
+        <activity
+            android:name=".views.conversations.user.LatestConvUserAcitivity"
+            />
         <activity android:name=".views.conversations.company.LatestConvCompanyActivity"/>
         <activity
             android:name=".views.MainActivity"

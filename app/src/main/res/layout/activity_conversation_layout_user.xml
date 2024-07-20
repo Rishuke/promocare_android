@@ -17,31 +17,85 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
-        />
+        android:layout_margin="16dp" />
+
+    <LinearLayout
+        android:id="@+id/annonce_linear_layout_user"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/annonce_conversation_image_view_user"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/annonce_image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/error_black" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/annonce_conversation_title_text_view_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/annonce_conversation_date_text_view_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:maxLines="1"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider_view_user"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/annonce_linear_layout_user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/conversation_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintTop_toBottomOf="@id/divider_view_user"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/conversation_frame_layout"
         tools:listitem="@layout/cell_layout_conversation"
-        />
+        tools:itemCount="5"/>
 
     <FrameLayout
         android:id="@+id/conversation_frame_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
             android:id="@+id/message_edit_text"
@@ -54,8 +108,7 @@
             android:background="@drawable/circle_linear_opaque"
             android:padding="10dp"
             android:paddingEnd="35dp"
-            android:paddingStart="15dp"
-            />
+            android:paddingStart="15dp" />
 
         <ImageView
             android:id="@+id/send_button"
@@ -65,9 +118,7 @@
             android:background="@drawable/send"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
-            android:layout_gravity="bottom|end"
-            />
-
+            android:layout_gravity="bottom|end" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,6 +35,7 @@ class LatestConvViewModel(private val conversationRepository: ConversationReposi
                 }
                 loader.visibility = ProgressBar.GONE
                 errorTextView.visibility = TextView.GONE
+                noResult.visibility = TextView.GONE
                 if(mappedResponse.isEmpty()){
                     noResult.visibility = TextView.VISIBLE
                 }

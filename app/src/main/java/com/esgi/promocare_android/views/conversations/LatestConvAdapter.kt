@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
+import com.esgi.promocare_android.models.annonce.AnnonceDto
+import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.conversations.LatestConv
 import com.esgi.promocare_android.utils.handleDate
 
@@ -24,14 +26,14 @@ class LatestConvAdapter(var latestConv:MutableList<LatestConv>,var convClickHanl
         val currentConversationData = this.latestConv[position]
 
         holder.bind(currentConversationData)
-        val annonceId = currentConversationData.annonce?.uuid
+        val annonce = currentConversationData.annonce?.uuid ?: return
         holder.itemView.setOnClickListener {
             if(currentConversationData.conversation?.first_conv_id == null){
-                convClickHanlder.showAllConv(currentConversationData.conversation?.uuid!!,annonceId!!)
+                convClickHanlder.showAllConv(currentConversationData.conversation?.uuid!!, annonce)
                 return@setOnClickListener
             }
             else{
-                convClickHanlder.showAllConv(currentConversationData.conversation.first_conv_id,annonceId!!)
+                convClickHanlder.showAllConv(currentConversationData.conversation.first_conv_id, annonce)
             }
         }
     }

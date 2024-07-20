@@ -5,14 +5,14 @@ import com.esgi.promocare_android.network.Retrofit
 import com.esgi.promocare_android.network.conversation_services.ConversationRepository
 import com.esgi.promocare_android.network.conversation_services.ConversationServices
 import com.esgi.promocare_android.viewmodel.conversation.LatestConvViewModel
-import com.esgi.promocare_android.viewmodel.conversation.PostFirstConvUserViewModel
+import com.esgi.promocare_android.viewmodel.conversation.ConvViewModel
 
 object Conversation {
     private val conversationServices: ConversationServices by lazy {
         createServices()
     }
 
-    private val postFirstConvViewModel: PostFirstConvUserViewModel by lazy {
+    private val postFirstConvViewModel: ConvViewModel by lazy {
         postFirstConvUserViewModel()
     }
 
@@ -24,8 +24,8 @@ object Conversation {
         return Retrofit.getRetrofitClient().create(ConversationServices::class.java)
     }
 
-    private fun postFirstConvUserViewModel(): PostFirstConvUserViewModel {
-        return PostFirstConvUserViewModel(ConversationRepository(conversationServices))
+    private fun postFirstConvUserViewModel(): ConvViewModel {
+        return ConvViewModel(ConversationRepository(conversationServices))
     }
 
     fun getPostFirstConvUserViewModel() = postFirstConvViewModel

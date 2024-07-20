@@ -65,6 +65,7 @@ class ConversationCompanyActivity:AppCompatActivity() {
                 return@setOnClickListener
             }
             val messageToPost = PostConversationDto(messageEditText.text.toString())
+            messageEditText.text.clear()
             Conversation.getPostFirstConvUserViewModel().postConv(Credential.token,messageToPost,annonceId,noResultTextView)
         }
     }
