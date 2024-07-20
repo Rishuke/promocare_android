@@ -46,15 +46,15 @@ class PostFirstConvUserViewModel(private val conversationRepository: Conversatio
             }
 
             override fun onResponse(p0: Call<ReturnPostFirstConvDto>, response: Response<ReturnPostFirstConvDto>) {
-                /**val convId = response.body()?.item?.uuid.toString()
-                Log.d("ID DE LA CONV", "onResponse: $convId")
-                getConvId(token,convId,noResult)**/
+                val convId = response.body()?.item?.uuid.toString()
+                getConvId(token,convId,noResult)
             }
         })
 
     }
 
     fun getConvId(token: String, convId: String, noResult: TextView){
+        Log.d("GET CONV ID", "getConvId: $convId")
         val apiResponse = conversationRepository.getConvId(token,convId)
 
         apiResponse.enqueue(object : Callback<ReturnConvFromDto> {
@@ -81,7 +81,7 @@ class PostFirstConvUserViewModel(private val conversationRepository: Conversatio
                 }
                 Log.d("MAPPED", "onResponse: $mappedResponse")
                 conversationList.value = ArrayList(mappedResponse)
-                Log.d("CONVERSATION LIST","$conversationList"
+                Log.d("CONVERSATION LIST","${conversationList.value!!.size}"
                 )
                 if((conversationList.value as ArrayList<ConvFrom>).isNotEmpty()){
                     noResult.visibility = TextView.GONE

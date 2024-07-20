@@ -34,9 +34,10 @@ class PostUserFirstConvActivity: AppCompatActivity(){
         setContentView(R.layout.conversation_layout)
         getIntentExtra()
         setUpView()
-        Conversation.getPostFirstConvUserViewModel().verifyNoConv(Credential.token, annonceId,noResultTextView)
-        observeRecyclerView()
         handleSend()
+        //Conversation.getPostFirstConvUserViewModel().verifyNoConv(Credential.token, annonceId,noResultTextView)
+        Conversation.getPostFirstConvUserViewModel().getConvId(Credential.token,"03c73fb5-3c64-4bda-b738-12e707b458dd",noResultTextView)
+        observeRecyclerView()
     }
 
     private fun setUpView(){
@@ -46,12 +47,12 @@ class PostUserFirstConvActivity: AppCompatActivity(){
         conversationRecyclerView = findViewById(R.id.conversation_recycler_view)
     }
 
-    private fun setRecyclerView(conversations: MutableList<ConvFrom>) {
-        this.conversationListAdapter = ConversationListAdapter(conversations)
+    private fun setRecyclerView(conversations : MutableList<ConvFrom>){
+        conversationListAdapter = ConversationListAdapter(conversations)
 
-        this.conversationRecyclerView.layoutManager = GridLayoutManager(this, 1)
+        conversationRecyclerView.layoutManager = GridLayoutManager(this, 1)
 
-        this.conversationRecyclerView.setAdapter(conversationListAdapter)
+        conversationRecyclerView.adapter = conversationListAdapter
     }
 
     private fun observeRecyclerView() {
@@ -69,7 +70,6 @@ class PostUserFirstConvActivity: AppCompatActivity(){
                 Log.d("ERROR IS EMPTY","conversationList is null")
                 val messageToPost = PostConversationDto(messageEditText.text.toString())
                 Conversation.getPostFirstConvUserViewModel().postConvFirstUser(Credential.token,messageToPost,annonceId,noResultTextView)
-                Conversation.getPostFirstConvUserViewModel().getConvId(Credential.token,annonceId,noResultTextView)
                 return@setOnClickListener
             }
 

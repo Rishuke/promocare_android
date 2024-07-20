@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.conversations.ConvFrom
+import com.esgi.promocare_android.models.conversations.ConvFromDto
 
 class ConversationListAdapter(var conversations:MutableList<ConvFrom>): RecyclerView.Adapter<ConversationListAdapter.ConversationViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConversationViewHolder {
@@ -40,14 +41,16 @@ class ConversationListAdapter(var conversations:MutableList<ConvFrom>): Recycler
         fun bind(conversation: ConvFrom) {
             senderSide.visibility = View.VISIBLE
             targetSide.visibility = View.VISIBLE
-            if(conversation.from == "Not you"){
+            senderSide.text = conversation.from
+            targetSide.text = conversation.message
+            /**if(conversation.from == "Not you"){
                 targetSide.text = conversation.message
-                senderSide.visibility = View.INVISIBLE
+                senderSide.visibility = TextView.INVISIBLE
             }
             else{
                 senderSide.text = conversation.message
-                targetSide.visibility = View.INVISIBLE
-            }
+                targetSide.visibility = TextView.INVISIBLE
+            }*/
         }
     }
 }
