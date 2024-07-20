@@ -1,7 +1,6 @@
-package com.esgi.promocare_android.views.conversations.user.conversation
+package com.esgi.promocare_android.views.conversations.user
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView

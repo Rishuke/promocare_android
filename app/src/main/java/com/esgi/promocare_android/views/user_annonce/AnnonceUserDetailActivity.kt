@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.utils.handleDate
-import com.esgi.promocare_android.views.conversations.user.conversation.PostUserFirstConvActivity
+import com.esgi.promocare_android.views.conversations.user.PostUserFirstConvActivity
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity.Companion.ANNONCE_MODEL_EXTRA
 
 class AnnonceUserDetailActivity:AppCompatActivity() {

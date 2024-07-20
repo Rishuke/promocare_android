@@ -51,4 +51,6 @@
     <string name="entamer_la_conversation">Entamer la conversation</string>
     <string name="votre_message">Votre message</string>
     <string name="send_message">SEND MESSAGE</string>
+    <string name="vos_conversations">Vos conversations</string>
+    <string name="pas_de_conversation_n_h_siter_pas_contacter_un_vendeur">Pas de conversation, n\'hésiter pas à contacter un vendeur</string>
 </resources>

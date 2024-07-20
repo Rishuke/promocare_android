@@ -1,10 +1,10 @@
 package com.esgi.promocare_android.network.conversation_services
 
-import com.esgi.promocare_android.models.conversations.LatestConvDto
 import com.esgi.promocare_android.models.conversations.NoConvDto
 import com.esgi.promocare_android.models.conversations.PostConversationDto
 import com.esgi.promocare_android.models.conversations.ReturnConvFromDto
 import com.esgi.promocare_android.models.conversations.ReturnPostFirstConvDto
+import com.esgi.promocare_android.models.conversations.ListLatestConvDto
 import retrofit2.Call
 
 class ConversationRepository(private val conversationServices: ConversationServices) {
@@ -24,7 +24,11 @@ class ConversationRepository(private val conversationServices: ConversationServi
         return conversationServices.postConv(token,postConversationDto,convId,annonceId)
     }
 
-    fun getLatestConvUser(token: String): Call<LatestConvDto> {
+    fun getLatestConvUser(token: String): Call<ListLatestConvDto> {
         return conversationServices.getLatestConvUser(token)
+    }
+
+    fun getLatestConvCompany(token: String): Call<ListLatestConvDto> {
+        return conversationServices.getLatestConvCompany(token)
     }
 }

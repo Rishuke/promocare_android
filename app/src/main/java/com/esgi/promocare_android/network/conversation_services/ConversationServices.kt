@@ -1,10 +1,10 @@
 package com.esgi.promocare_android.network.conversation_services
 
-import com.esgi.promocare_android.models.conversations.LatestConvDto
 import com.esgi.promocare_android.models.conversations.NoConvDto
 import com.esgi.promocare_android.models.conversations.PostConversationDto
 import com.esgi.promocare_android.models.conversations.ReturnConvFromDto
 import com.esgi.promocare_android.models.conversations.ReturnPostFirstConvDto
+import com.esgi.promocare_android.models.conversations.ListLatestConvDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -39,5 +39,10 @@ interface ConversationServices {
     @GET("getFirstConvUser")
     fun getLatestConvUser(
         @Header("Authorization") token: String
-    ): Call<LatestConvDto>
+    ): Call<ListLatestConvDto>
+
+    @GET("getFirstConvCompany")
+    fun getLatestConvCompany(
+        @Header("Authorization") token: String
+    ): Call<ListLatestConvDto>
 }

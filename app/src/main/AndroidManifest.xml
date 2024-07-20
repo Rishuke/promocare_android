@@ -26,8 +26,10 @@
         <activity android:name=".views.user_annonce.AnnonceUserDetailActivity"/>
         <activity
             android:windowSoftInputMode="adjustResize"
-            android:name=".views.conversations.user.conversation.PostUserFirstConvActivity"
+            android:name=".views.conversations.user.PostUserFirstConvActivity"
             />
+        <activity android:name=".views.conversations.user.LatestConvUserAcitivity"/>
+        <activity android:name=".views.conversations.company.LatestConvCompanyActivity"/>
         <activity
             android:name=".views.MainActivity"
             android:exported="true">
