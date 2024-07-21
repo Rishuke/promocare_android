@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.esgi.promocare_android.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class LogoutActivity : AppCompatActivity() {
 
@@ -16,14 +16,9 @@ class LogoutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_logout)
 
         val logoutConfirmButton: MaterialButton = findViewById(R.id.logout_confirm_button)
-        val logoutCancelButton: MaterialButton = findViewById(R.id.logout_cancel_button)
 
         logoutConfirmButton.setOnClickListener {
             handleLogout()
-        }
-
-        logoutCancelButton.setOnClickListener {
-            finish()
         }
 
         val bottomNavView: BottomNavigationView = findViewById(R.id.nav_view)
