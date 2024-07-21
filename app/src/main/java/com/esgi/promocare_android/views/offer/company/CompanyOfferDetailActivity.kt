@@ -22,6 +22,7 @@ class CompanyOfferDetailActivity:AppCompatActivity() {
     private lateinit var dateAnnonce : TextView
     private lateinit var statusAnnonce : TextView
     private lateinit var offerText : TextView
+    private lateinit var sender : TextView
 
     //data
     private lateinit var offer : OfferModel
@@ -43,6 +44,7 @@ class CompanyOfferDetailActivity:AppCompatActivity() {
         dateAnnonce = findViewById(R.id.offer_detail_annonce_date_company)
         statusAnnonce = findViewById(R.id.offer_detail_send_to_company)
         offerText = findViewById(R.id.offer_detail_offer_company)
+        sender = findViewById(R.id.detail_offer_company_sender_text_view)
     }
 
     private fun getIntentExtra(){
@@ -59,6 +61,7 @@ class CompanyOfferDetailActivity:AppCompatActivity() {
 
     private fun setText(){
         loadImage(imageAnnonce,annonce.type)
+        sender.text = "Envoyé par ${user.first_name} ${user.last_name}"
         titleAnnonce.text = annonce.title
         descriptionAnnonce.text = annonce.description
         if(annonce.createdAt != null){

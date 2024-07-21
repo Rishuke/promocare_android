@@ -26,6 +26,7 @@ class OfferUserDetailActivity:AppCompatActivity() {
     private lateinit var dateAnnonce : TextView
     private lateinit var statusAnnonce : TextView
     private lateinit var offerText : TextView
+    private lateinit var senderText : TextView
 
     //data
     private lateinit var offer : OfferModel
@@ -53,6 +54,7 @@ class OfferUserDetailActivity:AppCompatActivity() {
         dateAnnonce = findViewById(R.id.offer_detail_annonce_date_user)
         statusAnnonce = findViewById(R.id.offer_detail_send_to_user)
         offerText = findViewById(R.id.offer_detail_offer_user)
+        senderText = findViewById(R.id.offer_detail_sender_user)
 
         refuse = findViewById(R.id.offer_detail_refuse_user)
         accept = findViewById(R.id.offer_detail_accept_user)
@@ -73,6 +75,7 @@ class OfferUserDetailActivity:AppCompatActivity() {
     private fun setText(){
         loadImage(imageAnnonce,annonce.type)
         titleAnnonce.text = annonce.title
+        senderText.text = company.company_name
         descriptionAnnonce.text = annonce.description
         if(annonce.createdAt != null){
             dateAnnonce.text = handleDate(annonce.createdAt!!)

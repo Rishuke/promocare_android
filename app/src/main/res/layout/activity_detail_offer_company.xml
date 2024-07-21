@@ -53,6 +53,14 @@
                     />
 
                 <TextView
+                    android:id="@+id/detail_offer_company_sender_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
                     android:id="@+id/offer_detail_annonce_date_company"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
