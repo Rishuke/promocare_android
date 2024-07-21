@@ -34,7 +34,12 @@ class PostCompanyOfferPriceActivity:AppCompatActivity() {
             if (price.text.toString().isEmpty()){
                 error.visibility = TextView.VISIBLE
                 error.text = "Le prix est obligatoire"
-            }else{
+            }
+            else if (price.text.toString().toInt()==0){
+                error.visibility = TextView.VISIBLE
+                error.text = "Le prix ne peut pas être 0"
+            }
+            else{
                 Offer.getCreateOfferCompanyViewModel().price = price.text.toString() + "€ par séance"
                 Offer.getCreateOfferCompanyViewModel().nbSeance = nombreSeance.text.toString()+" séances au total"
                 val intent = Intent(this, RecapOfferActivity::class.java)

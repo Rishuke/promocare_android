@@ -60,7 +60,7 @@ class AnnonceUserDetailActivity:AppCompatActivity() {
 
             this.annonceTitle.text = annonceData.title
 
-            val texte = "Description : ${annonceData.description} \n\n Catégorie : ${annonceData.type} \n\n Localisation : ${annonceData.location}"
+            val texte = " ${annonceData.description} \n\n Catégorie : ${annonceData.type} \n\n Localisation : ${annonceData.location}"
 
             this.descritpion.text = texte
             if(annonceData.price != null && annonceData.promo != null) {

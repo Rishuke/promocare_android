@@ -33,6 +33,7 @@ class ConvViewModel(private val conversationRepository: ConversationRepository) 
 
             override fun onResponse(p0: Call<NoConvDto>, response: Response<NoConvDto>) {
                 if(response.code()==200){
+                    conversationList.value = ArrayList()
                     noResult.visibility = TextView.VISIBLE
                 }
                 else{
