@@ -37,8 +37,10 @@
 
             <ImageView
                 android:id="@+id/cell_layout_annonce_image_user_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/error_black"
                 android:contentDescription="@string/annonce_image" />
 

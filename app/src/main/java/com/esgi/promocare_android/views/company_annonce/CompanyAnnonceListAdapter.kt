@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,7 @@ import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.handleDate
+import com.esgi.promocare_android.utils.loadImage
 import com.esgi.promocare_android.viewmodel.annonce.AnnonceCompanyViewModel
 
 class CompanyAnnonceListAdapter(
@@ -44,10 +46,14 @@ class CompanyAnnonceListAdapter(
         private val reduction: TextView = itemView.findViewById(R.id.cell_layout_annonce_reduction)
         private val date: TextView = itemView.findViewById(R.id.cell_layout_annonce_date)
         private val views: TextView = itemView.findViewById(R.id.cell_layout_company_annonce_views)
+        private val imageAnnonce:ImageView = itemView.findViewById(R.id.cell_layout_annonce_image)
         private val updateButton: Button = itemView.findViewById(R.id.modify_button_text_annonce)
         private val deleteButton: Button = itemView.findViewById(R.id.cell_layout_annonce_delete_button)
 
         fun bind(annonce: AnnonceModel) {
+            if(annonce.type != null){
+                loadImage(imageAnnonce, annonce.type)
+            }
             annonceTitle.text = annonce.title
             if (annonce.price != null && annonce.promo != null) {
                 val pricePromo = annonce.price * (1 - (annonce.promo / 100.0))

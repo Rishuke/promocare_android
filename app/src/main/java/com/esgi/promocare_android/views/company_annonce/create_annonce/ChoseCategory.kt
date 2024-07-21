@@ -16,10 +16,10 @@ class ChoseCategory:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_category_annonce)
-        this.cuisine = findViewById(R.id.add_category_annonce_menage)
-        this.menage = findViewById(R.id.add_category_annonce_cuisine)
-        this.soin = findViewById(R.id.add_category_annonce_conduite)
-        this.chauffeur = findViewById(R.id.add_category_annonce_soin)
+        this.cuisine = findViewById(R.id.add_category_annonce_cuisine)
+        this.menage = findViewById(R.id.add_category_annonce_menage)
+        this.soin = findViewById(R.id.add_category_annonce_soin)
+        this.chauffeur = findViewById(R.id.add_category_annonce_conduite)
         setButton()
     }
 

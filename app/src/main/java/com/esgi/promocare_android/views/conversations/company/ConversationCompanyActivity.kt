@@ -2,6 +2,7 @@ package com.esgi.promocare_android.views.conversations.company
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,17 +16,13 @@ import com.esgi.promocare_android.models.conversations.ConvFrom
 import com.esgi.promocare_android.models.conversations.PostConversationDto
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.handleDate
+import com.esgi.promocare_android.utils.loadImage
 import com.esgi.promocare_android.views.conversations.ConversationListAdapter
 import com.esgi.promocare_android.views.offer.createOfferCompany.PostCompanyOfferDateActivity
 import com.esgi.promocare_android.views.offer.createOfferCompany.PostCompanyOfferFrequencyActivity
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserDetailActivity
 
 class ConversationCompanyActivity:AppCompatActivity() {
-
-    companion object{
-        const val USER_ID = "USER_ID"
-        const val ANNONCE_ID = "ANNONCE_ID"
-    }
 
     //for API request
     private lateinit var convId : String
@@ -82,8 +79,10 @@ class ConversationCompanyActivity:AppCompatActivity() {
             this.setRecyclerView(conversations)
 
             if(Conversation.getPostFirstConvUserViewModel().annonce != null){
-                annonceTitle.text = Conversation.getPostFirstConvUserViewModel().annonce!!.title
-                val date = Conversation.getPostFirstConvUserViewModel().annonce!!.createdAt
+                val annonce = Conversation.getPostFirstConvUserViewModel().annonce!!
+                loadImage(annonceImage,annonce.type)
+                annonceTitle.text = annonce.title
+                val date = annonce.createdAt
                 if(date != null){
                     val formattedDate = handleDate(date)
                     annonceDate.text = formattedDate
@@ -118,8 +117,8 @@ class ConversationCompanyActivity:AppCompatActivity() {
     }
 
     private fun handleMakeOffer(){
-        val userId = Conversation.getPostFirstConvUserViewModel().senderId
         makeOffer.setOnClickListener {
+            val userId = Conversation.getPostFirstConvUserViewModel().senderId
             Offer.getCreateOfferCompanyViewModel().userId = userId
             Offer.getCreateOfferCompanyViewModel().annonceId = annonceId
             Intent(this, PostCompanyOfferDateActivity::class.java).also {

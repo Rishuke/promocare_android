@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.offer.GetOfferCompany
 import com.esgi.promocare_android.utils.handleDate
+import com.esgi.promocare_android.utils.loadImage
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserOnClickListener
 
 class OfferListAdapterCompany(var offers:MutableList<GetOfferCompany>,val offerClickHander: DisplayCompanyDetail): RecyclerView.Adapter<OfferListAdapterCompany.OfferViewHolder>() {
@@ -45,6 +46,7 @@ class OfferListAdapterCompany(var offers:MutableList<GetOfferCompany>,val offerC
         }
 
         fun bind(offer : GetOfferCompany) {
+            loadImage(imageAnnonce,offer.annonce.type)
             annonceTitle.text = offer.annonce.title
             companyName.text = "Envoyer à ${offer.user.last_name} ${offer.user.first_name}"
             if(offer.offer.created_at!=null){

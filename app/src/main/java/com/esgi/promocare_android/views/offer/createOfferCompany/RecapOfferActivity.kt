@@ -2,6 +2,7 @@ package com.esgi.promocare_android.views.offer.createOfferCompany
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -88,17 +89,19 @@ class RecapOfferActivity:AppCompatActivity() {
             val model = Offer.getCreateOfferCompanyViewModel()
             model.commentaire = commentaire.text.toString()
 
-            val texte = "Date de début : ${dateStart.text}\n" +
+            val text:String = "Date de début : ${dateStart.text}\n" +
                     "Date de fin : ${dateEnd.text}\n" +
                     "Fréquence : ${dateEnd.text}\n" +
                     "Lieu : ${location.text}\n" +
                     "Prix et total seance : ${price.text}\n" +
                     "Commentaire : ${model.commentaire}"
 
+
+            Log.d("Allez", "handleSend: ${model.annonceId} ${model.userId} ")
             val postOfferModel = PostOfferModel(
                 model.annonceId,
                 model.userId,
-                texte
+                text
             )
 
             Offer.getCreateOfferCompanyViewModel().createOffer(Credential.token,postOfferModel)

@@ -23,6 +23,7 @@ class LatestConvViewModel(private val conversationRepository: ConversationReposi
         apiResponse.enqueue(object : Callback<ListLatestConvDto> {
             override fun onFailure(p0: Call<ListLatestConvDto>, t: Throwable) {
                 errorTextView.visibility = TextView.VISIBLE
+                loader.visibility = ProgressBar.GONE
             }
 
             override fun onResponse(p0: Call<ListLatestConvDto>, response: Response<ListLatestConvDto>) {
@@ -39,16 +40,17 @@ class LatestConvViewModel(private val conversationRepository: ConversationReposi
                     }
 
                 }
-                loader.visibility = ProgressBar.GONE
-                errorTextView.visibility = TextView.GONE
-                noResult.visibility = TextView.GONE
-                if(mappedResponse.isEmpty()){
-                    noResult.visibility = TextView.VISIBLE
-                }
 
                 val filteredResponse = mappedResponse.filterNotNull()
-
-                latestConvList.value = ArrayList(filteredResponse)
+                loader.visibility = ProgressBar.GONE
+                errorTextView.visibility = TextView.GONE
+                if(filteredResponse.isEmpty()){
+                    noResult.visibility = TextView.VISIBLE
+                }
+                else{
+                    noResult.visibility = TextView.GONE
+                    latestConvList.value = ArrayList(filteredResponse)
+                }
             }
         })
     }
@@ -59,6 +61,7 @@ class LatestConvViewModel(private val conversationRepository: ConversationReposi
         apiResponse.enqueue(object : Callback<ListLatestConvDto> {
             override fun onFailure(p0: Call<ListLatestConvDto>, t: Throwable) {
                 errorTextView.visibility = TextView.VISIBLE
+                loader.visibility = ProgressBar.GONE
             }
 
             override fun onResponse(p0: Call<ListLatestConvDto>, response: Response<ListLatestConvDto>) {
@@ -77,12 +80,14 @@ class LatestConvViewModel(private val conversationRepository: ConversationReposi
                 }
                 loader.visibility = ProgressBar.GONE
                 errorTextView.visibility = TextView.GONE
-                noResult.visibility = TextView.GONE
-                if(mappedResponse.isEmpty()){
+                val filteredResponse = mappedResponse.filterNotNull()
+                if(filteredResponse.isEmpty()){
                     noResult.visibility = TextView.VISIBLE
                 }
-                val filteredResponse = mappedResponse.filterNotNull()
-                latestConvList.value = ArrayList(filteredResponse)
+                else{
+                    noResult.visibility = TextView.GONE
+                    latestConvList.value = ArrayList(filteredResponse)
+                }
             }
         })
     }

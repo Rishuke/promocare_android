@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Conversation
+import com.esgi.promocare_android.models.annonce.AnnonceDto
 import com.esgi.promocare_android.models.conversations.LatestConv
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.views.NavigationUtilCompany
@@ -39,9 +40,9 @@ class LatestConvCompanyActivity : AppCompatActivity(), ShowAllConv {
     }
 
     private fun setUpView() {
-        this.noResultTextView = findViewById(R.id.latest_conv_error)
+        this.noResultTextView = findViewById(R.id.latest_conv_no_result)
         this.loader = findViewById(R.id.latest_conv_progress_bar)
-        this.errorTextView = findViewById(R.id.latest_conv_no_result)
+        this.errorTextView = findViewById(R.id.latest_conv_error)
         this.latestConvRecyclerView = findViewById(R.id.latest_conv_recycler_view)
     }
 
@@ -62,7 +63,7 @@ class LatestConvCompanyActivity : AppCompatActivity(), ShowAllConv {
         NavigationUtilCompany.setupBottomNavView(bottomNavView, this, R.id.ic_conversation)
     }
 
-    override fun showAllConv(convId: String, annonceId: String) {
+    override fun showAllConv(convId: String, annonceId: String,annonce:AnnonceDto) {
         Intent(this, ConversationCompanyActivity::class.java).also {
             it.putExtra(CONV_ID, convId)
             it.putExtra(ANNONCE_ID, annonceId)

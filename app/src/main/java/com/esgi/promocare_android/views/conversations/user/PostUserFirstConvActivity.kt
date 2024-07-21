@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Conversation
+import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.conversations.ConvFrom
 import com.esgi.promocare_android.models.conversations.PostConversationDto
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.handleDate
+import com.esgi.promocare_android.utils.loadImage
 import com.esgi.promocare_android.views.conversations.ConversationListAdapter
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserDetailActivity
 
@@ -20,6 +22,7 @@ class PostUserFirstConvActivity: AppCompatActivity(){
 
     //for API request
     private lateinit var annonceId : String
+    private lateinit var annonce:AnnonceModel
 
     //layout and view
     private lateinit var conversationRecyclerView: RecyclerView
@@ -40,6 +43,7 @@ class PostUserFirstConvActivity: AppCompatActivity(){
         setUpView()
         handleSend()
         Conversation.getPostFirstConvUserViewModel().verifyNoConv(Credential.token, annonceId,noResultTextView)
+        setAnnonce()
         observeRecyclerView()
     }
 
@@ -61,20 +65,22 @@ class PostUserFirstConvActivity: AppCompatActivity(){
         conversationRecyclerView.adapter = conversationListAdapter
     }
 
+    private fun setAnnonce(){
+        annonceTitle.text = annonce.title
+        val date = annonce.createdAt
+        if(date != null){
+            val formattedDate = handleDate(date)
+            annonceDate.text = formattedDate
+        }
+        else{
+            annonceDate.text = "Date inconnue"
+        }
+        loadImage(annonceImage,annonce.type)
+    }
+
     private fun observeRecyclerView() {
         Conversation.getPostFirstConvUserViewModel().conversationList.observe(this) { conversations ->
             this.setRecyclerView(conversations)
-            if(Conversation.getPostFirstConvUserViewModel().annonce != null){
-                annonceTitle.text = Conversation.getPostFirstConvUserViewModel().annonce!!.title
-                val date = Conversation.getPostFirstConvUserViewModel().annonce!!.createdAt
-                if(date != null){
-                    val formattedDate = handleDate(date)
-                    annonceDate.text = formattedDate
-                }
-                else{
-                    annonceDate.text = "Date inconnue"
-                }
-            }
         }
     }
 
@@ -96,8 +102,13 @@ class PostUserFirstConvActivity: AppCompatActivity(){
     }
 
     private fun getIntentExtra(){
-        if (this.intent.hasExtra(LatestConvUserAcitivity.ANNONCE_ID)) {
-            this.annonceId = intent.getStringExtra(LatestConvUserAcitivity.ANNONCE_ID)!!
+        if (this.intent.hasExtra(LatestConvUserAcitivity.ANNONCE)) {
+            this.annonce = intent.getParcelableExtra(LatestConvUserAcitivity.ANNONCE)!!
+            this.annonceId = annonce.uuid!!
+        }
+        if(this.intent.hasExtra(AnnonceUserDetailActivity.ANNONCE)){
+            this.annonce = intent.getParcelableExtra(AnnonceUserDetailActivity.ANNONCE)!!
+            this.annonceId = annonce.uuid!!
         }
     }
 }
