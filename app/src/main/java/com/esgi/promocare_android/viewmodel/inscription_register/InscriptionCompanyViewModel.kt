@@ -10,7 +10,7 @@ import com.esgi.promocare_android.models.inscription.SubscribeCompanyRequest
 import com.esgi.promocare_android.models.inscription.SubscribeCompanyResponse
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.network.inscription_connexion.InscriptionConnexionRepository
-import com.esgi.promocare_android.views.company_annonce.CompanyAnnonceActivity
+import com.esgi.promocare_android.viewmodel.annonce.AnnonceCompanyViewModel
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,7 +19,7 @@ import retrofit2.Response
 class InscriptionCompanyViewModel(private val inscriptionConnexionRepository: InscriptionConnexionRepository) {
     fun sendRegisterCompanyRequest(subscribeCompanyRequest: SubscribeCompanyRequest, error: TextView, context: Context) {
         val apiResponse: Call<SubscribeCompanyResponse> = inscriptionConnexionRepository.registerCompany(subscribeCompanyRequest)
-        val nextScreen = Intent(context, CompanyAnnonceActivity::class.java)
+        val nextScreen = Intent(context, AnnonceCompanyViewModel::class.java)
 
         apiResponse.enqueue(object : Callback<SubscribeCompanyResponse> {
             override fun onFailure(call: Call<SubscribeCompanyResponse>, t: Throwable) {

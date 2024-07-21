@@ -9,6 +9,7 @@ import com.esgi.promocare_android.models.login.LoginRequest
 import com.esgi.promocare_android.models.login.LoginResponse
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.network.inscription_connexion.InscriptionConnexionRepository
+import com.esgi.promocare_android.views.company_annonce.CompanyAnnonceActivity
 import com.esgi.promocare_android.views.conversations.company.LatestConvCompanyActivity
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity
 import retrofit2.Call
@@ -40,7 +41,7 @@ class InscriptionConnectionViewModel(private val inscriptionConnexionRepository:
 
     fun sendCompanyLoginRequest(loginRequest: LoginRequest,error:TextView,context: Context){
         val apiResponse: Call<LoginResponse> = inscriptionConnexionRepository.loginCompany(loginRequest)
-        val nextScreen = Intent(context, LatestConvCompanyActivity::class.java)
+        val nextScreen = Intent(context, CompanyAnnonceActivity::class.java)
 
 
         apiResponse.enqueue(object : Callback<LoginResponse> {

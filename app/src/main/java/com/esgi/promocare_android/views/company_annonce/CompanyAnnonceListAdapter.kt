@@ -1,65 +1,86 @@
 package com.esgi.promocare_android.views.company_annonce
 
-
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.annonce.AnnonceModel
+import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.handleDate
+import com.esgi.promocare_android.viewmodel.annonce.AnnonceCompanyViewModel
 
-class CompanyAnnonceListAdapter(var annonces:MutableList<AnnonceModel>): RecyclerView.Adapter<CompanyAnnonceListAdapter.AnnonceViewHolder>(){
+class CompanyAnnonceListAdapter(
+    private var annonces: MutableList<AnnonceModel>,
+    private val viewModel: AnnonceCompanyViewModel,
+    private val context: Context,
+    private val loader: ProgressBar,
+    private val error: TextView
+) : RecyclerView.Adapter<CompanyAnnonceListAdapter.AnnonceViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnnonceViewHolder {
-        val ingredientView = LayoutInflater.from(parent.context)
+        val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.cell_layout_annonce, parent, false)
-        return AnnonceViewHolder(ingredientView)
+        return AnnonceViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return this.annonces.size
+        return annonces.size
     }
 
     override fun onBindViewHolder(holder: AnnonceViewHolder, position: Int) {
-        val currentIngredientData = this.annonces[position]
-
-        holder.bind(currentIngredientData)
-        /*holder.itemView.setOnClickListener {
-            holder.updateBackgroundLayout(currentIngredientData)
-        }*/
+        val annonce = annonces[position]
+        holder.bind(annonce)
     }
 
-    inner class AnnonceViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private var annonceTitle : TextView
-        private var annoncePrice : TextView
-        private var reduction : TextView
-        private var date : TextView
-        private var views : TextView
+    inner class AnnonceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val annonceTitle: TextView = itemView.findViewById(R.id.cell_layout_annonce_title)
+        private val annoncePrice: TextView = itemView.findViewById(R.id.cell_layout_annonce_price)
+        private val reduction: TextView = itemView.findViewById(R.id.cell_layout_annonce_reduction)
+        private val date: TextView = itemView.findViewById(R.id.cell_layout_annonce_date)
+        private val views: TextView = itemView.findViewById(R.id.cell_layout_company_annonce_views)
+        private val updateButton: Button = itemView.findViewById(R.id.modify_button_text_annonce)
+        private val deleteButton: Button = itemView.findViewById(R.id.cell_layout_annonce_delete_button)
 
-        init {
-            this.annonceTitle = itemView.findViewById(R.id.cell_layout_annonce_title)
-            this.annoncePrice = itemView.findViewById(R.id.cell_layout_annonce_price)
-            this.reduction = itemView.findViewById(R.id.cell_layout_annonce_reduction)
-            this.date = itemView.findViewById(R.id.cell_layout_annonce_date)
-            this.views = itemView.findViewById(R.id.cell_layout_company_annonce_views)
-        }
-
-        fun bind(annonce:AnnonceModel) {
-            this.annonceTitle.text = annonce.title
-            if(annonce.price != null && annonce.promo != null) {
-                val pricePromo = annonce.price * (1 - (annonce.promo / 100.0)) // Ensure floating-point division
+        fun bind(annonce: AnnonceModel) {
+            annonceTitle.text = annonce.title
+            if (annonce.price != null && annonce.promo != null) {
+                val pricePromo = annonce.price * (1 - (annonce.promo / 100.0))
                 val formattedPrice = String.format("%.2f€", pricePromo)
-                this.annoncePrice.text = formattedPrice
+                annoncePrice.text = formattedPrice
             }
-            this.reduction.text = " -${annonce.promo.toString()}%!!!"
-            this.date.text = "Créer le ${handleDate(annonce.createdAt.toString())}"
-            if(annonce.viewTime == 0){
-                this.views.text = "0"
+            reduction.text = " -${annonce.promo.toString()}%!!!"
+            date.text = "Créer le ${handleDate(annonce.createdAt.toString())}"
+            views.text = annonce.viewTime.toString()
+
+            updateButton.setOnClickListener {
+                val intent = Intent(context, UpdateAnnonceActivity::class.java)
+                intent.putExtra("annonceId", annonce.uuid)
+                intent.putExtra("title", annonce.title)
+                intent.putExtra("description", annonce.description)
+                intent.putExtra("price", annonce.price)
+                intent.putExtra("type", annonce.type)
+                intent.putExtra("location", annonce.location)
+                intent.putExtra("promo", annonce.promo)
+                context.startActivity(intent)
             }
-            else{
-                this.views.text = annonce.viewTime.toString()
+
+            deleteButton.setOnClickListener {
+                viewModel.deleteAnnonceCompany("Bearer " + Credential.token, annonce.uuid!!, loader, error)
+                annonces.removeAt(adapterPosition)
+                notifyItemRemoved(adapterPosition)
+                notifyItemRangeChanged(adapterPosition, annonces.size)
             }
         }
+    }
+
+    fun setAnnonces(newAnnonces: MutableList<AnnonceModel>) {
+        annonces = newAnnonces
+        notifyDataSetChanged()
     }
 }
