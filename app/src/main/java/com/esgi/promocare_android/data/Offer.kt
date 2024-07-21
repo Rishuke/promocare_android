@@ -2,11 +2,11 @@ package com.esgi.promocare_android.data
 
 
 import com.esgi.promocare_android.network.Retrofit
-import com.esgi.promocare_android.network.annonce_services.AnnonceServices
-import com.esgi.promocare_android.network.inscription_connexion.InscriptionConnexionServices
 import com.esgi.promocare_android.network.offer_services.OfferRepository
 import com.esgi.promocare_android.network.offer_services.OfferServices
 import com.esgi.promocare_android.viewmodel.offer.CreateOfferViewModel
+import com.esgi.promocare_android.viewmodel.offer.GetOfferCompanyViewModel
+import com.esgi.promocare_android.viewmodel.offer.GetOfferUserViewModel
 
 object Offer {
 
@@ -27,4 +27,24 @@ object Offer {
     }
 
     fun getCreateOfferCompanyViewModel() = createOfferViewModel
+
+    private val getOfferCompanyViewModel: GetOfferCompanyViewModel by lazy {
+        initGetOfferViewModel()
+    }
+
+    private fun initGetOfferViewModel(): GetOfferCompanyViewModel {
+        return GetOfferCompanyViewModel(OfferRepository(offerServices))
+    }
+
+    fun getGetOfferCompanyViewModel() = getOfferCompanyViewModel
+
+    private val getOfferUserViewModel: GetOfferUserViewModel by lazy {
+        initGetOfferUserViewModel()
+    }
+
+    private fun initGetOfferUserViewModel(): GetOfferUserViewModel {
+        return GetOfferUserViewModel(OfferRepository(offerServices))
+    }
+
+    fun getGetOfferUserViewModel() = getOfferUserViewModel
 }
