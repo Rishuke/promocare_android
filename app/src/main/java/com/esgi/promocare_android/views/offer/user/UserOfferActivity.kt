@@ -12,11 +12,13 @@ import com.esgi.promocare_android.data.Offer
 import com.esgi.promocare_android.models.offer.GetOfferCompany
 import com.esgi.promocare_android.models.offer.GetOfferUser
 import com.esgi.promocare_android.network.Credential
+import com.esgi.promocare_android.views.NavigationUtilUser
 import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity
 import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity.Companion
 import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity.Companion.USER
 import com.esgi.promocare_android.views.offer.company.CompanyOfferDetailActivity
 import com.esgi.promocare_android.views.offer.company.OfferListAdapterCompany
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class UserOfferActivity:AppCompatActivity(), DetailOfferUserClickHandler{
     companion object{
@@ -48,6 +50,10 @@ class UserOfferActivity:AppCompatActivity(), DetailOfferUserClickHandler{
         handleGoToRefused()
         goToPending.setTextColor(resources.getColor(R.color.white))
         goToPending.setBackgroundColor(resources.getColor(R.color.black))
+
+
+        val bottomNavView: BottomNavigationView = findViewById(R.id.nav_view)
+        NavigationUtilUser.setupBottomNavView(bottomNavView, this, R.id.ic_offer)
     }
 
     private fun setUpView(){

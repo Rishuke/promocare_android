@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.views.conversations.user.LatestConvUserAcitivity
+import com.esgi.promocare_android.views.offer.user.UserOfferActivity
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
@@ -32,7 +33,7 @@ object NavigationUtilUser {
 
                 R.id.ic_offer -> {
                     if (currentActivityId != R.id.ic_offer) {
-                        // Add your activity for "Offer" here
+                        context.startActivity(Intent(context, UserOfferActivity::class.java))
                     }
                 }
 
