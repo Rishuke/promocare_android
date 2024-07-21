@@ -1,4 +1,4 @@
-package com.esgi.promocare_android.views.conversations.user
+package com.esgi.promocare_android.views.conversations
 
 import android.view.LayoutInflater
 import android.view.View

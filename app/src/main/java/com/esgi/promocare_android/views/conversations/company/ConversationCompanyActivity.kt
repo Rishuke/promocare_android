@@ -1,5 +1,6 @@
-package com.esgi.promocare_android.views.conversations.user
+package com.esgi.promocare_android.views.conversations.company
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
@@ -9,16 +10,25 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Conversation
+import com.esgi.promocare_android.data.Offer
 import com.esgi.promocare_android.models.conversations.ConvFrom
 import com.esgi.promocare_android.models.conversations.PostConversationDto
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.handleDate
 import com.esgi.promocare_android.views.conversations.ConversationListAdapter
+import com.esgi.promocare_android.views.offer.createOfferCompany.PostCompanyOfferDateActivity
+import com.esgi.promocare_android.views.offer.createOfferCompany.PostCompanyOfferFrequencyActivity
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserDetailActivity
 
-class PostUserFirstConvActivity: AppCompatActivity(){
+class ConversationCompanyActivity:AppCompatActivity() {
+
+    companion object{
+        const val USER_ID = "USER_ID"
+        const val ANNONCE_ID = "ANNONCE_ID"
+    }
 
     //for API request
+    private lateinit var convId : String
     private lateinit var annonceId : String
 
     //layout and view
@@ -28,29 +38,35 @@ class PostUserFirstConvActivity: AppCompatActivity(){
     private lateinit var messageEditText : EditText
     private lateinit var sendButton : ImageView
 
+
     private lateinit var annonceTitle:TextView
     private lateinit var annonceDate:TextView
     private lateinit var annonceImage:ImageView
 
+    private lateinit var makeOffer : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_conversation_layout_user)
+        setContentView(R.layout.activity_conversation_company)
         getIntentExtra()
         setUpView()
         handleSend()
-        Conversation.getPostFirstConvUserViewModel().verifyNoConv(Credential.token, annonceId,noResultTextView)
+        handleMakeOffer()
+        Conversation.getPostFirstConvUserViewModel().getConvId(Credential.token, convId,noResultTextView)
         observeRecyclerView()
     }
 
     private fun setUpView(){
-        noResultTextView = findViewById(R.id.no_result_conv_text_view)
-        messageEditText = findViewById(R.id.message_edit_text)
-        sendButton = findViewById(R.id.send_button)
-        conversationRecyclerView = findViewById(R.id.conversation_recycler_view)
-        annonceImage = findViewById(R.id.annonce_conversation_image_view_user)
-        annonceTitle = findViewById(R.id.annonce_conversation_title_text_view_user)
-        annonceDate = findViewById(R.id.annonce_conversation_date_text_view_user)
+        noResultTextView = findViewById(R.id.no_result_conv_text_view_company)
+        messageEditText = findViewById(R.id.message_edit_text_company)
+        sendButton = findViewById(R.id.send_button_company)
+        conversationRecyclerView = findViewById(R.id.conversation_recycler_view_company)
+
+        annonceImage = findViewById(R.id.annonce_conversation_image_view_company)
+        annonceTitle = findViewById(R.id.annonce_conversation_title_text_view_company)
+        annonceDate = findViewById(R.id.annonce_conversation_date_text_view_company)
+
+        makeOffer = findViewById(R.id.conversation_company_offer_text_view)
     }
 
     private fun setRecyclerView(conversations : MutableList<ConvFrom>){
@@ -64,6 +80,7 @@ class PostUserFirstConvActivity: AppCompatActivity(){
     private fun observeRecyclerView() {
         Conversation.getPostFirstConvUserViewModel().conversationList.observe(this) { conversations ->
             this.setRecyclerView(conversations)
+
             if(Conversation.getPostFirstConvUserViewModel().annonce != null){
                 annonceTitle.text = Conversation.getPostFirstConvUserViewModel().annonce!!.title
                 val date = Conversation.getPostFirstConvUserViewModel().annonce!!.createdAt
@@ -83,12 +100,6 @@ class PostUserFirstConvActivity: AppCompatActivity(){
             if(messageEditText.text.isEmpty()){
                 return@setOnClickListener
             }
-            if(Conversation.getPostFirstConvUserViewModel().conversationList.value.isNullOrEmpty()){
-                val messageToPost = PostConversationDto(messageEditText.text.toString())
-                messageEditText.text.clear()
-                Conversation.getPostFirstConvUserViewModel().postConvFirstUser(Credential.token,messageToPost,annonceId,noResultTextView)
-                return@setOnClickListener
-            }
             val messageToPost = PostConversationDto(messageEditText.text.toString())
             messageEditText.text.clear()
             Conversation.getPostFirstConvUserViewModel().postConv(Credential.token,messageToPost,annonceId,noResultTextView)
@@ -96,8 +107,24 @@ class PostUserFirstConvActivity: AppCompatActivity(){
     }
 
     private fun getIntentExtra(){
-        if (this.intent.hasExtra(AnnonceUserDetailActivity.ANNONCE_ID)) {
-            this.annonceId = intent.getStringExtra(AnnonceUserDetailActivity.ANNONCE_ID)!!
+        if (this.intent.hasExtra(LatestConvCompanyActivity.CONV_ID)) {
+            this.convId = intent.getStringExtra(LatestConvCompanyActivity.CONV_ID)!!
+        }
+        if (this.intent.hasExtra(LatestConvCompanyActivity.ANNONCE_ID)) {
+            this.annonceId = intent.getStringExtra(LatestConvCompanyActivity.ANNONCE_ID)!!
+        }
+
+        Conversation.getPostFirstConvUserViewModel().convId = this.convId
+    }
+
+    private fun handleMakeOffer(){
+        val userId = Conversation.getPostFirstConvUserViewModel().senderId
+        makeOffer.setOnClickListener {
+            Offer.getCreateOfferCompanyViewModel().userId = userId
+            Offer.getCreateOfferCompanyViewModel().annonceId = annonceId
+            Intent(this, PostCompanyOfferDateActivity::class.java).also {
+                startActivity(it)
+            }
         }
     }
 }

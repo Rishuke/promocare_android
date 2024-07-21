@@ -3,6 +3,8 @@ package com.esgi.promocare_android.viewmodel.conversation
 import android.util.Log
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
+import com.esgi.promocare_android.models.annonce.AnnonceDto
+import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.conversations.ConvFrom
 import com.esgi.promocare_android.models.conversations.ConvFromDto
 import com.esgi.promocare_android.models.conversations.NoConvDto
@@ -14,9 +16,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PostFirstConvUserViewModel(private val conversationRepository: ConversationRepository) {
+class ConvViewModel(private val conversationRepository: ConversationRepository) {
 
     var conversationList: MutableLiveData<ArrayList<ConvFrom>> = MutableLiveData()
+    var annonce:AnnonceModel? = null
+    var senderId:String = ""
     var convId: String = ""
 
     fun verifyNoConv(token: String, annonceId: String,noResult:TextView) {
@@ -79,21 +83,45 @@ class PostFirstConvUserViewModel(private val conversationRepository: Conversatio
 
             override fun onResponse(p0: Call<ReturnConvFromDto>, response: Response<ReturnConvFromDto>) {
                 val responseBody: List<ConvFromDto> = response.body()?.conversations ?: listOf()
+
                 val mappedResponse = responseBody.map {
-                    ConvFrom(
-                        it.annonce_id,
-                        it.created_at,
-                        it.first_conv_id,
-                        it.from,
-                        it.isFirst,
-                        it.message,
-                        it.sender_id,
-                        it.target_id,
-                        it.updated_at,
-                        it.uuid
-                    )
+                        ConvFrom(
+                            it.annonce_id,
+                            it.created_at,
+                            it.first_conv_id,
+                            it.from,
+                            it.isFirst,
+                            it.message,
+                            it.sender_id,
+                            it.target_id,
+                            it.updated_at,
+                            it.uuid
+                        )
                 }
+
+                annonce = AnnonceModel(
+                    response.body()?.annonce?.uuid,
+                    response.body()?.annonce?.title,
+                    response.body()?.annonce?.location,
+                    response.body()?.annonce?.price,
+                    response.body()?.annonce?.promo,
+                    response.body()?.annonce?.status,
+                    response.body()?.annonce?.title,
+                    response.body()?.annonce?.description,
+                    response.body()?.annonce?.type,
+                    response.body()?.annonce?.view_time,
+                    response.body()?.annonce?.updated_at,
+                    response.body()?.annonce?.created_at,
+                )
+
                 conversationList.value = ArrayList(mappedResponse)
+
+                if(conversationList.value != null){
+                    if(conversationList.value!![0].sender_id != null){
+                        senderId = conversationList.value!![0].sender_id!!
+                    }
+                }
+
                 if((conversationList.value as ArrayList<ConvFrom>).isEmpty()){
                     noResult.visibility = TextView.VISIBLE
                 }

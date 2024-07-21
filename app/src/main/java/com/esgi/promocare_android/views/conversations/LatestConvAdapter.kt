@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
+import com.esgi.promocare_android.models.annonce.AnnonceDto
+import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.conversations.LatestConv
 import com.esgi.promocare_android.utils.handleDate
 
-class LatestConvAdapter(var latestConv:MutableList<LatestConv>): RecyclerView.Adapter<LatestConvAdapter.LatestConvViewHolder>() {
+class LatestConvAdapter(var latestConv:MutableList<LatestConv>,var convClickHanlder:ShowAllConv): RecyclerView.Adapter<LatestConvAdapter.LatestConvViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LatestConvViewHolder {
         val latestConvView = LayoutInflater.from(parent.context)
             .inflate(R.layout.cell_layout_latest_conv, parent, false)
@@ -24,9 +26,16 @@ class LatestConvAdapter(var latestConv:MutableList<LatestConv>): RecyclerView.Ad
         val currentConversationData = this.latestConv[position]
 
         holder.bind(currentConversationData)
-        /**holder.itemView.setOnClickListener {
-        annonceUserClickHander.viewDetailAnnonceUser(currentIngredientData,position)
-        }**/
+        val annonce = currentConversationData.annonce?.uuid ?: return
+        holder.itemView.setOnClickListener {
+            if(currentConversationData.conversation?.first_conv_id == null){
+                convClickHanlder.showAllConv(currentConversationData.conversation?.uuid!!, annonce)
+                return@setOnClickListener
+            }
+            else{
+                convClickHanlder.showAllConv(currentConversationData.conversation.first_conv_id, annonce)
+            }
+        }
     }
 
     inner class LatestConvViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -42,10 +51,19 @@ class LatestConvAdapter(var latestConv:MutableList<LatestConv>): RecyclerView.Ad
 
         fun bind(latest: LatestConv) {
             annonceTitle.text = latest.annonce?.title ?: "Pas de titre d'annonce"
-            messageContent.text = latest.conversation?.message ?: "Pas de message"
+            if(latest.conversation?.from == "Not you"){
+                messageContent.text = "Pour vous : " + latest.conversation?.message
+            }
+            else{
+                messageContent.text = "Vous : "+latest.conversation?.message
+            }
             var date  = handleDate(latest.conversation?.created_at ?: "Pas de date")
             date += " à " + latest.conversation?.created_at?.substring(11, 16)
             dateLastMessage.text = date
         }
     }
+}
+
+interface ShowAllConv{
+    fun showAllConv(convId:String,annonceId:String)
 }

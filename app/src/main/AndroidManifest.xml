@@ -23,13 +23,23 @@
         <activity android:name=".views.company_annonce.create_annonce.ChosePrice" />
         <activity android:name=".views.user_annonce.AnnonceUserActivity"/>
         <activity android:name=".views.user_annonce.AnnonceUserDetailActivity"/>
+        <activity android:name=".views.conversations.user.PostUserFirstConvActivity" />
+        <activity android:name=".views.conversations.company.ConversationCompanyActivity" />
+
+
+        <activity android:name=".views.offer.createOfferCompany.PostCompanyOfferDateActivity" />
+        <activity android:name=".views.offer.createOfferCompany.PostCompanyOfferFrequencyActivity" />
+        <activity android:name=".views.offer.createOfferCompany.PostCompanyOfferPriceActivity" />
+        <activity android:name=".views.offer.createOfferCompany.PostCompanyOfferLocationActivity" />
+        <activity android:name=".views.offer.createOfferCompany.RecapOfferActivity" />
+
+        <activity
+            android:name=".views.conversations.user.LatestConvUserAcitivity"
+            />
         <activity android:name=".views.InscriptionActivity" />
         <activity android:name=".views.InscriptionCompanyActivity" />
         <activity android:name=".views.company_annonce.CompanyAnnonceActivity" />
         <activity android:name=".views.company_annonce.UpdateAnnonceActivity" />
-        <activity
-            android:windowSoftInputMode="adjustResize"
-            android:name=".views.conversations.user.PostUserFirstConvActivity" />
         <activity android:name=".views.conversations.user.LatestConvUserAcitivity"/>
         <activity android:name=".views.conversations.company.LatestConvCompanyActivity"/>
         <activity
