@@ -21,7 +21,7 @@ import retrofit2.Response
 class InscriptionConnectionViewModel(private val inscriptionConnexionRepository: InscriptionConnexionRepository){
     fun sendLoginRequest(loginRequest: LoginRequest,error:TextView,context:Context){
         val apiResponse: Call<LoginResponse> = inscriptionConnexionRepository.loginUser(loginRequest)
-        val nextScreen = Intent(context, UserOfferActivity::class.java)
+        val nextScreen = Intent(context, AnnonceUserActivity::class.java)
 
         apiResponse.enqueue(object : Callback<LoginResponse> {
             override fun onFailure(p0: Call<LoginResponse>, t: Throwable) {
@@ -43,7 +43,7 @@ class InscriptionConnectionViewModel(private val inscriptionConnexionRepository:
 
     fun sendCompanyLoginRequest(loginRequest: LoginRequest,error:TextView,context: Context){
         val apiResponse: Call<LoginResponse> = inscriptionConnexionRepository.loginCompany(loginRequest)
-        val nextScreen = Intent(context, CompanyOfferActivity::class.java)
+        val nextScreen = Intent(context, CompanyAnnonceActivity::class.java)
 
 
         apiResponse.enqueue(object : Callback<LoginResponse> {
