@@ -1,5 +1,6 @@
 package com.esgi.promocare_android.views.conversations.user
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
@@ -17,6 +18,7 @@ import com.esgi.promocare_android.utils.handleDate
 import com.esgi.promocare_android.utils.loadImage
 import com.esgi.promocare_android.views.conversations.ConversationListAdapter
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserDetailActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class PostUserFirstConvActivity: AppCompatActivity(){
 
@@ -35,6 +37,8 @@ class PostUserFirstConvActivity: AppCompatActivity(){
     private lateinit var annonceDate:TextView
     private lateinit var annonceImage:ImageView
 
+    private lateinit var goToConv : FloatingActionButton
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +49,7 @@ class PostUserFirstConvActivity: AppCompatActivity(){
         Conversation.getPostFirstConvUserViewModel().verifyNoConv(Credential.token, annonceId,noResultTextView)
         setAnnonce()
         observeRecyclerView()
+        goToConversation()
     }
 
     private fun setUpView(){
@@ -55,6 +60,13 @@ class PostUserFirstConvActivity: AppCompatActivity(){
         annonceImage = findViewById(R.id.annonce_conversation_image_view_user)
         annonceTitle = findViewById(R.id.annonce_conversation_title_text_view_user)
         annonceDate = findViewById(R.id.annonce_conversation_date_text_view_user)
+        goToConv = findViewById(R.id.go_to_conversation_post_first_conv)
+    }
+
+    private fun goToConversation(){
+        goToConv.setOnClickListener {
+            startActivity(Intent(this, LatestConvUserAcitivity::class.java))
+        }
     }
 
     private fun setRecyclerView(conversations : MutableList<ConvFrom>){
