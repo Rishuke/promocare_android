@@ -3,7 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="link">#1F4D73</color>
+    <color name="link_ligh">#62B2F4</color>
     <color name="error">#FF0000</color>
+    <color name="refuse">#FF0000</color>
+    <color name="accept">#8BC34A</color>
     <color name="reduction">#E66A55</color>
     <color name="button">#838383</color>
     <color name="create_annonce">#E28702</color>
