@@ -11,7 +11,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Annonce
-import com.esgi.promocare_android.views.company_annonce.CompanyAnnonceActivity
 
 class ChosePrice:AppCompatActivity() {
     private lateinit var price: EditText
