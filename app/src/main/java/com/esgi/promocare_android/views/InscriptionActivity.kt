@@ -67,7 +67,6 @@ class InscriptionActivity : AppCompatActivity() {
         } else {
             errorText.visibility = TextView.INVISIBLE
             val subscribeRequest = SubscribeRequest(email, password, firstName, lastName)
-            Log.d("InscriptionActivity", "Sending subscribe request: $subscribeRequest")
             sendInscription(subscribeRequest)
         }
     }

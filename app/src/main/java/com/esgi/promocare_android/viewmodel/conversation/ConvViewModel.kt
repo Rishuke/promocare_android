@@ -28,7 +28,6 @@ class ConvViewModel(private val conversationRepository: ConversationRepository) 
 
         apiResponse.enqueue(object : Callback<NoConvDto> {
             override fun onFailure(p0: Call<NoConvDto>, t: Throwable) {
-                Log.d("ERROR CREATE", "onFailure: $t")
             }
 
             override fun onResponse(p0: Call<NoConvDto>, response: Response<NoConvDto>) {

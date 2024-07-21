@@ -23,7 +23,6 @@ class InscriptionCompanyViewModel(private val inscriptionConnexionRepository: In
 
         apiResponse.enqueue(object : Callback<SubscribeCompanyResponse> {
             override fun onFailure(call: Call<SubscribeCompanyResponse>, t: Throwable) {
-                Log.e("InscriptionCompanyViewModel", "onFailure: ${t.message}", t)
                 error.setText(R.string.user_registration_no_connection_error)
                 error.visibility = TextView.VISIBLE
             }
@@ -31,18 +30,15 @@ class InscriptionCompanyViewModel(private val inscriptionConnexionRepository: In
             override fun onResponse(call: Call<SubscribeCompanyResponse>, response: Response<SubscribeCompanyResponse>) {
                 if (response.code() == 400) {
                     val errorBody = response.errorBody()?.string()
-                    Log.e("InscriptionCompanyViewModel", "onResponse: ${response.code()} $errorBody")
                     error.setText(R.string.user_registration_error)
                     error.visibility = TextView.VISIBLE
                     return
                 }
 
                 response.body()?.let {
-                    Log.d("InscriptionCompanyViewModel", "onResponse: ${it.token}")
                     Credential.token = "Bearer ${it.token}"
                     startActivity(context, nextScreen, null)
                 } ?: run {
-                    Log.e("InscriptionCompanyViewModel", "onResponse: response body is null")
                     error.setText(R.string.user_registration_error)
                     error.visibility = TextView.VISIBLE
                 }

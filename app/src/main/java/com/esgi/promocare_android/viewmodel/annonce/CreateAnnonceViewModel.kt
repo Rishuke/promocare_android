@@ -34,7 +34,6 @@ class CreateAnnonceViewModel(private val annonceRepository: AnnonceRepository) {
 
         apiResponse.enqueue(object : Callback<ReturnCreateAnnonceDto> {
             override fun onFailure(p0: Call<ReturnCreateAnnonceDto>, t: Throwable) {
-                Log.d("ERROR CREATE", "onFailure: $t")
             }
 
             override fun onResponse(p0: Call<ReturnCreateAnnonceDto>, response: Response<ReturnCreateAnnonceDto>) {

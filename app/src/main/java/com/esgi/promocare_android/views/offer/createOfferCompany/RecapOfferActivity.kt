@@ -97,7 +97,6 @@ class RecapOfferActivity:AppCompatActivity() {
                     "Commentaire : ${model.commentaire}"
 
 
-            Log.d("Allez", "handleSend: ${model.annonceId} ${model.userId} ")
             val postOfferModel = PostOfferModel(
                 model.annonceId,
                 model.userId,
