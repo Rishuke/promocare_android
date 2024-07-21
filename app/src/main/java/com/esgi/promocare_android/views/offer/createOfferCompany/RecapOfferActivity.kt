@@ -90,10 +90,10 @@ class RecapOfferActivity:AppCompatActivity() {
             model.commentaire = commentaire.text.toString()
 
             val text:String = "Date de début : ${dateStart.text}\n" +
-                    "Date de fin : ${dateEnd.text}\n" +
-                    "Fréquence : ${dateEnd.text}\n" +
-                    "Lieu : ${location.text}\n" +
-                    "Prix et total seance : ${price.text}\n" +
+                    "Date de fin : ${dateEnd.text}\n\n" +
+                    "Fréquence : ${frequence.text}\n\n" +
+                    "Lieu : ${location.text}\n\n" +
+                    "Prix et total seance : ${price.text}\n\n" +
                     "Commentaire : ${model.commentaire}"
 
 

@@ -20,7 +20,6 @@ class CompanyOfferDetailActivity:AppCompatActivity() {
     private lateinit var titleAnnonce : TextView
     private lateinit var descriptionAnnonce : TextView
     private lateinit var dateAnnonce : TextView
-    private lateinit var statusAnnonce : TextView
     private lateinit var offerText : TextView
     private lateinit var sender : TextView
 
@@ -42,7 +41,6 @@ class CompanyOfferDetailActivity:AppCompatActivity() {
         titleAnnonce = findViewById(R.id.offer_detail_annonce_tilte)
         descriptionAnnonce = findViewById(R.id.offer_detail_description_annonce_company)
         dateAnnonce = findViewById(R.id.offer_detail_annonce_date_company)
-        statusAnnonce = findViewById(R.id.offer_detail_send_to_company)
         offerText = findViewById(R.id.offer_detail_offer_company)
         sender = findViewById(R.id.detail_offer_company_sender_text_view)
     }
@@ -75,8 +73,7 @@ class CompanyOfferDetailActivity:AppCompatActivity() {
             offerDate = handleDate(offer.created_at!!)
         }
 
-        val text = "Envoyé à ${user.first_name} ${user.last_name} le ${offerDate} , le status est ${offer.status}. Voici un résumé de votre offre :"
-        statusAnnonce.text = text
-        offerText.text = offer.text
+        val text = "Envoyé à ${user.first_name} ${user.last_name} le ${offerDate} , le status est ${offer.status}. Voici un résumé de votre offre : \n\n"
+        offerText.text = text + offer.text
     }
 }

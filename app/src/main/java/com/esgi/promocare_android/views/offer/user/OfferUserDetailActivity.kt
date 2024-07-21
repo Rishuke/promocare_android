@@ -24,7 +24,6 @@ class OfferUserDetailActivity:AppCompatActivity() {
     private lateinit var titleAnnonce : TextView
     private lateinit var descriptionAnnonce : TextView
     private lateinit var dateAnnonce : TextView
-    private lateinit var statusAnnonce : TextView
     private lateinit var offerText : TextView
     private lateinit var senderText : TextView
 
@@ -52,7 +51,6 @@ class OfferUserDetailActivity:AppCompatActivity() {
         titleAnnonce = findViewById(R.id.offer_detail_annonce_tilte_user)
         descriptionAnnonce = findViewById(R.id.offer_detail_description_annonce_user)
         dateAnnonce = findViewById(R.id.offer_detail_annonce_date_user)
-        statusAnnonce = findViewById(R.id.offer_detail_send_to_user)
         offerText = findViewById(R.id.offer_detail_offer_user)
         senderText = findViewById(R.id.offer_detail_sender_user)
 
@@ -114,9 +112,9 @@ class OfferUserDetailActivity:AppCompatActivity() {
             textStatus = "inconnue"
         }
 
-        val text = "Envoyé par ${company.company_name} le ${offerDate} , l'offre est ${textStatus}. Voici un résumé de l'offre :"
-        statusAnnonce.text = text
-        offerText.text = offer.text
+        val text = "Envoyé par ${company.company_name} le ${offerDate} , l'offre est ${textStatus}. Voici un résumé de l'offre : \n\n"
+        //statusAnnonce.text = text
+        offerText.text = text+offer.text
     }
 
     private fun handleRefuse() {

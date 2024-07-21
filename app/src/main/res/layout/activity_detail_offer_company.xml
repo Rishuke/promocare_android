@@ -72,10 +72,20 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="-15dp"
+            android:text="Description de l'annonce : "
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
         <ScrollView
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:padding="20dp"
+            android:background="@drawable/circle_linear"
             android:layout_height="150dp">
 
             <TextView
@@ -87,17 +97,20 @@
         </ScrollView>
 
         <TextView
-            android:id="@+id/offer_detail_send_to_company"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
+            android:layout_marginBottom="-15dp"
+            android:text="Description de l'offre : "
+            android:textStyle="bold"
             android:textSize="18sp"/>
 
         <ScrollView
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
+            android:background="@drawable/circle_linear"
             android:padding="20dp"
-            android:layout_height="150dp">
+            android:layout_height="200dp">
 
             <TextView
                 android:id="@+id/offer_detail_offer_company"
