@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Offer
+import com.esgi.promocare_android.models.offer.PostOfferModel
+import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.views.company_annonce.CompanyAnnonceActivity
 
 class RecapOfferActivity:AppCompatActivity() {
@@ -85,6 +87,22 @@ class RecapOfferActivity:AppCompatActivity() {
         createOffer.setOnClickListener {
             val model = Offer.getCreateOfferCompanyViewModel()
             model.commentaire = commentaire.text.toString()
+
+            val texte = "Date de début : ${dateStart.text}\n" +
+                    "Date de fin : ${dateEnd.text}\n" +
+                    "Fréquence : ${dateEnd.text}\n" +
+                    "Lieu : ${location.text}\n" +
+                    "Prix et total seance : ${price.text}\n" +
+                    "Commentaire : ${model.commentaire}"
+
+            val postOfferModel = PostOfferModel(
+                model.annonceId,
+                model.userId,
+                texte
+            )
+
+            Offer.getCreateOfferCompanyViewModel().createOffer(Credential.token,postOfferModel)
+
             val intent = Intent(this, CompanyAnnonceActivity::class.java)
             startActivity(intent)
         }

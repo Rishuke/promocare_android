@@ -28,10 +28,16 @@ class LatestConvViewModel(private val conversationRepository: ConversationReposi
             override fun onResponse(p0: Call<ListLatestConvDto>, response: Response<ListLatestConvDto>) {
                 val latestConv: List<LatestConvDto> = response.body()?.latestConv ?: listOf()
                 val mappedResponse = latestConv.map {
-                    LatestConv(
-                        it.annonce,
-                        it.conversation
-                    )
+                    if(it.annonce!=null) {
+                        LatestConv(
+                            it.annonce,
+                            it.conversation
+                        )
+                    }
+                    else{
+                        null
+                    }
+
                 }
                 loader.visibility = ProgressBar.GONE
                 errorTextView.visibility = TextView.GONE
@@ -39,7 +45,10 @@ class LatestConvViewModel(private val conversationRepository: ConversationReposi
                 if(mappedResponse.isEmpty()){
                     noResult.visibility = TextView.VISIBLE
                 }
-                latestConvList.value = ArrayList(mappedResponse)
+
+                val filteredResponse = mappedResponse.filterNotNull()
+
+                latestConvList.value = ArrayList(filteredResponse)
             }
         })
     }
@@ -55,17 +64,25 @@ class LatestConvViewModel(private val conversationRepository: ConversationReposi
             override fun onResponse(p0: Call<ListLatestConvDto>, response: Response<ListLatestConvDto>) {
                 val latestConv: List<LatestConvDto> = response.body()?.latestConv ?: listOf()
                 val mappedResponse = latestConv.map {
-                    LatestConv(
-                        it.annonce,
-                        it.conversation
-                    )
+                    if(it.annonce!=null) {
+                        LatestConv(
+                            it.annonce,
+                            it.conversation
+                        )
+                    }
+                    else{
+                        null
+                    }
+
                 }
                 loader.visibility = ProgressBar.GONE
                 errorTextView.visibility = TextView.GONE
+                noResult.visibility = TextView.GONE
                 if(mappedResponse.isEmpty()){
                     noResult.visibility = TextView.VISIBLE
                 }
-                latestConvList.value = ArrayList(mappedResponse)
+                val filteredResponse = mappedResponse.filterNotNull()
+                latestConvList.value = ArrayList(filteredResponse)
             }
         })
     }

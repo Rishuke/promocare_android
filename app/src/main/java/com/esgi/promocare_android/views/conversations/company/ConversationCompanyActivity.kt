@@ -123,7 +123,6 @@ class ConversationCompanyActivity:AppCompatActivity() {
             Offer.getCreateOfferCompanyViewModel().userId = userId
             Offer.getCreateOfferCompanyViewModel().annonceId = annonceId
             Intent(this, PostCompanyOfferDateActivity::class.java).also {
-
                 startActivity(it)
             }
         }

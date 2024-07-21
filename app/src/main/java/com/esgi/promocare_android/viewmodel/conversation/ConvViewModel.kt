@@ -83,19 +83,20 @@ class ConvViewModel(private val conversationRepository: ConversationRepository) 
 
             override fun onResponse(p0: Call<ReturnConvFromDto>, response: Response<ReturnConvFromDto>) {
                 val responseBody: List<ConvFromDto> = response.body()?.conversations ?: listOf()
+
                 val mappedResponse = responseBody.map {
-                    ConvFrom(
-                        it.annonce_id,
-                        it.created_at,
-                        it.first_conv_id,
-                        it.from,
-                        it.isFirst,
-                        it.message,
-                        it.sender_id,
-                        it.target_id,
-                        it.updated_at,
-                        it.uuid
-                    )
+                        ConvFrom(
+                            it.annonce_id,
+                            it.created_at,
+                            it.first_conv_id,
+                            it.from,
+                            it.isFirst,
+                            it.message,
+                            it.sender_id,
+                            it.target_id,
+                            it.updated_at,
+                            it.uuid
+                        )
                 }
 
                 annonce = AnnonceModel(
