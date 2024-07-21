@@ -41,9 +41,9 @@ class LatestConvUserAcitivity : AppCompatActivity(), ShowAllConv {
     }
 
     private fun setUpView() {
-        noResultTextView = findViewById(R.id.latest_conv_error)
+        noResultTextView = findViewById(R.id.latest_conv_no_result)
         loader = findViewById(R.id.latest_conv_progress_bar)
-        errorTextView = findViewById(R.id.latest_conv_no_result)
+        errorTextView = findViewById(R.id.latest_conv_error)
         latestConvRecyclerView = findViewById(R.id.latest_conv_recycler_view)
     }
 
