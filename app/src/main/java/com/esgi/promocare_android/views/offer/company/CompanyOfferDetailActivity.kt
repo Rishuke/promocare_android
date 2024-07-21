@@ -9,6 +9,7 @@ import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.offer.OfferModel
 import com.esgi.promocare_android.models.user.UserModel
 import com.esgi.promocare_android.utils.handleDate
+import com.esgi.promocare_android.utils.loadImage
 import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity.Companion.ANNONCE
 import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity.Companion.OFFER
 import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity.Companion.USER
@@ -57,6 +58,7 @@ class CompanyOfferDetailActivity:AppCompatActivity() {
     }
 
     private fun setText(){
+        loadImage(imageAnnonce,annonce.type)
         titleAnnonce.text = annonce.title
         descriptionAnnonce.text = annonce.description
         if(annonce.createdAt != null){

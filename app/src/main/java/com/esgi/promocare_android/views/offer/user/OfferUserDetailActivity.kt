@@ -14,6 +14,7 @@ import com.esgi.promocare_android.models.offer.OfferModel
 import com.esgi.promocare_android.models.offer.PatchOffer
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.handleDate
+import com.esgi.promocare_android.utils.loadImage
 import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity.Companion.ANNONCE
 import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity.Companion.OFFER
 import com.esgi.promocare_android.views.offer.user.UserOfferActivity.Companion.COMPANY
@@ -70,6 +71,7 @@ class OfferUserDetailActivity:AppCompatActivity() {
     }
 
     private fun setText(){
+        loadImage(imageAnnonce,annonce.type)
         titleAnnonce.text = annonce.title
         descriptionAnnonce.text = annonce.description
         if(annonce.createdAt != null){

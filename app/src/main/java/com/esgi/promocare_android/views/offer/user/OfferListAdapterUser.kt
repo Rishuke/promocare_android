@@ -16,6 +16,7 @@ import com.esgi.promocare_android.models.offer.GetOfferCompany
 import com.esgi.promocare_android.models.offer.GetOfferUser
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.handleDate
+import com.esgi.promocare_android.utils.loadImage
 import com.esgi.promocare_android.views.offer.company.DisplayCompanyDetail
 import com.esgi.promocare_android.views.offer.company.OfferListAdapterCompany
 
@@ -53,6 +54,7 @@ class OfferListAdapterUser(var offers:MutableList<GetOfferUser>,var detailOffer:
         }
 
         fun bind(offer : GetOfferUser) {
+            loadImage(imageAnnonce,offer.annonce.type)
             annonceTitle.text = offer.annonce.title
             companyName.text = "Envoyer à ${offer.company.company_name}"
             if(offer.offer.created_at!=null){
