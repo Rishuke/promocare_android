@@ -1,6 +1,7 @@
 package com.esgi.promocare_android.views.offer.user
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,7 +57,8 @@ class OfferListAdapterUser(var offers:MutableList<GetOfferUser>,var detailOffer:
         fun bind(offer : GetOfferUser) {
             loadImage(imageAnnonce,offer.annonce.type)
             annonceTitle.text = offer.annonce.title
-            companyName.text = "Envoyer à ${offer.company.company_name}"
+            companyName.text = offer.company.company_name
+
             if(offer.offer.created_at!=null){
                 date.text = handleDate(offer.offer.created_at)
             }
