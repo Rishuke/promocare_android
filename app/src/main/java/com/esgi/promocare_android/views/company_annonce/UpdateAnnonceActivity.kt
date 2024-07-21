@@ -1,4 +1,6 @@
 package com.esgi.promocare_android.views.company_annonce
+
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -24,6 +26,7 @@ class UpdateAnnonceActivity : AppCompatActivity() {
     private lateinit var loader: ProgressBar
     private lateinit var errorText: TextView
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_annonce)
@@ -76,17 +79,51 @@ class UpdateAnnonceActivity : AppCompatActivity() {
         }
 
         updateButton.setOnClickListener {
+            val title = titleEditText.text.toString()
+            val description = descriptionEditText.text.toString()
+            val priceText = priceEditText.text.toString()
+            val location = locationEditText.text.toString()
+            val promoText = promoEditText.text.toString()
+            val type = typeSpinner.selectedItem.toString()
+
+            // Validation des champs
+            if (title.isBlank()) {
+                showError("Le titre ne peut pas être vide")
+                return@setOnClickListener
+            }
+            if (description.isBlank()) {
+                showError("La description ne peut pas être vide")
+                return@setOnClickListener
+            }
+            val price = priceText.toFloatOrNull()
+            if (price == null || price <= 0) {
+                showError("Le prix doit être supérieur à 0")
+                return@setOnClickListener
+            }
+            val promo = promoText.toIntOrNull()
+            if (promo == null || promo <= 0 || promo > 100) {
+                showError("La promotion doit être comprise entre 0 et 100")
+                return@setOnClickListener
+            }
+
             val createAnnonceDto = CreateAnnonceDto(
-                title = titleEditText.text.toString(),
-                description = descriptionEditText.text.toString(),
-                price = priceEditText.text.toString().toFloatOrNull() ?: 0.0f,
-                type = typeSpinner.selectedItem.toString(),
-                location = locationEditText.text.toString(),
-                promo = promoEditText.text.toString().toIntOrNull() ?: 0
+                title = title,
+                description = description,
+                price = price,
+                type = type,
+                location = location,
+                promo = promo
             )
             viewModel.updateAnnonceCompany("Bearer " + Credential.token, annonceId, createAnnonceDto, loader, errorText) {
                 finish()
             }
         }
+    }
+
+
+
+    private fun showError(message: String) {
+        errorText.text = message
+        errorText.visibility = View.VISIBLE
     }
 }

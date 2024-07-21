@@ -1,109 +1,156 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".views.company_annonce.UpdateAnnonceActivity">
 
-    <EditText
-        android:id="@+id/update_annonce_title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Titre"
-        android:textColor="#000080"
-        android:textColorHint="#B0C4DE"
-        android:textSize="18sp"
-        android:padding="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/edit_text_background" />
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/update_annonce_description"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:hint="Description"
-        android:textColor="#000080"
-        android:textColorHint="#B0C4DE"
-        android:textSize="18sp"
-        android:padding="8dp"
-        android:layout_marginBottom="16dp"
-        android:gravity="top"
-        android:background="@drawable/edit_text_background"
-        android:inputType="textMultiLine" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Titre"
+            android:textColor="#000080"
+            android:textSize="18sp"
+            android:layout_marginBottom="4dp" />
+        <EditText
+            android:id="@+id/update_annonce_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Titre"
+            android:textColor="#000080"
+            android:textColorHint="#B0C4DE"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_text_background" />
 
-    <EditText
-        android:id="@+id/update_annonce_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Prix"
-        android:textColor="#000080"
-        android:textColorHint="#B0C4DE"
-        android:textSize="18sp"
-        android:padding="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/edit_text_background"
-        android:inputType="numberDecimal" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textColor="#000080"
+            android:textSize="18sp"
+            android:layout_marginBottom="4dp" />
+        <EditText
+            android:id="@+id/update_annonce_description"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:hint="Description"
+            android:textColor="#000080"
+            android:textColorHint="#B0C4DE"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="top"
+            android:background="@drawable/edit_text_background"
+            android:inputType="textMultiLine" />
 
-    <Spinner
-        android:id="@+id/update_annonce_type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:spinnerMode="dropdown"
-        android:background="@drawable/spinner_background"
-        android:padding="8dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prix"
+            android:textColor="#000080"
+            android:textSize="18sp"
+            android:layout_marginBottom="4dp" />
+        <EditText
+            android:id="@+id/update_annonce_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Prix"
+            android:textColor="#000080"
+            android:textColorHint="#B0C4DE"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_text_background"
+            android:inputType="numberDecimal" />
 
-    <EditText
-        android:id="@+id/update_annonce_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Localisation"
-        android:textColor="#000080"
-        android:textColorHint="#B0C4DE"
-        android:textSize="18sp"
-        android:padding="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/edit_text_background" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type"
+            android:textColor="#000080"
+            android:textSize="18sp"
+            android:layout_marginBottom="4dp" />
+        <Spinner
+            android:id="@+id/update_annonce_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:spinnerMode="dropdown"
+            android:background="@drawable/spinner_background"
+            android:padding="8dp" />
 
-    <EditText
-        android:id="@+id/update_annonce_promo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Promotion (%)"
-        android:textColor="#000080"
-        android:textColorHint="#B0C4DE"
-        android:textSize="18sp"
-        android:padding="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/edit_text_background"
-        android:inputType="number" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Localisation"
+            android:textColor="#000080"
+            android:textSize="18sp"
+            android:layout_marginBottom="4dp" />
+        <EditText
+            android:id="@+id/update_annonce_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Localisation"
+            android:textColor="#000080"
+            android:textColorHint="#B0C4DE"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_text_background" />
 
-    <Button
-        android:id="@+id/update_annonce_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mettre à jour"
-        android:backgroundTint="#1E90FF"
-        android:textColor="#FFFFFF"
-        android:padding="16dp"
-        android:textSize="18sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Promotion (%)"
+            android:textColor="#000080"
+            android:textSize="18sp"
+            android:layout_marginBottom="4dp" />
+        <EditText
+            android:id="@+id/update_annonce_promo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Promotion (%)"
+            android:textColor="#000080"
+            android:textColorHint="#B0C4DE"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_text_background"
+            android:inputType="number" />
 
-    <ProgressBar
-        android:id="@+id/update_annonce_loader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_gravity="center" />
+        <Button
+            android:id="@+id/update_annonce_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mettre à jour"
+            android:backgroundTint="#1E90FF"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/update_annonce_error"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_red_dark"
-        android:gravity="center"
-        android:visibility="gone"
-        android:layout_marginTop="16dp" />
+        <ProgressBar
+            android:id="@+id/update_annonce_loader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/update_annonce_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>
