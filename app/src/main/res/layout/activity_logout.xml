@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="Confirmer"
-            android:backgroundTint="?attr/colorPrimary"
+            android:backgroundTint="#1E90FF"
             android:textColor="#FFFFFF"
             android:gravity="center" />
     </LinearLayout>
