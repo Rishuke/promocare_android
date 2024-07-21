@@ -45,6 +45,9 @@
         <activity android:name=".views.offer.company.CompanyOfferActivity"/>
         <activity android:name=".views.offer.company.CompanyOfferDetailActivity"/>
 
+        <activity android:name=".views.offer.user.UserOfferActivity"/>
+        <activity android:name=".views.offer.user.OfferUserDetailActivity"/>
+
         <activity
             android:name=".views.MainActivity"
             android:exported="true">

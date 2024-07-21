@@ -2,13 +2,17 @@ package com.esgi.promocare_android.network.offer_services
 
 import com.esgi.promocare_android.models.offer.AllOfferCompany
 import com.esgi.promocare_android.models.offer.AllOfferUser
+import com.esgi.promocare_android.models.offer.PatchOffer
+import com.esgi.promocare_android.models.offer.PatchOfferResponse
 import com.esgi.promocare_android.models.offer.PostOfferModel
 import com.esgi.promocare_android.models.offer.ReturnPostOfferModelDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface OfferServices {
     @POST("offer")
@@ -46,4 +50,11 @@ interface OfferServices {
     fun getOfferUserRefused(
         @Header("Authorization") token: String
     ): Call<AllOfferUser>
+
+    @PATCH("offer/{offerId}")
+    fun patchOffer(
+        @Header("Authorization") token: String,
+        @Body patchOffer: PatchOffer,
+        @Path("offerId") offerId: String
+    ): Call<PatchOfferResponse>
 }

@@ -12,6 +12,8 @@ import com.esgi.promocare_android.models.offer.GetOfferCompanyDto
 import com.esgi.promocare_android.models.offer.GetOfferUser
 import com.esgi.promocare_android.models.offer.GetOfferUserDto
 import com.esgi.promocare_android.models.offer.OfferModel
+import com.esgi.promocare_android.models.offer.PatchOffer
+import com.esgi.promocare_android.models.offer.PatchOfferResponse
 import com.esgi.promocare_android.models.user.UserModel
 import com.esgi.promocare_android.network.offer_services.OfferRepository
 import retrofit2.Call
@@ -22,7 +24,8 @@ class GetOfferUserViewModel(private val offerRepository: OfferRepository) {
 
     var offerList: MutableLiveData<ArrayList<GetOfferUser>> = MutableLiveData()
 
-    private fun handleEnqueu(apiResponse : Call<AllOfferUser>, loader: TextView, noResult: TextView, error: TextView){
+    private fun handleEnqueu(apiResponse : Call<AllOfferUser>, loader: ProgressBar, noResult: TextView, error: TextView){
+        offerList.value = ArrayList()
         apiResponse.enqueue(object : Callback<AllOfferUser> {
             override fun onFailure(p0: Call<AllOfferUser>, t: Throwable) {
                 loader.visibility = ProgressBar.GONE
@@ -75,25 +78,50 @@ class GetOfferUserViewModel(private val offerRepository: OfferRepository) {
                         annonce
                     )
                 }
-                offerList.value = ArrayList(mappedResponse)
-                loader.visibility = ProgressBar.GONE
-                error.visibility = TextView.GONE
+                if(mappedResponse.isEmpty()){
+                    noResult.visibility = TextView.VISIBLE
+                    loader.visibility = ProgressBar.GONE
+                }
+                else{
+                    offerList.value = ArrayList(mappedResponse)
+                    loader.visibility = ProgressBar.GONE
+                    error.visibility = TextView.GONE
+                    noResult.visibility = TextView.GONE
+                }
+
             }
         })
     }
 
-    fun getOfferUserPending(token: String, loader: TextView, noResult: TextView, error: TextView) {
+    fun getOfferUserPending(token: String, loader: ProgressBar, noResult: TextView, error: TextView) {
         val apiResponse = offerRepository.getOfferUserPending(token)
+        loader.visibility = ProgressBar.VISIBLE
         handleEnqueu(apiResponse, loader, noResult, error)
     }
 
-    fun getOfferUserAccepted(token: String, loader: TextView, noResult: TextView, error: TextView) {
+    fun getOfferUserAccepted(token: String, loader: ProgressBar, noResult: TextView, error: TextView) {
         val apiResponse = offerRepository.getOfferUserAccepted(token)
+        loader.visibility = ProgressBar.VISIBLE
         handleEnqueu(apiResponse, loader, noResult, error)
     }
 
-    fun getOfferUserRefused(token: String, loader: TextView, noResult: TextView, error: TextView) {
+    fun getOfferUserRefused(token: String, loader: ProgressBar, noResult: TextView, error: TextView) {
         val apiResponse = offerRepository.getOfferUserRefused(token)
+        loader.visibility = ProgressBar.VISIBLE
         handleEnqueu(apiResponse, loader, noResult, error)
+    }
+
+    fun patchOffer(token: String, patchOffer: PatchOffer, offerId: String) {
+        val apiResponse = offerRepository.patchOffer(token, patchOffer, offerId)
+        apiResponse.enqueue(object : Callback<PatchOfferResponse> {
+            override fun onFailure(p0: Call<PatchOfferResponse>, t: Throwable) {
+                /*loader.visibility = ProgressBar.GONE
+                error.visibility = TextView.VISIBLE*/
+            }
+
+            override fun onResponse(p0: Call<PatchOfferResponse>, response: Response<PatchOfferResponse>) {
+
+            }
+        })
     }
 }

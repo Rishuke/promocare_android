@@ -1,4 +1,4 @@
-package com.esgi.promocare_android.views.offer.company
+package com.esgi.promocare_android.views.offer.user
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,17 +10,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Offer
 import com.esgi.promocare_android.models.offer.GetOfferCompany
+import com.esgi.promocare_android.models.offer.GetOfferUser
 import com.esgi.promocare_android.network.Credential
+import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity
+import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity.Companion
+import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity.Companion.USER
+import com.esgi.promocare_android.views.offer.company.CompanyOfferDetailActivity
+import com.esgi.promocare_android.views.offer.company.OfferListAdapterCompany
 
-class CompanyOfferActivity:AppCompatActivity(), DisplayCompanyDetail{
+class UserOfferActivity:AppCompatActivity(), DetailOfferUserClickHandler{
     companion object{
         const val OFFER = "OFFER"
         const val ANNONCE = "ANNONCE"
-        const val USER = "USER"
+        const val COMPANY = "COMPANY"
     }
 
     private lateinit var offerRecyclerView : RecyclerView
-    private lateinit var offerAdapter: OfferListAdapterCompany
+    private lateinit var offerAdapter: OfferListAdapterUser
 
     private lateinit var goToPending : TextView
     private lateinit var goToAccepted : TextView
@@ -36,7 +42,7 @@ class CompanyOfferActivity:AppCompatActivity(), DisplayCompanyDetail{
 
         setUpView()
         observeRecyclerView()
-        Offer.getOfferCompanyViewModel().getOfferCompanyPending(Credential.token,loading,error,noResult)
+        Offer.getOfferUserViewModel().getOfferUserPending(Credential.token,loading,error,noResult)
         handleGoToPending()
         handleGoToAccepted()
         handleGoToRefused()
@@ -56,8 +62,8 @@ class CompanyOfferActivity:AppCompatActivity(), DisplayCompanyDetail{
     }
 
 
-    private fun setRecyclerView(offers : MutableList<GetOfferCompany>){
-        offerAdapter = OfferListAdapterCompany(offers,this)
+    private fun setRecyclerView(offers : MutableList<GetOfferUser>){
+        offerAdapter = OfferListAdapterUser(offers,this)
 
         offerRecyclerView.layoutManager = GridLayoutManager(this, 1)
 
@@ -65,34 +71,34 @@ class CompanyOfferActivity:AppCompatActivity(), DisplayCompanyDetail{
     }
 
     private fun observeRecyclerView() {
-        Offer.getOfferCompanyViewModel().offerList.observe(this){ offers ->
+        Offer.getOfferUserViewModel().offerList.observe(this){ offers ->
             this.setRecyclerView(offers)
         }
     }
 
     private fun handleGoToPending(){
         goToPending.setOnClickListener {
-            Offer.getOfferCompanyViewModel().getOfferCompanyPending(Credential.token,loading,error,noResult)
+            Offer.getOfferUserViewModel().getOfferUserPending(Credential.token,loading,error,noResult)
             handleBackgroundColor(goToPending,goToAccepted,goToRefused)
         }
     }
 
     private fun handleGoToAccepted(){
         goToAccepted.setOnClickListener {
-            Offer.getOfferCompanyViewModel().getOfferCompanyAccepted(Credential.token,loading,error,noResult)
+            Offer.getOfferUserViewModel().getOfferUserAccepted(Credential.token,loading,error,noResult)
             handleBackgroundColor(goToAccepted,goToPending,goToRefused)
         }
     }
 
     private fun handleGoToRefused(){
         goToRefused.setOnClickListener {
-            Offer.getOfferCompanyViewModel().getOfferCompanyRefused(Credential.token,loading,error,noResult)
+            Offer.getOfferUserViewModel().getOfferUserRefused(Credential.token,loading,error,noResult)
             handleBackgroundColor(goToRefused,goToPending,goToAccepted)
         }
     }
 
 
-    private fun handleBackgroundColor(selectedTextView:TextView, otherTextView1:TextView, otherTextView2:TextView){
+    private fun handleBackgroundColor(selectedTextView: TextView, otherTextView1: TextView, otherTextView2: TextView){
         selectedTextView.setTextColor(resources.getColor(R.color.white))
         selectedTextView.setBackgroundColor(resources.getColor(R.color.black))
         otherTextView1.setTextColor(resources.getColor(R.color.black))
@@ -101,11 +107,11 @@ class CompanyOfferActivity:AppCompatActivity(), DisplayCompanyDetail{
         otherTextView2.setBackgroundColor(resources.getColor(R.color.white))
     }
 
-    override fun viewDetailOfferCompany(offer: GetOfferCompany) {
-        Intent(this, CompanyOfferDetailActivity::class.java).also {
+    override fun viewDetailOfferUser(offer: GetOfferUser) {
+        Intent(this, OfferUserDetailActivity::class.java).also {
             it.putExtra(ANNONCE, offer.annonce)
             it.putExtra(OFFER, offer.offer)
-            it.putExtra(USER, offer.user)
+            it.putExtra(COMPANY, offer.company)
             startActivity(it)
         }
     }

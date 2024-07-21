@@ -2,6 +2,8 @@ package com.esgi.promocare_android.network.offer_services
 
 import com.esgi.promocare_android.models.offer.AllOfferCompany
 import com.esgi.promocare_android.models.offer.AllOfferUser
+import com.esgi.promocare_android.models.offer.PatchOffer
+import com.esgi.promocare_android.models.offer.PatchOfferResponse
 import com.esgi.promocare_android.models.offer.PostOfferModel
 import com.esgi.promocare_android.models.offer.ReturnPostOfferModelDto
 import retrofit2.Call
@@ -33,5 +35,9 @@ class OfferRepository(private val offerServices: OfferServices) {
 
     fun getOfferUserRefused(token: String): Call<AllOfferUser>{
         return offerServices.getOfferUserRefused(token)
+    }
+
+    fun patchOffer(token: String, patchOffer: PatchOffer, offerId: String): Call<PatchOfferResponse>{
+        return offerServices.patchOffer(token, patchOffer, offerId)
     }
 }
