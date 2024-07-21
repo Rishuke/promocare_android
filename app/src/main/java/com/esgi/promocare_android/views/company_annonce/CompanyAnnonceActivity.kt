@@ -14,7 +14,9 @@ import com.esgi.promocare_android.fragment.searchBarHandler
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.searchInAnnonce
+import com.esgi.promocare_android.views.NavigationUtilCompany
 import com.esgi.promocare_android.views.company_annonce.create_annonce.ChoseTitle
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class CompanyAnnonceActivity : AppCompatActivity(), searchBarHandler {
@@ -37,6 +39,7 @@ class CompanyAnnonceActivity : AppCompatActivity(), searchBarHandler {
         Annonce.getViewModel().getAnnonceCompany(Credential.token, loader, errorTextView)
         observeRecyclerView()
         addAnnonce()
+        setUpBottomNavigationView()
     }
 
     private fun setUpView() {
@@ -78,6 +81,11 @@ class CompanyAnnonceActivity : AppCompatActivity(), searchBarHandler {
             }
             this.setRecyclerView(annonce)
         }
+    }
+
+    private fun setUpBottomNavigationView() {
+        val bottomNavView: BottomNavigationView = findViewById(R.id.nav_view)
+        NavigationUtilCompany.setupBottomNavView(bottomNavView, this, R.id.ic_annonce)
     }
 
     override fun textChange(newText: String) {

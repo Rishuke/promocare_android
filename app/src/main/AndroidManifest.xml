@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Promocare_android"
+        android:theme="@style/Base.Theme.Promocare_android"
         tools:targetApi="31">
 
         <activity android:name=".views.CompanyConnexionActivity" />
@@ -40,7 +40,6 @@
         <activity android:name=".views.InscriptionCompanyActivity" />
         <activity android:name=".views.company_annonce.CompanyAnnonceActivity" />
         <activity android:name=".views.company_annonce.UpdateAnnonceActivity" />
-        <activity android:name=".views.conversations.user.LatestConvUserAcitivity"/>
         <activity android:name=".views.conversations.company.LatestConvCompanyActivity"/>
         <activity
             android:name=".views.MainActivity"

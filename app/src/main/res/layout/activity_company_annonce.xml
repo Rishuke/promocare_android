@@ -81,6 +81,21 @@
         android:text="@string/error_text"
         android:visibility="gone"/>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        app:itemIconTint="@drawable/bottom_nav_icon_color"
+        app:itemTextColor="@drawable/bottom_nav_icon_color"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:itemIconSize="@dimen/bottom_nav_icon_size"
+        app:itemPaddingTop="@dimen/bottom_nav_item_padding"
+        app:itemPaddingBottom="@dimen/bottom_nav_item_padding" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
