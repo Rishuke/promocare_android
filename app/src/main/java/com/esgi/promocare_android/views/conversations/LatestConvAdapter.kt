@@ -3,6 +3,7 @@ package com.esgi.promocare_android.views.conversations
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
@@ -10,6 +11,7 @@ import com.esgi.promocare_android.models.annonce.AnnonceDto
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.conversations.LatestConv
 import com.esgi.promocare_android.utils.handleDate
+import com.esgi.promocare_android.utils.loadImage
 
 class LatestConvAdapter(var latestConv:MutableList<LatestConv>,var convClickHanlder:ShowAllConv): RecyclerView.Adapter<LatestConvAdapter.LatestConvViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LatestConvViewHolder {
@@ -29,11 +31,11 @@ class LatestConvAdapter(var latestConv:MutableList<LatestConv>,var convClickHanl
         val annonce = currentConversationData.annonce?.uuid ?: return
         holder.itemView.setOnClickListener {
             if(currentConversationData.conversation?.first_conv_id == null){
-                convClickHanlder.showAllConv(currentConversationData.conversation?.uuid!!, annonce)
+                convClickHanlder.showAllConv(currentConversationData.conversation?.uuid!!, annonce, currentConversationData.annonce)
                 return@setOnClickListener
             }
             else{
-                convClickHanlder.showAllConv(currentConversationData.conversation.first_conv_id, annonce)
+                convClickHanlder.showAllConv(currentConversationData.conversation.first_conv_id, annonce, currentConversationData.annonce)
             }
         }
     }
@@ -42,14 +44,17 @@ class LatestConvAdapter(var latestConv:MutableList<LatestConv>,var convClickHanl
         private var annonceTitle : TextView
         private var messageContent : TextView
         private var dateLastMessage : TextView
+        private var annonceImage : ImageView
 
         init {
             annonceTitle = itemView.findViewById(R.id.cell_layout_latest_conv_title_annonce)
             messageContent = itemView.findViewById(R.id.cell_layout_latest_conv_last_message)
             dateLastMessage = itemView.findViewById(R.id.cell_layout_latest_conv_date)
+            annonceImage = itemView.findViewById(R.id.cell_layout_latest_conv_image)
         }
 
         fun bind(latest: LatestConv) {
+            loadImage(annonceImage,latest.annonce?.type)
             annonceTitle.text = latest.annonce?.title ?: "Pas de titre d'annonce"
             if(latest.conversation?.from == "Not you"){
                 messageContent.text = "Pour vous : " + latest.conversation?.message
@@ -65,5 +70,5 @@ class LatestConvAdapter(var latestConv:MutableList<LatestConv>,var convClickHanl
 }
 
 interface ShowAllConv{
-    fun showAllConv(convId:String,annonceId:String)
+    fun showAllConv(convId:String,annonceId:String,annonce : AnnonceDto)
 }

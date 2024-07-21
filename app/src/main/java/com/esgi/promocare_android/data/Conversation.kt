@@ -12,9 +12,13 @@ object Conversation {
         createServices()
     }
 
-    private val postFirstConvViewModel: ConvViewModel by lazy {
-        postFirstConvUserViewModel()
+    private val postFirstConvViewModel: ConvViewModel = postFirstConvUserViewModel()
+
+    private fun postFirstConvUserViewModel(): ConvViewModel {
+        return ConvViewModel(ConversationRepository(conversationServices))
     }
+
+    fun getPostFirstConvUserViewModel() = postFirstConvViewModel
 
     private val latestConvViewModel : LatestConvViewModel by lazy {
         latestConvViewModel()
@@ -23,12 +27,6 @@ object Conversation {
     private fun createServices(): ConversationServices {
         return Retrofit.getRetrofitClient().create(ConversationServices::class.java)
     }
-
-    private fun postFirstConvUserViewModel(): ConvViewModel {
-        return ConvViewModel(ConversationRepository(conversationServices))
-    }
-
-    fun getPostFirstConvUserViewModel() = postFirstConvViewModel
 
     private fun latestConvViewModel(): LatestConvViewModel {
         return LatestConvViewModel(ConversationRepository(conversationServices))

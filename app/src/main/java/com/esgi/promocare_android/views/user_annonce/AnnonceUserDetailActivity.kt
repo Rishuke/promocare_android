@@ -15,7 +15,7 @@ import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity.Compani
 
 class AnnonceUserDetailActivity:AppCompatActivity() {
     companion object {
-        const val ANNONCE_ID = "ANNONCE_ID_EXTRA"
+        const val ANNONCE = "ANNONCE_EXTRA"
     }
     private lateinit var annonceModel: AnnonceModel
     private lateinit var annonceTitle : TextView
@@ -34,7 +34,6 @@ class AnnonceUserDetailActivity:AppCompatActivity() {
         setView()
         getIntentExtraData()
         goToContact()
-        loadImage(imageAnnonce, annonceModel.type)
     }
 
     private fun setView(){
@@ -52,7 +51,7 @@ class AnnonceUserDetailActivity:AppCompatActivity() {
     private fun goToContact(){
         this.contactCompany.setOnClickListener {
             Intent(this, PostUserFirstConvActivity::class.java).also {
-                it.putExtra(ANNONCE_ID, annonceModel.uuid)
+                it.putExtra(ANNONCE, annonceModel)
                 startActivity(it)
             }
         }
@@ -75,6 +74,7 @@ class AnnonceUserDetailActivity:AppCompatActivity() {
 
             this.category.text = "Catégorie : ${annonceData.type}"
             this.location.text = "Localisation : ${annonceData.location}"
+            loadImage(imageAnnonce, annonceModel.type)
         }
     }
 }

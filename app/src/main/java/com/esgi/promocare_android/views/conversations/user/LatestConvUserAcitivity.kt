@@ -9,18 +9,19 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Conversation
+import com.esgi.promocare_android.models.annonce.AnnonceDto
+import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.conversations.LatestConv
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.views.NavigationUtilUser
 import com.esgi.promocare_android.views.conversations.LatestConvAdapter
 import com.esgi.promocare_android.views.conversations.ShowAllConv
-import com.esgi.promocare_android.views.conversations.company.ConversationCompanyActivity.Companion.ANNONCE_ID
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class LatestConvUserAcitivity : AppCompatActivity(), ShowAllConv {
 
     companion object {
-        const val ANNONCE_ID = "annonce_id"
+        const val ANNONCE = "ANNONCE_EXTRA"
     }
 
     private lateinit var latestConvRecyclerView: RecyclerView
@@ -64,9 +65,24 @@ class LatestConvUserAcitivity : AppCompatActivity(), ShowAllConv {
         NavigationUtilUser.setupBottomNavView(bottomNavView, this, R.id.ic_conversation)
     }
 
-    override fun showAllConv(convId: String, annonceId: String) {
+    override fun showAllConv(convId: String, annonceId: String,annonce: AnnonceDto) {
+        val annonceModel = AnnonceModel(
+            annonce.uuid,
+            annonce.company_id,
+            annonce.location,
+            annonce.price,
+            annonce.promo,
+            annonce.status,
+            annonce.title,
+            annonce.description,
+            annonce.type,
+            annonce.view_time,
+            annonce.updated_at,
+            annonce.created_at
+        )
+
         Intent(this, PostUserFirstConvActivity::class.java).also {
-            it.putExtra(ANNONCE_ID, annonceId)
+            it.putExtra(ANNONCE, annonceModel)
             startActivity(it)
         }
     }

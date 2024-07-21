@@ -1,5 +1,6 @@
 package com.esgi.promocare_android.views.conversations
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,13 +39,13 @@ class ConversationListAdapter(var conversations:MutableList<ConvFrom>): Recycler
         }
 
         fun bind(conversation: ConvFrom) {
-            if(conversation.from == "Not you"){
-                targetSide.text = conversation.message
-                senderSide.visibility = TextView.INVISIBLE
-            }
-            else{
+            if(conversation.from == "You"){
                 senderSide.text = conversation.message
-                targetSide.visibility = TextView.INVISIBLE
+                senderSide.visibility = TextView.VISIBLE
+            }
+            else if(conversation.from == "Not you"){
+                targetSide.text = conversation.message
+                targetSide.visibility = TextView.VISIBLE
             }
         }
     }
