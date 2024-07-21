@@ -35,6 +35,12 @@ object NavigationUtilUser {
                         // Add your activity for "Offer" here
                     }
                 }
+
+                R.id.ic_logout -> {
+                    val intent = Intent(context, LogoutActivity::class.java)
+                    intent.putExtra("IS_COMPANY", false) // Utilisateur
+                    context.startActivity(intent)
+                }
             }
             true
         })

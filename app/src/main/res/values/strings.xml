@@ -92,4 +92,5 @@
     <string name="error_invalid_email">Veuillez utiliser un format d\'email valide.</string>
     <string name="user_registration_no_connection_error">Erreur de connexion. Veuillez vérifier votre connexion Internet.</string>
     <string name="user_registration_error">Erreur lors de l\'inscription. Veuillez réessayer.</string>
+    <string name="logout_icon_desc">Deconnexion</string>
 </resources>

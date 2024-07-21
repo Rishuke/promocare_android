@@ -41,6 +41,7 @@
         <activity android:name=".views.company_annonce.CompanyAnnonceActivity" />
         <activity android:name=".views.company_annonce.UpdateAnnonceActivity" />
         <activity android:name=".views.conversations.company.LatestConvCompanyActivity"/>
+        <activity android:name=".views.LogoutActivity" />
         <activity
             android:name=".views.MainActivity"
             android:exported="true">
