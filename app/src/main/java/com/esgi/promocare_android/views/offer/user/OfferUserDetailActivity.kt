@@ -74,6 +74,18 @@ class OfferUserDetailActivity:AppCompatActivity() {
 
     private fun setText(){
         loadImage(imageAnnonce,annonce.type)
+        if(offer.status == "accepted"){
+            refuse.isEnabled = false
+            refuse.visibility = Button.GONE
+            accept.isEnabled = false
+            accept.text = "Annonce accepté"
+        }
+        if(offer.status == "refused"){
+            refuse.isEnabled = false
+            accept.visibility = Button.GONE
+            accept.isEnabled = false
+            refuse.text = "Annonce refusé"
+        }
         titleAnnonce.text = annonce.title
         senderText.text = company.company_name
         descriptionAnnonce.text = annonce.description
