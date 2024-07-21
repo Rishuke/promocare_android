@@ -23,8 +23,6 @@ class AnnonceUserDetailActivity:AppCompatActivity() {
     private lateinit var reduction : TextView
     private lateinit var date : TextView
     private lateinit var descritpion : TextView
-    private lateinit var location : TextView
-    private lateinit var category : TextView
     private lateinit var contactCompany : Button
     private lateinit var imageAnnonce : ImageView
 
@@ -42,8 +40,6 @@ class AnnonceUserDetailActivity:AppCompatActivity() {
         this.reduction = findViewById(R.id.cell_layout_annonce_reduction_user_detail)
         this.date = findViewById(R.id.cell_layout_annonce_date_user_detail)
         this.descritpion = findViewById(R.id.detail_annonce_user_text_view_description)
-        this.category = findViewById(R.id.detail_annonce_user_text_view_category)
-        this.location = findViewById(R.id.detail_annonce_user_text_view_location)
         this.contactCompany = findViewById(R.id.detail_annonce_user_button_contact)
         this.imageAnnonce = findViewById(R.id.cell_layout_annonce_image_user_detail)
     }
@@ -63,7 +59,10 @@ class AnnonceUserDetailActivity:AppCompatActivity() {
             this.annonceModel = annonceData
 
             this.annonceTitle.text = annonceData.title
-            this.descritpion.text = annonceData.description
+
+            val texte = "Description : ${annonceData.description} \n\n Catégorie : ${annonceData.type} \n\n Localisation : ${annonceData.location}"
+
+            this.descritpion.text = texte
             if(annonceData.price != null && annonceData.promo != null) {
                 val pricePromo = annonceData.price * (1 - (annonceData.promo / 100.0)) // Ensure floating-point division
                 val formattedPrice = String.format("%.2f€", pricePromo)
@@ -72,8 +71,6 @@ class AnnonceUserDetailActivity:AppCompatActivity() {
             this.reduction.text = " -${annonceData.promo.toString()}%!!!"
             this.date.text = "Créer le ${handleDate(annonceData.createdAt.toString())}"
 
-            this.category.text = "Catégorie : ${annonceData.type}"
-            this.location.text = "Localisation : ${annonceData.location}"
             loadImage(imageAnnonce, annonceModel.type)
         }
     }
