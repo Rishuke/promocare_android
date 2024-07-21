@@ -22,3 +22,11 @@ fun handleDate(date: String): String {
 
     return "$day $month $year"
 }
+
+fun handleDateShort(date:String): String {
+    val year = date.substring(0, 4)
+    val month = date.substring(5, 7).toInt()
+    val day = date.substring(8, 10)
+
+    return "$day/$month/$year"
+}

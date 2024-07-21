@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.conversations.ConvFrom
 import com.esgi.promocare_android.utils.handleDate
+import com.esgi.promocare_android.utils.handleDateShort
 
 class ConversationListAdapter(var conversations:MutableList<ConvFrom>): RecyclerView.Adapter<ConversationListAdapter.ConversationViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConversationViewHolder {
@@ -43,7 +44,7 @@ class ConversationListAdapter(var conversations:MutableList<ConvFrom>): Recycler
                 senderSide.visibility = TextView.VISIBLE
 
                 if(conversation.created_at != null){
-                    var date = handleDate(conversation.created_at)+" à "
+                    var date = handleDateShort(conversation.created_at) +" à "
                     date += conversation.created_at.substring(11,16)
                     senderSideDate.text = date
                     senderSideDate.visibility = TextView.VISIBLE
@@ -53,7 +54,7 @@ class ConversationListAdapter(var conversations:MutableList<ConvFrom>): Recycler
                 targetSide.text = conversation.message
                 targetSide.visibility = TextView.VISIBLE
                 if(conversation.created_at != null){
-                    var date = handleDate(conversation.created_at)+" à "
+                    var date = handleDateShort(conversation.created_at) +" à "
                     date += conversation.created_at.substring(11,16)
                     targetSideDate.text = date
                     targetSideDate.visibility = TextView.VISIBLE
