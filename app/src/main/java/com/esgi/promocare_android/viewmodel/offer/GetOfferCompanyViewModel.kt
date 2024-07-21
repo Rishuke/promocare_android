@@ -66,12 +66,15 @@ class GetOfferCompanyViewModel(private val offerRepository: OfferRepository){
                         it.annonce.created_at,
                     )
 
+
+
                     GetOfferCompany(
                         offer,
                         user,
                         annonce
                     )
                 }
+
                 if(mappedResponse.isEmpty()){
                     loader.visibility = ProgressBar.GONE
                     noResult.visibility = TextView.VISIBLE
