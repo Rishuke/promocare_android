@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="30dp"
+    android:layout_marginTop="35dp"
     >
 
     <LinearLayout
@@ -23,10 +23,10 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:layout_marginTop="25dp"
                 android:id="@+id/cell_layout_annonce_image_user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/error_black"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:contentDescription="@string/annonce_image" />
 
             <LinearLayout
@@ -98,13 +98,6 @@
             android:layout_marginEnd="15dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp">
-
-            <TextView
-                android:id="@+id/cell_layout_annonce_description_user"
-                android:layout_width="match_parent"
-                android:textSize="15sp"
-                android:layout_height="20dp"/>
-
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

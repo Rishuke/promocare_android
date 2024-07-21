@@ -34,7 +34,7 @@
             android:padding="10dp"
             android:textSize="16sp"
             android:layout_marginStart="10dp"
-            android:background="@drawable/circle_linear_grey"/>
+            android:background="@drawable/circle_linear_blue_light"/>
 
 
     </LinearLayout>

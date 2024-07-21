@@ -13,6 +13,7 @@ import com.esgi.promocare_android.models.conversations.ConvFrom
 import com.esgi.promocare_android.models.conversations.PostConversationDto
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.handleDate
+import com.esgi.promocare_android.utils.loadImage
 import com.esgi.promocare_android.views.conversations.ConversationListAdapter
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserDetailActivity
 
@@ -41,6 +42,7 @@ class PostUserFirstConvActivity: AppCompatActivity(){
         handleSend()
         Conversation.getPostFirstConvUserViewModel().verifyNoConv(Credential.token, annonceId,noResultTextView)
         observeRecyclerView()
+        loadImage(annonceImage, Conversation.getPostFirstConvUserViewModel().annonce?.type)
     }
 
     private fun setUpView(){

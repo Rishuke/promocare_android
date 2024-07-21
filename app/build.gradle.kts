@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.glide)
     implementation(libs.retrofit)
     implementation(libs.gson)
     implementation(libs.converter.gson)

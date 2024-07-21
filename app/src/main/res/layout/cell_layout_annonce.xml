@@ -23,9 +23,9 @@
 
             <ImageView
                 android:id="@+id/cell_layout_annonce_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/error_black"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="8dp"
                 android:contentDescription="@string/annonce_image" />
 
             <LinearLayout
@@ -109,7 +109,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:backgroundTint="@color/button"
+                android:backgroundTint="@color/create_annonce"
                 android:textColor="@color/white"
                 android:layout_marginStart="15dp"
                 android:layout_weight="1"

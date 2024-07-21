@@ -3,11 +3,13 @@ package com.esgi.promocare_android.views.user_annonce
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.utils.handleDate
+import com.esgi.promocare_android.utils.loadImage
 import com.esgi.promocare_android.views.conversations.user.PostUserFirstConvActivity
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity.Companion.ANNONCE_MODEL_EXTRA
 
@@ -24,6 +26,7 @@ class AnnonceUserDetailActivity:AppCompatActivity() {
     private lateinit var location : TextView
     private lateinit var category : TextView
     private lateinit var contactCompany : Button
+    private lateinit var imageAnnonce : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +34,7 @@ class AnnonceUserDetailActivity:AppCompatActivity() {
         setView()
         getIntentExtraData()
         goToContact()
+        loadImage(imageAnnonce, annonceModel.type)
     }
 
     private fun setView(){
@@ -42,6 +46,7 @@ class AnnonceUserDetailActivity:AppCompatActivity() {
         this.category = findViewById(R.id.detail_annonce_user_text_view_category)
         this.location = findViewById(R.id.detail_annonce_user_text_view_location)
         this.contactCompany = findViewById(R.id.detail_annonce_user_button_contact)
+        this.imageAnnonce = findViewById(R.id.cell_layout_annonce_image_user_detail)
     }
 
     private fun goToContact(){
