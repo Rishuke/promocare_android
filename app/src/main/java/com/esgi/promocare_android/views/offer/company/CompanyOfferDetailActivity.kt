@@ -1,6 +1,7 @@
 package com.esgi.promocare_android.views.offer.company
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,8 @@ class CompanyOfferDetailActivity:AppCompatActivity() {
     private lateinit var dateAnnonce : TextView
     private lateinit var offerText : TextView
     private lateinit var sender : TextView
+    private lateinit var refuseButton : Button
+    private lateinit var acceptButton : Button
 
     //data
     private lateinit var offer : OfferModel
@@ -43,6 +46,8 @@ class CompanyOfferDetailActivity:AppCompatActivity() {
         dateAnnonce = findViewById(R.id.offer_detail_annonce_date_company)
         offerText = findViewById(R.id.offer_detail_offer_company)
         sender = findViewById(R.id.detail_offer_company_sender_text_view)
+        refuseButton = findViewById(R.id.offer_detail_button_state_refuse_company)
+        acceptButton = findViewById(R.id.offer_detail_button_state_accept_company)
     }
 
     private fun getIntentExtra(){
@@ -58,6 +63,22 @@ class CompanyOfferDetailActivity:AppCompatActivity() {
     }
 
     private fun setText(){
+        if(offer.status == "pending"){
+            refuseButton.visibility = Button.GONE
+            acceptButton.visibility = Button.GONE
+        }
+        if(offer.status == "accepted"){
+            refuseButton.isEnabled = false
+            acceptButton.isEnabled = false
+            refuseButton.visibility = Button.GONE
+
+        }
+        if(offer.status == "refused"){
+            refuseButton.isEnabled = false
+            acceptButton.isEnabled = false
+            acceptButton.visibility = Button.GONE
+        }
+
         loadImage(imageAnnonce,annonce.type)
         sender.text = "Envoyé par ${user.first_name} ${user.last_name}"
         titleAnnonce.text = annonce.title

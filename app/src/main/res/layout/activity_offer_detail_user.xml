@@ -80,7 +80,7 @@
             android:textSize="18sp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="-15dp"
-            android:text="Description annonce : "/>
+            android:text="@string/description_de_l_annonce"/>
 
         <ScrollView
             android:layout_marginTop="15dp"
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="-15dp"
-            android:text="Description de l'offre : "
+            android:text="@string/description_de_l_offre"
             android:textStyle="bold"
             android:textSize="18sp"/>
 
@@ -153,7 +153,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/white"
-            android:text="Refuser l'offre"
+            android:text="@string/refuser_l_offre"
             android:backgroundTint="@color/error"/>
 
     </LinearLayout>

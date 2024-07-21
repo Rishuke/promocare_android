@@ -101,5 +101,10 @@
     <string name="accepter_l_offre">Accepter l\'offre</string>
 
     <string name="logout_icon_desc">Deconnexion</string>
+    <string name="description_de_l_offre">Description de l\'offre :</string>
+    <string name="description_de_l_annonce">Description de l\'annonce :</string>
+    <string name="refuser_l_offre">Refuser l\'offre</string>
+    <string name="annonce_refus">Annonce refusé</string>
+    <string name="annonce_accept">Annonce accepté</string>
 
 </resources>
