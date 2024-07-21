@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="bottom_nav_icon_size">24dp</dimen>
+    <dimen name="bottom_nav_item_padding">8dp</dimen>
+</resources>
