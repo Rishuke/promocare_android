@@ -5,6 +5,7 @@ import android.content.Intent
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.views.conversations.company.LatestConvCompanyActivity
 import com.esgi.promocare_android.views.company_annonce.CompanyAnnonceActivity
+import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 
@@ -32,7 +33,7 @@ object NavigationUtilCompany {
 
                 R.id.ic_offer -> {
                     if (currentActivityId != R.id.ic_offer) {
-                        // Add your activity for "Offer" here
+                        context.startActivity(Intent(context, CompanyOfferActivity::class.java))
                     }
                 }
 
@@ -41,6 +42,8 @@ object NavigationUtilCompany {
                     intent.putExtra("IS_COMPANY", true) // Company
                     context.startActivity(intent)
                 }
+
+
             }
             true
         })
