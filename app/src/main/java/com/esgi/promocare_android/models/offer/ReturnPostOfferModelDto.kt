@@ -14,13 +14,3 @@ data class OfferModelDto(
     val updated_at: String?,
     val created_at: String?
 )
-
-data class OfferModel(
-    val uuid: String?,
-    val status: String?,
-    val annonce_id: String?,
-    val user_id: String?,
-    val text: String?,
-    val updated_at: String?,
-    val created_at: String?
-)

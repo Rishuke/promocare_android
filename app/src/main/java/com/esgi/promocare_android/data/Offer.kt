@@ -36,7 +36,7 @@ object Offer {
         return GetOfferCompanyViewModel(OfferRepository(offerServices))
     }
 
-    fun getGetOfferCompanyViewModel() = getOfferCompanyViewModel
+    fun getOfferCompanyViewModel() = getOfferCompanyViewModel
 
     private val getOfferUserViewModel: GetOfferUserViewModel by lazy {
         initGetOfferUserViewModel()
@@ -46,5 +46,5 @@ object Offer {
         return GetOfferUserViewModel(OfferRepository(offerServices))
     }
 
-    fun getGetOfferUserViewModel() = getOfferUserViewModel
+    fun getOfferUserViewModel() = getOfferUserViewModel
 }

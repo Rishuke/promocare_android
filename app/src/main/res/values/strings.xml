@@ -94,4 +94,7 @@
     <string name="refused">Refused</string>
     <string name="accepted">Accepted</string>
     <string name="pending">Pending</string>
+    <string name="pas_d_offre_disponible_pour_le_moment">Pas d\'offre disponible pour le moment</string>
+    <string name="d_tail_de_votre_offre">Détail de votre offre</string>
+    <string name="annonce">ANNONCE</string>
 </resources>

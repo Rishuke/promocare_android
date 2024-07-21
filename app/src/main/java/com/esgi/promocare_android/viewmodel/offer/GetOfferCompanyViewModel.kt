@@ -19,7 +19,8 @@ class GetOfferCompanyViewModel(private val offerRepository: OfferRepository){
 
     var offerList: MutableLiveData<ArrayList<GetOfferCompany>> = MutableLiveData()
 
-    private fun handleEnqueu(apiResponse : Call<AllOfferCompany>,loader:TextView,noResult:TextView,error:TextView){
+    private fun handleEnqueu(apiResponse : Call<AllOfferCompany>,loader:ProgressBar,noResult:TextView,error:TextView){
+        offerList.value = ArrayList()
         apiResponse.enqueue(object : Callback<AllOfferCompany> {
             override fun onFailure(p0: Call<AllOfferCompany>, t: Throwable) {
                 loader.visibility = ProgressBar.GONE
@@ -71,26 +72,34 @@ class GetOfferCompanyViewModel(private val offerRepository: OfferRepository){
                         annonce
                     )
                 }
-                offerList.value = ArrayList(mappedResponse)
-                loader.visibility = ProgressBar.GONE
-                error.visibility = TextView.GONE
+                if(mappedResponse.isEmpty()){
+                    loader.visibility = ProgressBar.GONE
+                    noResult.visibility = TextView.VISIBLE
+                }
+                else{
+                    offerList.value = ArrayList(mappedResponse)
+                    loader.visibility = ProgressBar.GONE
+                    error.visibility = TextView.GONE
+                    noResult.visibility = TextView.GONE
+                }
+
             }
         })
     }
 
-    fun getOfferCompanyPending(token: String,loader: TextView,noResult: TextView,error: TextView){
+    fun getOfferCompanyPending(token: String,loader: ProgressBar,noResult: TextView,error: TextView){
         val apiResponse = offerRepository.getOfferCompanyPending(token)
         loader.visibility = ProgressBar.VISIBLE
         handleEnqueu(apiResponse,loader,noResult,error)
     }
 
-    fun getOfferCompanyAccepted(token: String,loader: TextView,noResult: TextView,error: TextView){
+    fun getOfferCompanyAccepted(token: String,loader: ProgressBar,noResult: TextView,error: TextView){
         val apiResponse = offerRepository.getOfferCompanyAccepted(token)
         loader.visibility = ProgressBar.VISIBLE
         handleEnqueu(apiResponse,loader,noResult,error)
     }
 
-    fun getOfferCompanyRefused(token: String,loader: TextView,noResult: TextView,error: TextView){
+    fun getOfferCompanyRefused(token: String,loader: ProgressBar,noResult: TextView,error: TextView){
         val apiResponse = offerRepository.getOfferCompanyRefused(token)
         loader.visibility = ProgressBar.VISIBLE
         handleEnqueu(apiResponse,loader,noResult,error)
