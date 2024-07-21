@@ -3,7 +3,15 @@
     <style name="Base.Theme.Promocare_android" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="bottomNavigationStyle">@style/BottomNavigationViewStyle</item>
     </style>
 
-    <style name="Theme.Promocare_android" parent="Base.Theme.Promocare_android" />
+    <style name="BottomNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemTextAppearanceActive">@style/BottomNavigationTextStyle</item>
+        <item name="itemTextAppearanceInactive">@style/BottomNavigationTextStyle</item>
+    </style>
+
+    <style name="BottomNavigationTextStyle" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:layout_marginTop">4dp</item> <!-- Adjust the margin as needed -->
+    </style>
 </resources>

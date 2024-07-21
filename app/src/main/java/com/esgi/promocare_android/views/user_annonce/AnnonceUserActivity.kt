@@ -14,8 +14,10 @@ import com.esgi.promocare_android.fragment.searchBarHandler
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.searchInAnnonce
+import com.esgi.promocare_android.views.NavigationUtilUser
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class AnnonceUserActivity:AppCompatActivity(), searchBarHandler, AnnonceUserOnClickListener{
+class AnnonceUserActivity : AppCompatActivity(), searchBarHandler, AnnonceUserOnClickListener {
 
     companion object {
         const val ANNONCE_MODEL_EXTRA = "ANNONCE_MODEL_EXTRA"
@@ -26,7 +28,7 @@ class AnnonceUserActivity:AppCompatActivity(), searchBarHandler, AnnonceUserOnCl
     private lateinit var annonceRecyclerView: RecyclerView
     private lateinit var userAnnonceAdapter: AnnonceUserListAdapter
 
-    //gestion erreur
+    // Gestion des erreurs
     private lateinit var errorTextView: TextView
     private lateinit var loader: ProgressBar
     private lateinit var noResultTextView: TextView
@@ -37,41 +39,39 @@ class AnnonceUserActivity:AppCompatActivity(), searchBarHandler, AnnonceUserOnCl
         setUpView()
         Annonce.getUserViewModel().getAllAnnonce(Credential.token, loader, errorTextView)
         observeRecyclerView()
+        setUpBottomNavigationView()
     }
 
-    private fun setUpView(){
-        this.searchBarFragment = SearchBarFragment.newInstance()
-        this.annonceRecyclerView = findViewById(R.id.user_annonce_recycler_view)
-
-        this.noResultTextView = findViewById(R.id.user_annonce_no_result)
-        this.loader = findViewById(R.id.user_annonce_progress_bar)
-        this.errorTextView = findViewById(R.id.user_annonce_error)
+    private fun setUpView() {
+        searchBarFragment = SearchBarFragment.newInstance()
+        annonceRecyclerView = findViewById(R.id.user_annonce_recycler_view)
+        noResultTextView = findViewById(R.id.user_annonce_no_result)
+        loader = findViewById(R.id.user_annonce_progress_bar)
+        errorTextView = findViewById(R.id.user_annonce_error)
     }
 
     private fun setRecyclerView(annonces: MutableList<AnnonceModel>) {
-        this.userAnnonceAdapter = AnnonceUserListAdapter(annonces,this)
-
-        this.annonceRecyclerView.layoutManager = GridLayoutManager(this, 1)
-
-        this.annonceRecyclerView.setAdapter(userAnnonceAdapter)
+        userAnnonceAdapter = AnnonceUserListAdapter(annonces, this)
+        annonceRecyclerView.layoutManager = GridLayoutManager(this, 1)
+        annonceRecyclerView.adapter = userAnnonceAdapter
     }
 
     private fun observeRecyclerView() {
         Annonce.getUserViewModel().annonceList.observe(this) { annonce ->
-            this.setRecyclerView(annonce)
+            setRecyclerView(annonce)
         }
     }
 
     override fun textChange(newText: String) {
         val listFilter = searchInAnnonce(Annonce.getUserViewModel().annonceList.value, newText)
-        this.userAnnonceAdapter.annonces = listFilter
-        if(listFilter.isEmpty()){
-            noResultTextView.visibility = TextView.VISIBLE
-        }
-        else{
-            noResultTextView.visibility = TextView.GONE
-        }
+        userAnnonceAdapter.annonces = listFilter
+        noResultTextView.visibility = if (listFilter.isEmpty()) TextView.VISIBLE else TextView.GONE
         userAnnonceAdapter.notifyDataSetChanged()
+    }
+
+    private fun setUpBottomNavigationView() {
+        val bottomNavView: BottomNavigationView = findViewById(R.id.nav_view)
+        NavigationUtilUser.setupBottomNavView(bottomNavView, this, R.id.ic_annonce)
     }
 
     override fun viewDetailAnnonceUser(annonce: AnnonceModel, position: Int) {

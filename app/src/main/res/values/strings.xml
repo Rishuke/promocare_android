@@ -91,6 +91,7 @@
     <string name="error_invalid_email">Veuillez utiliser un format d\'email valide.</string>
     <string name="user_registration_no_connection_error">Erreur de connexion. Veuillez vérifier votre connexion Internet.</string>
     <string name="user_registration_error">Erreur lors de l\'inscription. Veuillez réessayer.</string>
+
     <string name="refused">Refused</string>
     <string name="accepted">Accepted</string>
     <string name="pending">Pending</string>
@@ -98,4 +99,7 @@
     <string name="d_tail_de_votre_offre">Détail de votre offre</string>
     <string name="annonce">ANNONCE</string>
     <string name="accepter_l_offre">Accepter l\'offre</string>
+
+    <string name="logout_icon_desc">Deconnexion</string>
+
 </resources>
