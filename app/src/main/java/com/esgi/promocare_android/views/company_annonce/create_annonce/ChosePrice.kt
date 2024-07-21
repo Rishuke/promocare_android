@@ -79,6 +79,14 @@ class ChosePrice:AppCompatActivity() {
                 this.realPrice.text = "Mauvaise valeur"
                 return@setOnClickListener
             }
+            if(this.price.text.toString().toFloat() <= 0){
+                this.realPrice.text = "Le prix ne peut pas être inférieur à 0"
+                return@setOnClickListener
+            }
+            if(this.promo.text.toString().toInt() <= 0 || this.promo.text.toString().toInt() >= 100){
+                this.realPrice.text = "Une réduction supérieur à 100 ou inférieur à 0 n'est pas autorisé"
+                return@setOnClickListener
+            }
             if(calculPrice() < 0){
                 this.realPrice.text = "Une réduction supérieur à 100 ou inférieur à 0 n'est pas autorisé"
                 return@setOnClickListener
