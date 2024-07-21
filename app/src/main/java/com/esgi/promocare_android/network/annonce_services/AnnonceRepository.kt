@@ -18,4 +18,12 @@ class AnnonceRepository(private val annonceServices: AnnonceServices) {
     fun postAnnonceCompany(token: String,createAnnonce: CreateAnnonceDto): Call<ReturnCreateAnnonceDto>{
         return annonceServices.postAnnonceCompany(token,createAnnonce)
     }
+
+    fun updateAnnonceCompany(token: String, annonceId: String, createAnnonce: CreateAnnonceDto): Call<ReturnCreateAnnonceDto> {
+        return annonceServices.updateAnnonceCompany(token, annonceId, createAnnonce)
+    }
+
+    fun deleteAnnonceCompany(token: String, annonceId: String): Call<ReturnCreateAnnonceDto> {
+        return annonceServices.deleteAnnonceCompany(token, annonceId)
+    }
 }

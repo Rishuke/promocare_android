@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="30dp"
-    >
+    android:layout_marginTop="30dp">
 
     <LinearLayout
         android:id="@+id/cell_layout_linear_parent"
@@ -40,8 +39,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -54,8 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:textStyle="bold"
-                        android:textSize="22sp"
-                        />
+                        android:textSize="22sp" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -71,8 +68,7 @@
                         android:layout_marginStart="15dp"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:textColor="@color/reduction"
-                        />
+                        android:textColor="@color/reduction" />
 
                 </LinearLayout>
 
@@ -82,8 +78,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:layout_marginTop="5dp"
-                    android:textSize="12sp"
-                    />
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -101,8 +96,8 @@
             <Button
                 android:id="@+id/cell_layout_annonce_delete_button"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
                 android:backgroundTint="@color/button"
                 android:textColor="@color/white"
                 android:layout_weight="1"
@@ -110,14 +105,15 @@
                 android:text="@string/button_text_delete_annonce_company" />
 
             <Button
+                android:id="@+id/modify_button_text_annonce"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
                 android:backgroundTint="@color/button"
                 android:textColor="@color/white"
                 android:layout_marginStart="15dp"
                 android:layout_weight="1"
-                android:text="@string/modify_button_text_annonce"/>
+                android:text="@string/modify_button_text_annonce" />
 
         </LinearLayout>
 
@@ -126,7 +122,7 @@
             android:layout_height="2dp"
             android:layout_marginTop="5dp"
             android:background="@android:color/darker_gray" />
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -134,8 +130,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginStart="25dp"
-            android:gravity="start"
-            >
+            android:gravity="start">
 
             <TextView
                 android:id="@+id/cell_layout_company_annonce_views"
@@ -143,8 +138,8 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/black"
                 app:drawableStartCompat="@drawable/views"
-                android:drawablePadding="10dp"
-                />
+                android:drawablePadding="10dp" />
+
             <TextView
                 android:id="@+id/company_annonce_conversations"
                 android:layout_width="wrap_content"
@@ -152,11 +147,9 @@
                 android:layout_marginStart="30dp"
                 android:textColor="@color/black"
                 app:drawableStartCompat="@drawable/conversation"
-                android:drawablePadding="10dp"
-                />
+                android:drawablePadding="10dp" />
 
         </LinearLayout>
-
 
     </LinearLayout>
 

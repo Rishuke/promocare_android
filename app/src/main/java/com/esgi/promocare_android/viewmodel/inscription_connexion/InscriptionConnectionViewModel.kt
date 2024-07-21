@@ -11,7 +11,7 @@ import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.network.inscription_connexion.InscriptionConnexionRepository
 import com.esgi.promocare_android.views.company_annonce.CompanyAnnonceActivity
 import com.esgi.promocare_android.views.conversations.company.LatestConvCompanyActivity
-import com.esgi.promocare_android.views.conversations.user.LatestConvUserAcitivity
+import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +19,7 @@ import retrofit2.Response
 class InscriptionConnectionViewModel(private val inscriptionConnexionRepository: InscriptionConnexionRepository){
     fun sendLoginRequest(loginRequest: LoginRequest,error:TextView,context:Context){
         val apiResponse: Call<LoginResponse> = inscriptionConnexionRepository.loginUser(loginRequest)
-        val nextScreen = Intent(context, LatestConvUserAcitivity::class.java)
+        val nextScreen = Intent(context, AnnonceUserActivity::class.java)
 
         apiResponse.enqueue(object : Callback<LoginResponse> {
             override fun onFailure(p0: Call<LoginResponse>, t: Throwable) {
@@ -41,7 +41,7 @@ class InscriptionConnectionViewModel(private val inscriptionConnexionRepository:
 
     fun sendCompanyLoginRequest(loginRequest: LoginRequest,error:TextView,context: Context){
         val apiResponse: Call<LoginResponse> = inscriptionConnexionRepository.loginCompany(loginRequest)
-        val nextScreen = Intent(context, LatestConvCompanyActivity::class.java)
+        val nextScreen = Intent(context, CompanyAnnonceActivity::class.java)
 
 
         apiResponse.enqueue(object : Callback<LoginResponse> {

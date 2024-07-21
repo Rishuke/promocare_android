@@ -75,4 +75,21 @@
     <string name="pour_un_prix_par_s_ance_et_un_toal_de_s_ance">Pour un prix par séance et un total de séances de</string>
     <string name="ajouter_un_commentaire">Ajouter un commentaire</string>
     <string name="lieu_de_rdv">Lieu de rdv</string>
+    <string name="error_password_mismatch">Les mots de passe ne correspondent pas.</string>
+    <string name="error_empty_fields">Tous les champs sont obligatoires.</string>
+    <string name="user_inscription_title">Inscription</string>
+    <string name="user_first_name_placeholder">Prénom</string>
+    <string name="user_last_name_placeholder">Nom</string>
+    <string name="user_inscription_email_placeholder">Email</string>
+    <string name="user_inscription_password_placeholder">Mot de passe</string>
+    <string name="user_inscription_confirm_password_placeholder">Confirmer mot de passe</string>
+    <string name="inscription_user_button_text">Inscrivez-vous</string>
+    <string name="user_inscription_go_to_connection">Retour à la connexion</string>
+    <string name="inscription_bottom_text">Votre texte de bas de page ici</string>
+    <string name="inscription_bottom_text_date">Date ici</string>
+    <string name="inscriptiopn_user">S\'inscrire</string>
+    <string name="error_invalid_siret_number">Votre numéro SIRET doit comporter 14 caractères.</string>
+    <string name="error_invalid_email">Veuillez utiliser un format d\'email valide.</string>
+    <string name="user_registration_no_connection_error">Erreur de connexion. Veuillez vérifier votre connexion Internet.</string>
+    <string name="user_registration_error">Erreur lors de l\'inscription. Veuillez réessayer.</string>
 </resources>
