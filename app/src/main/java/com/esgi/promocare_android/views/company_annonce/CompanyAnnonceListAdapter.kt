@@ -77,10 +77,10 @@ class CompanyAnnonceListAdapter(
             }
 
             deleteButton.setOnClickListener {
-                viewModel.deleteAnnonceCompany("Bearer " + Credential.token, annonce.uuid!!, loader, error)
+                /**viewModel.deleteAnnonceCompany("Bearer " + Credential.token, annonce.uuid!!, loader, error)
                 annonces.removeAt(adapterPosition)
                 notifyItemRemoved(adapterPosition)
-                notifyItemRangeChanged(adapterPosition, annonces.size)
+                notifyItemRangeChanged(adapterPosition, annonces.size)**/
             }
         }
     }
