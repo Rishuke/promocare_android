@@ -19,6 +19,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class LatestConvUserAcitivity : AppCompatActivity(), ShowAllConv {
 
+    companion object {
+        const val ANNONCE_ID = "annonce_id"
+    }
+
     private lateinit var latestConvRecyclerView: RecyclerView
     private lateinit var latestConvAdapter: LatestConvAdapter
 

@@ -96,8 +96,8 @@ class PostUserFirstConvActivity: AppCompatActivity(){
     }
 
     private fun getIntentExtra(){
-        if (this.intent.hasExtra(AnnonceUserDetailActivity.ANNONCE_ID)) {
-            this.annonceId = intent.getStringExtra(AnnonceUserDetailActivity.ANNONCE_ID)!!
+        if (this.intent.hasExtra(LatestConvUserAcitivity.ANNONCE_ID)) {
+            this.annonceId = intent.getStringExtra(LatestConvUserAcitivity.ANNONCE_ID)!!
         }
     }
 }
