@@ -53,4 +53,26 @@
     <string name="send_message">SEND MESSAGE</string>
     <string name="vos_conversations">Vos conversations</string>
     <string name="pas_de_conversation_n_h_siter_pas_contacter_un_vendeur">Pas de conversation, n\'hésiter pas à contacter un vendeur</string>
+    <string name="faire_une_offre">Faire une offre</string>
+    <string name="cr_er_votre_offre">Créer votre offre</string>
+    <string name="date_de_commencement">Date de commencement</string>
+    <string name="puis">Puis</string>
+    <string name="date_de_fin">Date de fin</string>
+    <string name="envoyez_ces_donn_es">Envoyez ces données</string>
+    <string name="choississez_la_fr_quence">Choississez la fréquence</string>
+    <string name="frequence">Frequence</string>
+    <string name="choisir_cette_fr_quence">Choisir cette fréquence</string>
+    <string name="ou_cela_se_d_roule_t_il">Ou cela se déroule-t-il ?</string>
+    <string name="nombre_de_s_ance">Nombre de séance</string>
+    <string name="prix_par_s_ance">prix par séance (obligatoire)</string>
+    <string name="choississez_votre_prix_et_le_nombre_de_s_ance">Choississez votre prix et le nombre de séance total</string>
+    <string name="envoyer_cette_offre">Envoyer cette offre</string>
+    <string name="r_capitulatif_de_votre_offre">Récapitulatif de votre offre</string>
+    <string name="la_premier_session_est">La premier session est le :</string>
+    <string name="la_derni_re_est_le">La dernière est le :</string>
+    <string name="se_d_rouleront_au_chez">Se dérouleront au/chez :</string>
+    <string name="avec_une_fr_quence_de">Avec une fréquence de :</string>
+    <string name="pour_un_prix_par_s_ance_et_un_toal_de_s_ance">Pour un prix par séance et un total de séances de</string>
+    <string name="ajouter_un_commentaire">Ajouter un commentaire</string>
+    <string name="lieu_de_rdv">Lieu de rdv</string>
 </resources>

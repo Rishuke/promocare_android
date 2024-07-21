@@ -20,6 +20,7 @@ class ConvViewModel(private val conversationRepository: ConversationRepository) 
 
     var conversationList: MutableLiveData<ArrayList<ConvFrom>> = MutableLiveData()
     var annonce:AnnonceModel? = null
+    var senderId:String = ""
     var convId: String = ""
 
     fun verifyNoConv(token: String, annonceId: String,noResult:TextView) {
@@ -113,6 +114,13 @@ class ConvViewModel(private val conversationRepository: ConversationRepository) 
                 )
 
                 conversationList.value = ArrayList(mappedResponse)
+
+                if(conversationList.value != null){
+                    if(conversationList.value!![0].sender_id != null){
+                        senderId = conversationList.value!![0].sender_id!!
+                    }
+                }
+
                 if((conversationList.value as ArrayList<ConvFrom>).isEmpty()){
                     noResult.visibility = TextView.VISIBLE
                 }
