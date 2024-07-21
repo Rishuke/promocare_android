@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Conversation
@@ -69,7 +70,10 @@ class ConversationCompanyActivity:AppCompatActivity() {
     private fun setRecyclerView(conversations : MutableList<ConvFrom>){
         conversationListAdapter = ConversationListAdapter(conversations)
 
-        conversationRecyclerView.layoutManager = GridLayoutManager(this, 1)
+        val linearLayoutManager = LinearLayoutManager(this)
+        linearLayoutManager.orientation  = LinearLayoutManager.VERTICAL
+
+        conversationRecyclerView.layoutManager = linearLayoutManager
 
         conversationRecyclerView.adapter = conversationListAdapter
     }
