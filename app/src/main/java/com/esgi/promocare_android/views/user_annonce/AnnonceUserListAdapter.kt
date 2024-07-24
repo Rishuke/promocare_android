@@ -10,8 +10,9 @@ import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.utils.handleDate
 import com.esgi.promocare_android.utils.loadImage
+import java.util.Locale
 
-class AnnonceUserListAdapter(var annonces:MutableList<AnnonceModel>,val annonceUserClickHander:AnnonceUserOnClickListener): RecyclerView.Adapter<AnnonceUserListAdapter.AnnonceUserViewHolder>() {
+class AnnonceUserListAdapter(var annonces:MutableList<AnnonceModel>, private val annonceUserClickHander:AnnonceUserOnClickListener): RecyclerView.Adapter<AnnonceUserListAdapter.AnnonceUserViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnnonceUserViewHolder {
         val ingredientView = LayoutInflater.from(parent.context)
             .inflate(R.layout.cell_layout_annonce_user, parent, false)
@@ -32,30 +33,29 @@ class AnnonceUserListAdapter(var annonces:MutableList<AnnonceModel>,val annonceU
     }
 
     inner class AnnonceUserViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private var annonceTitle : TextView
-        private var annoncePrice : TextView
-        private var reduction : TextView
-        private var date : TextView
-        private var annonceImage : ImageView
-
-        init {
-            this.annonceTitle = itemView.findViewById(R.id.cell_layout_annonce_title_user)
-            this.annoncePrice = itemView.findViewById(R.id.cell_layout_annonce_price_user)
-            this.reduction = itemView.findViewById(R.id.cell_layout_annonce_reduction_user)
-            this.date = itemView.findViewById(R.id.cell_layout_annonce_date_user)
-            this.annonceImage = itemView.findViewById(R.id.cell_layout_annonce_image_user)
-        }
+        private var annonceTitle : TextView = itemView.findViewById(R.id.cell_layout_annonce_title_user)
+        private var annoncePrice : TextView = itemView.findViewById(R.id.cell_layout_annonce_price_user)
+        private var reduction : TextView = itemView.findViewById(R.id.cell_layout_annonce_reduction_user)
+        private var date : TextView = itemView.findViewById(R.id.cell_layout_annonce_date_user)
+        private var annonceImage : ImageView = itemView.findViewById(R.id.cell_layout_annonce_image_user)
 
         fun bind(annonce: AnnonceModel) {
             this.annonceTitle.text = annonce.title
 
             if(annonce.price != null && annonce.promo != null) {
                 val pricePromo = annonce.price * (1 - (annonce.promo / 100.0)) // Ensure floating-point division
-                val formattedPrice = String.format("%.2f€", pricePromo)
+                val formattedPrice = String.format(Locale.FRANCE,"%.2f€", pricePromo)
                 this.annoncePrice.text = formattedPrice
             }
-            this.reduction.text = " -${annonce.promo.toString()}%!!!"
-            this.date.text = "Créer le ${handleDate(annonce.createdAt.toString())}"
+            this.reduction.text = buildString {
+                append(" -")
+                append(annonce.promo.toString())
+                append("%!!!")
+            }
+            this.date.text = buildString {
+                append("Créer le ")
+                append(handleDate(annonce.createdAt.toString()))
+            }
 
             if(annonce.type != null){
                 loadImage(annonceImage,annonce.type)

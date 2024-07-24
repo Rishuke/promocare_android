@@ -1,17 +1,18 @@
 package com.esgi.promocare_android.models.conversations
 
 import com.esgi.promocare_android.models.annonce.AnnonceDto
+import com.google.gson.annotations.SerializedName
 
 data class ConvFromDto(
-    val annonce_id: String?,
-    val created_at: String?,
-    val first_conv_id: String?,
+    @SerializedName(value = "annonce_id")val annonceId: String?,
+    @SerializedName(value = "created_at")val createdAt: String?,
+    @SerializedName(value = "first_conv_id")val firstConvId: String?,
     val from: String?,
     val isFirst: Boolean?,
     val message: String?,
-    val sender_id: String?,
-    val target_id: String?,
-    val updated_at: String?,
+    @SerializedName(value = "sender_id")val senderId: String?,
+    @SerializedName(value = "target_id")val targetId: String?,
+    @SerializedName(value = "updated_at")val updatedAt: String?,
     val uuid: String?
 )
 

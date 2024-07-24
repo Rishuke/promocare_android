@@ -3,7 +3,6 @@ package com.esgi.promocare_android.viewmodel.offer
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
-import com.esgi.promocare_android.models.annonce.AnnonceDto
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.offer.AllOfferCompany
 import com.esgi.promocare_android.models.offer.GetOfferCompany
@@ -33,27 +32,27 @@ class GetOfferCompanyViewModel(private val offerRepository: OfferRepository){
                     val offer = OfferModel(
                         it.offer.uuid,
                         it.offer.status,
-                        it.offer.annonce_id,
-                        it.offer.user_id,
+                        it.offer.annonceId,
+                        it.offer.userId,
                         it.offer.text,
-                        it.offer.updated_at,
-                        it.offer.created_at,
+                        it.offer.updatedAt,
+                        it.offer.createdAt,
                     )
 
                     val user = UserModel(
-                        it.user.created_at,
+                        it.user.createdAt,
                         it.user.email,
-                        it.user.first_name,
-                        it.user.last_name,
+                        it.user.firstName,
+                        it.user.lastName,
                         it.user.phone,
                         it.user.role,
-                        it.user.updated_at,
+                        it.user.updatedAt,
                         it.user.uuid,
                     )
 
                     val annonce = AnnonceModel(
                         it.annonce.uuid,
-                        it.annonce.company_id,
+                        it.annonce.companyId,
                         it.annonce.location,
                         it.annonce.price,
                         it.annonce.promo,
@@ -61,9 +60,9 @@ class GetOfferCompanyViewModel(private val offerRepository: OfferRepository){
                         it.annonce.title,
                         it.annonce.description,
                         it.annonce.type,
-                        it.annonce.view_time,
-                        it.annonce.updated_at,
-                        it.annonce.created_at,
+                        it.annonce.viewTime,
+                        it.annonce.updatedAt,
+                        it.annonce.createdAt,
                     )
 
 

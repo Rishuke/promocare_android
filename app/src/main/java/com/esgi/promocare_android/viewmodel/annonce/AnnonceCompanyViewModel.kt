@@ -31,7 +31,7 @@ class AnnonceCompanyViewModel(private val annonceRepository: AnnonceRepository) 
                 val mappedResponse = responseBody.map {
                     AnnonceModel(
                         it.uuid,
-                        it.company_id,
+                        it.companyId,
                         it.location,
                         it.price,
                         it.promo,
@@ -39,9 +39,9 @@ class AnnonceCompanyViewModel(private val annonceRepository: AnnonceRepository) 
                         it.title,
                         it.description,
                         it.type,
-                        it.view_time,
-                        it.updated_at,
-                        it.created_at
+                        it.viewTime,
+                        it.updatedAt,
+                        it.createdAt
                     )
                 }
                 annonceList.value = ArrayList(mappedResponse)
@@ -51,7 +51,7 @@ class AnnonceCompanyViewModel(private val annonceRepository: AnnonceRepository) 
         })
     }
 
-    fun deleteAnnonceCompany(token: String, annonceId: String, loader: ProgressBar, error: TextView) {
+    /*fun deleteAnnonceCompany(token: String, annonceId: String, loader: ProgressBar, error: TextView) {
         val apiResponse = annonceRepository.deleteAnnonceCompany(token, annonceId)
         loader.visibility = ProgressBar.VISIBLE
 
@@ -70,7 +70,7 @@ class AnnonceCompanyViewModel(private val annonceRepository: AnnonceRepository) 
                 }
             }
         })
-    }
+    }*/
 
     fun updateAnnonceCompany(token: String, annonceId: String, createAnnonceDto: CreateAnnonceDto, loader: ProgressBar, error: TextView, onSuccess: () -> Unit) {
         val apiResponse = annonceRepository.updateAnnonceCompany(token, annonceId, createAnnonceDto)

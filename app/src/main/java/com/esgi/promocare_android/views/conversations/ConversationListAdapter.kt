@@ -1,6 +1,5 @@
 package com.esgi.promocare_android.views.conversations
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.conversations.ConvFrom
-import com.esgi.promocare_android.utils.handleDate
 import com.esgi.promocare_android.utils.handleDateShort
 
 class ConversationListAdapter(var conversations:MutableList<ConvFrom>): RecyclerView.Adapter<ConversationListAdapter.ConversationViewHolder>(){
@@ -43,9 +41,9 @@ class ConversationListAdapter(var conversations:MutableList<ConvFrom>): Recycler
                 senderSide.text = conversation.message
                 senderSide.visibility = TextView.VISIBLE
 
-                if(conversation.created_at != null){
-                    var date = handleDateShort(conversation.created_at) +" à "
-                    date += conversation.created_at.substring(11,16)
+                if(conversation.createdAt != null){
+                    var date = handleDateShort(conversation.createdAt) +" à "
+                    date += conversation.createdAt.substring(11,16)
                     senderSideDate.text = date
                     senderSideDate.visibility = TextView.VISIBLE
                 }
@@ -53,9 +51,9 @@ class ConversationListAdapter(var conversations:MutableList<ConvFrom>): Recycler
             else if(conversation.from == "Not you"){
                 targetSide.text = conversation.message
                 targetSide.visibility = TextView.VISIBLE
-                if(conversation.created_at != null){
-                    var date = handleDateShort(conversation.created_at) +" à "
-                    date += conversation.created_at.substring(11,16)
+                if(conversation.createdAt != null){
+                    var date = handleDateShort(conversation.createdAt) +" à "
+                    date += conversation.createdAt.substring(11,16)
                     targetSideDate.text = date
                     targetSideDate.visibility = TextView.VISIBLE
                 }

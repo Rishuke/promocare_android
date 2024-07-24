@@ -2,7 +2,6 @@ package com.esgi.promocare_android.views.company_annonce.create_annonce
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -29,12 +28,12 @@ class ChoseTitle:AppCompatActivity() {
         this.next.setOnClickListener {
             val title = this.title.text.toString()
             if (title.length > 100) {
-                this.error.text = "Le titre ne doit pas dépasser 100 caractères"
+                this.error.text = getString(R.string.le_titre_ne_doit_pas_d_passer_100_caract_res)
                 error.visibility = TextView.VISIBLE
                 return@setOnClickListener
             }
-            if (title == "" || title == null) {
-                this.error.text = "Le titre ne doit pas être vide"
+            if (title == "") {
+                this.error.text = getString(R.string.le_titre_ne_doit_pas_tre_vide)
                 error.visibility = TextView.VISIBLE
                 return@setOnClickListener
             }

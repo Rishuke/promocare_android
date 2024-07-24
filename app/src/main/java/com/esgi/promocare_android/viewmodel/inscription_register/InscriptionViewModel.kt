@@ -2,7 +2,6 @@ package com.esgi.promocare_android.viewmodel.inscription_register
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import com.esgi.promocare_android.R
@@ -28,7 +27,7 @@ class InscriptionViewModel(private val inscriptionConnexionRepository: Inscripti
 
             override fun onResponse(call: Call<SubscribeResponse>, response: Response<SubscribeResponse>) {
                 if (!response.isSuccessful) {
-                    val errorBody = response.errorBody()?.string()
+                    //val errorBody = response.errorBody()?.string()
                     error.setText(R.string.user_registration_error)
                     error.visibility = TextView.VISIBLE
                     return

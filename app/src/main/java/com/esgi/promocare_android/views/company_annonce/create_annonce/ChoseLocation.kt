@@ -30,12 +30,13 @@ class ChoseLocation: AppCompatActivity() {
         this.next.setOnClickListener {
             val location = this.location.text.toString()
             if (location.length > 100) {
-                this.error.text = "L'adresse ne peut pas dépasser 100 caractères"
+                this.error.text = getString(R.string.l_adresse_ne_peut_pas_d_passer_100_caract_res)
                 error.visibility = TextView.VISIBLE
                 return@setOnClickListener
             }
-            if (location == "" || location == null || location.length < 10) {
-                this.error.text = "L'adresse ne peut pas être vide ou inférieur à 10 caractères"
+            if (location == "" || location.length < 10) {
+                this.error.text =
+                    getString(R.string.l_adresse_ne_peut_pas_tre_vide_ou_inf_rieur_10_caract_res)
                 error.visibility = TextView.VISIBLE
                 return@setOnClickListener
             }

@@ -1,8 +1,6 @@
 package com.esgi.promocare_android.views
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -13,7 +11,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.InscriptionConnexion
 import com.esgi.promocare_android.models.inscription.SubscribeRequest
-import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity
 
 class InscriptionActivity : AppCompatActivity() {
     private lateinit var firstNameEditText: EditText
@@ -73,10 +70,5 @@ class InscriptionActivity : AppCompatActivity() {
 
     private fun sendInscription(subscribeRequest: SubscribeRequest) {
         InscriptionConnexion.getRegisterViewModel().sendRegisterRequest(subscribeRequest, errorText, this)
-    }
-
-    private fun goToHome() {
-        startActivity(Intent(this, AnnonceUserActivity::class.java))
-        finish()
     }
 }

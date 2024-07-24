@@ -2,7 +2,6 @@ package com.esgi.promocare_android.views.offer.createOfferCompany
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -43,43 +42,53 @@ class RecapOfferActivity:AppCompatActivity() {
     private fun fillChamp(){
         val model = Offer.getCreateOfferCompanyViewModel()
         if(model.startDate == ""){
-            dateStart.text = "Non renseigné"
+            dateStart.text = getString(R.string.non_renseign)
         }
         else{
             dateStart.text = model.startDate
         }
         if(model.endDate == ""){
-            dateEnd.text = "Non renseigné"
+            dateEnd.text = getString(R.string.non_renseign)
         }
         else{
             dateEnd.text = model.endDate
         }
         if(model.frequence == ""){
-            frequence.text = "Non renseigné"
+            frequence.text = getString(R.string.non_renseign)
         }
         else{
             frequence.text = model.frequence
         }
         if(model.location == ""){
-            location.text = "Non renseigné"
+            location.text = getString(R.string.non_renseign)
         }
         else{
             location.text = model.location
         }
         if(model.price == ""){
             if(model.nbSeance == ""){
-                price.text = "Non renseigné - Non renseigné"
+                price.text = getString(R.string.non_renseign_non_renseign)
             }
             else{
-                price.text = "Non renseigné - ${model.nbSeance}"
+                price.text = buildString {
+                    append("Non renseigné - ")
+                    append(model.nbSeance)
+                }
             }
         }
         else{
             if(model.nbSeance == ""){
-                price.text = "${model.price} - Non renseigné"
+                price.text = buildString {
+                    append(model.price)
+                    append(" - Non renseigné")
+                }
             }
             else{
-                price.text = "${model.price} - ${model.nbSeance}"
+                price.text = buildString {
+                    append(model.price)
+                    append(" - ")
+                    append(model.nbSeance)
+                }
             }
         }
     }

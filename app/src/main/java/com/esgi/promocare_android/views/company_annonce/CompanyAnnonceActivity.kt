@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Annonce
 import com.esgi.promocare_android.fragment.SearchBarFragment
-import com.esgi.promocare_android.fragment.searchBarHandler
+import com.esgi.promocare_android.fragment.SearchBarHandler
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.searchInAnnonce
@@ -19,7 +19,7 @@ import com.esgi.promocare_android.views.company_annonce.create_annonce.ChoseTitl
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class CompanyAnnonceActivity : AppCompatActivity(), searchBarHandler {
+class CompanyAnnonceActivity : AppCompatActivity(), SearchBarHandler {
 
     private lateinit var searchBarFragment: SearchBarFragment
     private lateinit var addAnnonce: FloatingActionButton
@@ -60,7 +60,7 @@ class CompanyAnnonceActivity : AppCompatActivity(), searchBarHandler {
     }
 
     private fun setRecyclerView(annonces: MutableList<AnnonceModel>) {
-        this.companyAnnonceAdapter = CompanyAnnonceListAdapter(annonces, Annonce.getViewModel(), this, loader, errorTextView)
+        this.companyAnnonceAdapter = CompanyAnnonceListAdapter(annonces, this)
         this.annonceRecyclerView.layoutManager = GridLayoutManager(this, 1)
         this.annonceRecyclerView.adapter = companyAnnonceAdapter
     }

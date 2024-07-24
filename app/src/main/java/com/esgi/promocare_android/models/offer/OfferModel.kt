@@ -6,11 +6,11 @@ import android.os.Parcelable
 data class OfferModel(
     val uuid: String?,
     val status: String?,
-    val annonce_id: String?,
-    val user_id: String?,
+    val annonceId: String?,
+    val userId: String?,
     val text: String?,
-    val updated_at: String?,
-    val created_at: String?
+    val updatedAt: String?,
+    val createdAt: String?
 ):Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
@@ -20,17 +20,16 @@ data class OfferModel(
         parcel.readString(),
         parcel.readString(),
         parcel.readString()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(uuid)
         parcel.writeString(status)
-        parcel.writeString(annonce_id)
-        parcel.writeString(user_id)
+        parcel.writeString(annonceId)
+        parcel.writeString(userId)
         parcel.writeString(text)
-        parcel.writeString(updated_at)
-        parcel.writeString(created_at)
+        parcel.writeString(updatedAt)
+        parcel.writeString(createdAt)
     }
 
     override fun describeContents(): Int {

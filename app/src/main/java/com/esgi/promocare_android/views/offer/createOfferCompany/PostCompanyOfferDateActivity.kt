@@ -8,8 +8,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Offer
-import com.esgi.promocare_android.views.conversations.company.ConversationCompanyActivity
-import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity.Companion.ANNONCE_MODEL_EXTRA
 
 class PostCompanyOfferDateActivity: AppCompatActivity(){
 
@@ -39,7 +37,7 @@ class PostCompanyOfferDateActivity: AppCompatActivity(){
         nextScreen.setOnClickListener {
             if (startDate.text.toString().isEmpty() && endDate.text.toString().isEmpty()){
                 error.visibility = TextView.VISIBLE
-                error.text = "Veuillez remplir les champs"
+                error.text = getString(R.string.veuillez_remplir_les_champs)
             }else{
                 val intent = Intent(this, PostCompanyOfferFrequencyActivity::class.java)
                 Offer.getCreateOfferCompanyViewModel().startDate = startDate.text.toString()

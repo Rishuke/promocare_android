@@ -1,10 +1,8 @@
 package com.esgi.promocare_android.views.company_annonce.create_annonce
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -33,16 +31,19 @@ class ChosePrice:AppCompatActivity() {
 
     private fun calculateRealPrice(){
         if(this.price.text.isEmpty() || this.promo.text.isEmpty()){
-            this.realPrice.text = "Mauvaise valeur"
+            this.realPrice.text = getString(R.string.mauvaise_valeur)
             return
         }
         val price = this.price.text.toString().toDouble()
         val promo = this.promo.text.toString().toDouble()
         if(price.isNaN() || promo.isNaN()){
-            this.realPrice.text = "Erreur dans le calcul du prix"
+            this.realPrice.text = getString(R.string.erreur_dans_le_calcul_du_prix)
         }
         val priceWithPromo = price - (price * (promo / 100))
-        this.realPrice.text = "Le prix est $priceWithPromo"
+        this.realPrice.text = buildString {
+            append("Le prix est ")
+            append(priceWithPromo)
+        }
     }
 
     private fun calculPrice():Float{
@@ -76,19 +77,20 @@ class ChosePrice:AppCompatActivity() {
     private fun validatePrice(){
         this.validatePrice.setOnClickListener {
             if(this.price.text.isEmpty() || this.promo.text.isEmpty()){
-                this.realPrice.text = "Mauvaise valeur"
+                this.realPrice.text = getString(R.string.mauvaise_valeur)
                 return@setOnClickListener
             }
             if(this.price.text.toString().toFloat() <= 0){
-                this.realPrice.text = "Le prix ne peut pas être inférieur à 0"
+                this.realPrice.text = getString(R.string.le_prix_ne_peut_pas_tre_inf_rieur_0)
                 return@setOnClickListener
             }
             if(this.promo.text.toString().toInt() <= 0 || this.promo.text.toString().toInt() >= 100){
-                this.realPrice.text = "Une réduction supérieur à 100 ou inférieur à 0 n'est pas autorisé"
+                this.realPrice.text =
+                    getString(R.string.une_r_duction_sup_rieur_100_ou_inf_rieur_0_n_est_pas_autoris)
                 return@setOnClickListener
             }
             if(calculPrice() < 0){
-                this.realPrice.text = "Une réduction supérieur à 100 ou inférieur à 0 n'est pas autorisé"
+                this.realPrice.text = getString(R.string.une_r_duction_sup_rieur_100_ou_inf_rieur_0_n_est_pas_autoris)
                 return@setOnClickListener
             }
             Annonce.getCreateAnnonceViewModel().price = this.price.text.toString().toFloat()

@@ -1,9 +1,7 @@
 package com.esgi.promocare_android.viewmodel.conversation
 
-import android.util.Log
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
-import com.esgi.promocare_android.models.annonce.AnnonceDto
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.conversations.ConvFrom
 import com.esgi.promocare_android.models.conversations.ConvFromDto
@@ -86,15 +84,15 @@ class ConvViewModel(private val conversationRepository: ConversationRepository) 
 
                 val mappedResponse = responseBody.map {
                         ConvFrom(
-                            it.annonce_id,
-                            it.created_at,
-                            it.first_conv_id,
+                            it.annonceId,
+                            it.createdAt,
+                            it.firstConvId,
                             it.from,
                             it.isFirst,
                             it.message,
-                            it.sender_id,
-                            it.target_id,
-                            it.updated_at,
+                            it.senderId,
+                            it.targetId,
+                            it.updatedAt,
                             it.uuid
                         )
                 }
@@ -109,16 +107,16 @@ class ConvViewModel(private val conversationRepository: ConversationRepository) 
                     response.body()?.annonce?.title,
                     response.body()?.annonce?.description,
                     response.body()?.annonce?.type,
-                    response.body()?.annonce?.view_time,
-                    response.body()?.annonce?.updated_at,
-                    response.body()?.annonce?.created_at,
+                    response.body()?.annonce?.viewTime,
+                    response.body()?.annonce?.updatedAt,
+                    response.body()?.annonce?.createdAt,
                 )
 
                 conversationList.value = ArrayList(mappedResponse)
 
                 if(conversationList.value != null){
-                    if(conversationList.value!![0].sender_id != null){
-                        senderId = conversationList.value!![0].sender_id!!
+                    if(conversationList.value!![0].senderId != null){
+                        senderId = conversationList.value!![0].senderId!!
                     }
                 }
 
