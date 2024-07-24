@@ -46,9 +46,7 @@ jobs:
       notify: true
     steps:
       - checkout
-      - run:
-          name: Give gradlew execute permissions
-          command: chmod +x ./gradlew
+
       - run:
           name: Assemble debug build
           command: ./gradlew assembleDebug
