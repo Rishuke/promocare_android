@@ -31,7 +31,7 @@ class SearchBarFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                (activity as searchBarHandler).textChange(newText!!)
+                (activity as SearchBarHandler).textChange(newText!!)
                 return true
             }
         })
@@ -48,6 +48,6 @@ class SearchBarFragment : Fragment() {
     }
 }
 
-interface searchBarHandler{
+interface SearchBarHandler{
     fun textChange(newText:String)
 }

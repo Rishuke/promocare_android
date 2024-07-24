@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.IntentCompat
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Offer
 import com.esgi.promocare_android.models.annonce.AnnonceModel
@@ -60,13 +61,13 @@ class OfferUserDetailActivity:AppCompatActivity() {
 
     private fun getIntentExtra(){
         if (this.intent.hasExtra(ANNONCE)) {
-            this.annonce = intent.getParcelableExtra(ANNONCE)!!
+            this.annonce = IntentCompat.getParcelableExtra(this.intent, ANNONCE,AnnonceModel::class.java)!!
         }
         if (this.intent.hasExtra(OFFER)) {
-            this.offer = intent.getParcelableExtra(OFFER)!!
+            this.offer = IntentCompat.getParcelableExtra(this.intent, OFFER,OfferModel::class.java)!!
         }
         if (this.intent.hasExtra(COMPANY)) {
-            this.company = intent.getParcelableExtra(COMPANY)!!
+            this.company = IntentCompat.getParcelableExtra(this.intent, COMPANY,CompanyModel::class.java)!!
         }
     }
 
@@ -76,45 +77,51 @@ class OfferUserDetailActivity:AppCompatActivity() {
             refuse.isEnabled = false
             refuse.visibility = Button.GONE
             accept.isEnabled = false
-            accept.text = "Annonce accepté"
+            accept.text = getString(R.string.annonce_accept)
         }
         if(offer.status == "refused"){
             refuse.isEnabled = false
             accept.visibility = Button.GONE
             accept.isEnabled = false
-            refuse.text = "Annonce refusé"
+            refuse.text = getString(R.string.annonce_refus)
         }
         titleAnnonce.text = annonce.title
-        senderText.text = company.company_name
+        senderText.text = company.companyName
         descriptionAnnonce.text = annonce.description
         if(annonce.createdAt != null){
             dateAnnonce.text = handleDate(annonce.createdAt!!)
         }
         else{
-            dateAnnonce.text = "Date inconnue"
+            dateAnnonce.text = getString(R.string.date_inconnue)
         }
         var offerDate = "Date inconnue"
-        if(offer.created_at != null){
-            offerDate = handleDate(offer.created_at!!)
+        if(offer.createdAt != null){
+            offerDate = handleDate(offer.createdAt!!)
+        }
+        val textStatus: String = when (offer.status) {
+            "pending" -> {
+                "en attente d'une réponse"
+            }
+
+            "accepted" -> {
+                "acceptée"
+            }
+
+            "refused" -> {
+                "refusée"
+            }
+
+            else -> {
+                "inconnue"
+            }
         }
 
-        var textStatus = ""
-        if(offer.status == "pending"){
-            textStatus = "en attente d'une réponse"
-        }
-        else if(offer.status == "accepted"){
-            textStatus = "acceptée"
-        }
-        else if(offer.status == "refused"){
-            textStatus = "refusée"
-        }
-        else{
-            textStatus = "inconnue"
-        }
-
-        val text = "Envoyé par ${company.company_name} le ${offerDate} , l'offre est ${textStatus}. Voici un résumé de l'offre : \n\n"
+        val text = "Envoyé par ${company.companyName} le $offerDate , l'offre est ${textStatus}. Voici un résumé de l'offre : \n\n"
         //statusAnnonce.text = text
-        offerText.text = text+offer.text
+        offerText.text = buildString {
+            append(text)
+            append(offer.text)
+        }
     }
 
     private fun handleRefuse() {

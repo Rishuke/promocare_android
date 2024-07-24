@@ -8,12 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.annonce.AnnonceDto
-import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.conversations.LatestConv
 import com.esgi.promocare_android.utils.handleDate
 import com.esgi.promocare_android.utils.loadImage
 
-class LatestConvAdapter(var latestConv:MutableList<LatestConv>,var convClickHanlder:ShowAllConv): RecyclerView.Adapter<LatestConvAdapter.LatestConvViewHolder>() {
+class LatestConvAdapter(private var latestConv:MutableList<LatestConv>, private var convClickHanlder:ShowAllConv): RecyclerView.Adapter<LatestConvAdapter.LatestConvViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LatestConvViewHolder {
         val latestConvView = LayoutInflater.from(parent.context)
             .inflate(R.layout.cell_layout_latest_conv, parent, false)
@@ -30,40 +29,39 @@ class LatestConvAdapter(var latestConv:MutableList<LatestConv>,var convClickHanl
         holder.bind(currentConversationData)
         val annonce = currentConversationData.annonce?.uuid ?: return
         holder.itemView.setOnClickListener {
-            if(currentConversationData.conversation?.first_conv_id == null){
+            if(currentConversationData.conversation?.firstConvId == null){
                 convClickHanlder.showAllConv(currentConversationData.conversation?.uuid!!, annonce, currentConversationData.annonce)
                 return@setOnClickListener
             }
             else{
-                convClickHanlder.showAllConv(currentConversationData.conversation.first_conv_id, annonce, currentConversationData.annonce)
+                convClickHanlder.showAllConv(currentConversationData.conversation.firstConvId, annonce, currentConversationData.annonce)
             }
         }
     }
 
     inner class LatestConvViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private var annonceTitle : TextView
-        private var messageContent : TextView
-        private var dateLastMessage : TextView
-        private var annonceImage : ImageView
-
-        init {
-            annonceTitle = itemView.findViewById(R.id.cell_layout_latest_conv_title_annonce)
-            messageContent = itemView.findViewById(R.id.cell_layout_latest_conv_last_message)
-            dateLastMessage = itemView.findViewById(R.id.cell_layout_latest_conv_date)
-            annonceImage = itemView.findViewById(R.id.cell_layout_latest_conv_image)
-        }
+        private var annonceTitle : TextView = itemView.findViewById(R.id.cell_layout_latest_conv_title_annonce)
+        private var messageContent : TextView = itemView.findViewById(R.id.cell_layout_latest_conv_last_message)
+        private var dateLastMessage : TextView = itemView.findViewById(R.id.cell_layout_latest_conv_date)
+        private var annonceImage : ImageView = itemView.findViewById(R.id.cell_layout_latest_conv_image)
 
         fun bind(latest: LatestConv) {
             loadImage(annonceImage,latest.annonce?.type)
             annonceTitle.text = latest.annonce?.title ?: "Pas de titre d'annonce"
             if(latest.conversation?.from == "Not you"){
-                messageContent.text = "Pour vous : " + latest.conversation?.message
+                messageContent.text = buildString {
+                    append("Pour vous : ")
+                    append(latest.conversation.message)
+                }
             }
             else{
-                messageContent.text = "Vous : "+latest.conversation?.message
+                messageContent.text = buildString {
+                    append("Vous : ")
+                    append(latest.conversation?.message)
+                }
             }
-            var date  = handleDate(latest.conversation?.created_at ?: "Pas de date")
-            date += " à " + latest.conversation?.created_at?.substring(11, 16)
+            var date  = handleDate(latest.conversation?.createdAt ?: "Pas de date")
+            date += " à " + latest.conversation?.createdAt?.substring(11, 16)
             dateLastMessage.text = date
         }
     }

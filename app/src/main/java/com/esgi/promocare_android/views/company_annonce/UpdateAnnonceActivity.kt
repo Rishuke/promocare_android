@@ -79,40 +79,40 @@ class UpdateAnnonceActivity : AppCompatActivity() {
         }
 
         updateButton.setOnClickListener {
-            val title = titleEditText.text.toString()
-            val description = descriptionEditText.text.toString()
+            val titleAnnonce = titleEditText.text.toString()
+            val descriptionAnnonce = descriptionEditText.text.toString()
             val priceText = priceEditText.text.toString()
-            val location = locationEditText.text.toString()
+            val locationAnnonce = locationEditText.text.toString()
             val promoText = promoEditText.text.toString()
-            val type = typeSpinner.selectedItem.toString()
+            val typeAnnonce = typeSpinner.selectedItem.toString()
 
             // Validation des champs
-            if (title.isBlank()) {
+            if (titleAnnonce.isBlank()) {
                 showError("Le titre ne peut pas être vide")
                 return@setOnClickListener
             }
-            if (description.isBlank()) {
+            if (descriptionAnnonce.isBlank()) {
                 showError("La description ne peut pas être vide")
                 return@setOnClickListener
             }
-            val price = priceText.toFloatOrNull()
-            if (price == null || price <= 0) {
+            val priceAnnonce = priceText.toFloatOrNull()
+            if (priceAnnonce == null || priceAnnonce <= 0) {
                 showError("Le prix doit être supérieur à 0")
                 return@setOnClickListener
             }
-            val promo = promoText.toIntOrNull()
-            if (promo == null || promo <= 0 || promo > 100) {
+            val promoAnnonce = promoText.toIntOrNull()
+            if (promoAnnonce == null || promoAnnonce <= 0 || promoAnnonce > 100) {
                 showError("La promotion doit être comprise entre 0 et 100")
                 return@setOnClickListener
             }
 
             val createAnnonceDto = CreateAnnonceDto(
-                title = title,
-                description = description,
-                price = price,
-                type = type,
-                location = location,
-                promo = promo
+                title = titleAnnonce,
+                description = descriptionAnnonce,
+                price = priceAnnonce,
+                type = typeAnnonce,
+                location = locationAnnonce,
+                promo = promoAnnonce
             )
             viewModel.updateAnnonceCompany("Bearer " + Credential.token, annonceId, createAnnonceDto, loader, errorText) {
                 finish()

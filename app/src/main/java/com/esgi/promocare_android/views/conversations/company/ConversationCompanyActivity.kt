@@ -2,12 +2,10 @@ package com.esgi.promocare_android.views.conversations.company
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
@@ -20,8 +18,6 @@ import com.esgi.promocare_android.utils.handleDate
 import com.esgi.promocare_android.utils.loadImage
 import com.esgi.promocare_android.views.conversations.ConversationListAdapter
 import com.esgi.promocare_android.views.offer.createOfferCompany.PostCompanyOfferDateActivity
-import com.esgi.promocare_android.views.offer.createOfferCompany.PostCompanyOfferFrequencyActivity
-import com.esgi.promocare_android.views.user_annonce.AnnonceUserDetailActivity
 
 class ConversationCompanyActivity:AppCompatActivity() {
 
@@ -92,7 +88,7 @@ class ConversationCompanyActivity:AppCompatActivity() {
                     annonceDate.text = formattedDate
                 }
                 else{
-                    annonceDate.text = "Date inconnue"
+                    annonceDate.text = getString(R.string.date_inconnue)
                 }
             }
         }

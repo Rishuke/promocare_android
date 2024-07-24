@@ -29,7 +29,7 @@ class AnnonceUserViewModel(private val annonceRepository: AnnonceRepository) {
                 val mappedResponse = responseBody.map {
                     AnnonceModel(
                         it.uuid,
-                        it.company_id,
+                        it.companyId,
                         it.location,
                         it.price,
                         it.promo,
@@ -37,9 +37,9 @@ class AnnonceUserViewModel(private val annonceRepository: AnnonceRepository) {
                         it.title,
                         it.description,
                         it.type,
-                        it.view_time,
-                        it.updated_at,
-                        it.created_at
+                        it.viewTime,
+                        it.updatedAt,
+                        it.createdAt
                     )
                 }
                 annonceList.value = ArrayList(mappedResponse)

@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.IntentCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
@@ -85,7 +86,7 @@ class PostUserFirstConvActivity: AppCompatActivity(){
             annonceDate.text = formattedDate
         }
         else{
-            annonceDate.text = "Date inconnue"
+            annonceDate.text = getString(R.string.date_inconnue)
         }
         loadImage(annonceImage,annonce.type)
     }
@@ -115,11 +116,11 @@ class PostUserFirstConvActivity: AppCompatActivity(){
 
     private fun getIntentExtra(){
         if (this.intent.hasExtra(LatestConvUserAcitivity.ANNONCE)) {
-            this.annonce = intent.getParcelableExtra(LatestConvUserAcitivity.ANNONCE)!!
+            this.annonce = IntentCompat.getParcelableExtra(this.intent,LatestConvUserAcitivity.ANNONCE,AnnonceModel::class.java)!!
             this.annonceId = annonce.uuid!!
         }
         if(this.intent.hasExtra(AnnonceUserDetailActivity.ANNONCE)){
-            this.annonce = intent.getParcelableExtra(AnnonceUserDetailActivity.ANNONCE)!!
+            this.annonce = IntentCompat.getParcelableExtra(this.intent,AnnonceUserDetailActivity.ANNONCE,AnnonceModel::class.java)!!
             this.annonceId = annonce.uuid!!
         }
     }

@@ -58,9 +58,9 @@ class PostCompanyOfferFrequencyActivity:AppCompatActivity() {
         nextScreen.setOnClickListener {
             if(frequencyNumber.text.toString().isEmpty()){
                 error.visibility = TextView.VISIBLE
-                error.text = "Frequence est vide"
+                error.text = getString(R.string.frequence_est_vide)
             }
-            val frequence = frequencyNumber.text.toString() + " fois par ${frequencyChoice}"
+            val frequence = frequencyNumber.text.toString() + " fois par $frequencyChoice"
             Offer.getCreateOfferCompanyViewModel().frequence = frequence
             startActivity(Intent(this, PostCompanyOfferLocationActivity::class.java))
         }

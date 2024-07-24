@@ -7,22 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.annonce.AnnonceModel
-import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.handleDate
 import com.esgi.promocare_android.utils.loadImage
-import com.esgi.promocare_android.viewmodel.annonce.AnnonceCompanyViewModel
+import java.util.Locale
+import kotlin.text.*
 
 class CompanyAnnonceListAdapter(
     private var annonces: MutableList<AnnonceModel>,
-    private val viewModel: AnnonceCompanyViewModel,
     private val context: Context,
-    private val loader: ProgressBar,
-    private val error: TextView
 ) : RecyclerView.Adapter<CompanyAnnonceListAdapter.AnnonceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnnonceViewHolder {
@@ -57,11 +53,18 @@ class CompanyAnnonceListAdapter(
             annonceTitle.text = annonce.title
             if (annonce.price != null && annonce.promo != null) {
                 val pricePromo = annonce.price * (1 - (annonce.promo / 100.0))
-                val formattedPrice = String.format("%.2f€", pricePromo)
+                val formattedPrice = String.format(Locale.FRANCE,"%.2f€", pricePromo)
                 annoncePrice.text = formattedPrice
             }
-            reduction.text = " -${annonce.promo.toString()}%!!!"
-            date.text = "Créer le ${handleDate(annonce.createdAt.toString())}"
+            reduction.text = buildString {
+                append(" -")
+                append(annonce.promo.toString())
+                append("%!!!")
+            }
+            date.text = buildString {
+                append("Créer le ")
+                append(handleDate(annonce.createdAt.toString()))
+            }
             views.text = annonce.viewTime.toString()
 
             updateButton.setOnClickListener {

@@ -5,16 +5,12 @@ import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.company.CompanyModel
-import com.esgi.promocare_android.models.offer.AllOfferCompany
 import com.esgi.promocare_android.models.offer.AllOfferUser
-import com.esgi.promocare_android.models.offer.GetOfferCompany
-import com.esgi.promocare_android.models.offer.GetOfferCompanyDto
 import com.esgi.promocare_android.models.offer.GetOfferUser
 import com.esgi.promocare_android.models.offer.GetOfferUserDto
 import com.esgi.promocare_android.models.offer.OfferModel
 import com.esgi.promocare_android.models.offer.PatchOffer
 import com.esgi.promocare_android.models.offer.PatchOfferResponse
-import com.esgi.promocare_android.models.user.UserModel
 import com.esgi.promocare_android.network.offer_services.OfferRepository
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,28 +34,28 @@ class GetOfferUserViewModel(private val offerRepository: OfferRepository) {
                     val offer = OfferModel(
                         it.offer.uuid,
                         it.offer.status,
-                        it.offer.annonce_id,
-                        it.offer.user_id,
+                        it.offer.annonceId,
+                        it.offer.userId,
                         it.offer.text,
-                        it.offer.updated_at,
-                        it.offer.created_at,
+                        it.offer.updatedAt,
+                        it.offer.createdAt,
                     )
 
                     val company = CompanyModel(
-                        it.company.company_name,
-                        it.company.created_at,
+                        it.company.companyName,
+                        it.company.createdAt,
                         it.company.email,
                         it.company.location,
                         it.company.phone,
                         it.company.role,
-                        it.company.siret_number,
-                        it.company.updated_at,
+                        it.company.siretNumber,
+                        it.company.updatedAt,
                         it.company.uuid,
                     )
 
                     val annonce = AnnonceModel(
                         it.annonce.uuid,
-                        it.annonce.company_id,
+                        it.annonce.companyId,
                         it.annonce.location,
                         it.annonce.price,
                         it.annonce.promo,
@@ -67,9 +63,9 @@ class GetOfferUserViewModel(private val offerRepository: OfferRepository) {
                         it.annonce.title,
                         it.annonce.description,
                         it.annonce.type,
-                        it.annonce.view_time,
-                        it.annonce.updated_at,
-                        it.annonce.created_at,
+                        it.annonce.viewTime,
+                        it.annonce.updatedAt,
+                        it.annonce.createdAt,
                     )
 
                     GetOfferUser(

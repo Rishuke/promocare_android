@@ -68,7 +68,7 @@ class LatestConvUserAcitivity : AppCompatActivity(), ShowAllConv {
     override fun showAllConv(convId: String, annonceId: String,annonce: AnnonceDto) {
         val annonceModel = AnnonceModel(
             annonce.uuid,
-            annonce.company_id,
+            annonce.companyId,
             annonce.location,
             annonce.price,
             annonce.promo,
@@ -76,9 +76,9 @@ class LatestConvUserAcitivity : AppCompatActivity(), ShowAllConv {
             annonce.title,
             annonce.description,
             annonce.type,
-            annonce.view_time,
-            annonce.updated_at,
-            annonce.created_at
+            annonce.viewTime,
+            annonce.updatedAt,
+            annonce.createdAt
         )
 
         Intent(this, PostUserFirstConvActivity::class.java).also {

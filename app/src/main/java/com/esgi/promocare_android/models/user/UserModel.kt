@@ -4,13 +4,13 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class UserModel(
-    val created_at: String?,
+    val createdAt: String?,
     val email: String?,
-    val first_name: String?,
-    val last_name: String?,
+    val firstName: String?,
+    val lastName: String?,
     val phone: String?,
     val role: String?,
-    val updated_at: String?,
+    val updatedAt: String?,
     val uuid: String?
 ):Parcelable {
     constructor(parcel: Parcel) : this(
@@ -26,13 +26,13 @@ data class UserModel(
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(created_at)
+        parcel.writeString(createdAt)
         parcel.writeString(email)
-        parcel.writeString(first_name)
-        parcel.writeString(last_name)
+        parcel.writeString(firstName)
+        parcel.writeString(lastName)
         parcel.writeString(phone)
         parcel.writeString(role)
-        parcel.writeString(updated_at)
+        parcel.writeString(updatedAt)
         parcel.writeString(uuid)
     }
 

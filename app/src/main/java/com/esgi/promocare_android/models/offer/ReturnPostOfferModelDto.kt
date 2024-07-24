@@ -1,5 +1,7 @@
 package com.esgi.promocare_android.models.offer
 
+import com.google.gson.annotations.SerializedName
+
 data class ReturnPostOfferModelDto(
     val message : String,
     val item : OfferModelDto
@@ -8,9 +10,9 @@ data class ReturnPostOfferModelDto(
 data class OfferModelDto(
     val uuid: String?,
     val status: String?,
-    val annonce_id: String?,
-    val user_id: String?,
+    @SerializedName(value = "annonce_id")val annonceId: String?,
+    @SerializedName(value = "user_id")val userId: String?,
     val text: String?,
-    val updated_at: String?,
-    val created_at: String?
+    @SerializedName(value = "updated_at")val updatedAt: String?,
+    @SerializedName(value = "created_at")val createdAt: String?
 )

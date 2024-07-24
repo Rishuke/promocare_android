@@ -7,7 +7,6 @@ import com.esgi.promocare_android.views.conversations.user.LatestConvUserAcitivi
 import com.esgi.promocare_android.views.offer.user.UserOfferActivity
 import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
 
 object NavigationUtilUser {
     fun setupBottomNavView(
@@ -16,7 +15,7 @@ object NavigationUtilUser {
         currentActivityId: Int
     ) {
         bottomNavView.selectedItemId = currentActivityId
-        bottomNavView.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener { item ->
+        bottomNavView.setOnItemSelectedListener { item ->
             val itemId = item.itemId
             when (itemId) {
                 R.id.ic_conversation -> {
@@ -44,6 +43,6 @@ object NavigationUtilUser {
                 }
             }
             true
-        })
+        }
     }
 }

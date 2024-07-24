@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
@@ -42,8 +43,8 @@ class CompanyOfferActivity:AppCompatActivity(), DisplayCompanyDetail{
         handleGoToPending()
         handleGoToAccepted()
         handleGoToRefused()
-        goToPending.setTextColor(resources.getColor(R.color.white))
-        goToPending.setBackgroundColor(resources.getColor(R.color.black))
+        goToPending.setTextColor(ContextCompat.getColor(this, R.color.white))
+        goToPending.setBackgroundColor(ContextCompat.getColor(this, R.color.black))
 
         val bottomNavView: BottomNavigationView = findViewById(R.id.nav_view)
         NavigationUtilCompany.setupBottomNavView(bottomNavView, this, R.id.ic_offer)
@@ -98,12 +99,12 @@ class CompanyOfferActivity:AppCompatActivity(), DisplayCompanyDetail{
 
 
     private fun handleBackgroundColor(selectedTextView:TextView, otherTextView1:TextView, otherTextView2:TextView){
-        selectedTextView.setTextColor(resources.getColor(R.color.white))
-        selectedTextView.setBackgroundColor(resources.getColor(R.color.black))
-        otherTextView1.setTextColor(resources.getColor(R.color.black))
-        otherTextView1.setBackgroundColor(resources.getColor(R.color.white))
-        otherTextView2.setTextColor(resources.getColor(R.color.black))
-        otherTextView2.setBackgroundColor(resources.getColor(R.color.white))
+        selectedTextView.setTextColor(ContextCompat.getColor(this, R.color.white))
+        selectedTextView.setBackgroundColor(ContextCompat.getColor(this, R.color.black))
+        otherTextView1.setTextColor(ContextCompat.getColor(this, R.color.black))
+        otherTextView1.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
+        otherTextView2.setTextColor(ContextCompat.getColor(this, R.color.black))
+        otherTextView2.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
     }
 
     override fun viewDetailOfferCompany(offer: GetOfferCompany) {

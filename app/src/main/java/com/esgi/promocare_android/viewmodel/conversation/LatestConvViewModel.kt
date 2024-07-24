@@ -1,10 +1,8 @@
 package com.esgi.promocare_android.viewmodel.conversation
 
-import android.util.Log
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
-import com.esgi.promocare_android.models.conversations.ConvFrom
 import com.esgi.promocare_android.models.conversations.LatestConv
 import com.esgi.promocare_android.models.conversations.LatestConvDto
 import com.esgi.promocare_android.models.conversations.ListLatestConvDto

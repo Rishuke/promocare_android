@@ -1,13 +1,15 @@
 package com.esgi.promocare_android.models.user
 
+import com.google.gson.annotations.SerializedName
+
 data class UserModelDto(
-    val created_at: String?,
+    @SerializedName(value = "created_at")val createdAt: String?,
     val email: String?,
-    val first_name: String?,
-    val last_name: String?,
+    @SerializedName(value = "first_name")val firstName: String?,
+    @SerializedName(value = "last_name")val lastName: String?,
     val phone: String?,
     val role: String?,
-    val updated_at: String?,
+    @SerializedName(value = "updated_at")val updatedAt: String?,
     val uuid: String?
 )
 

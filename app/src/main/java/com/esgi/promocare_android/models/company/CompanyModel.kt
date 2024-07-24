@@ -4,14 +4,14 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class CompanyModel(
-    val company_name: String?,
-    val created_at: String?,
+    val companyName: String?,
+    val createdAt: String?,
     val email: String?,
     val location: String?,
     val phone: String?,
     val role: String?,
-    val siret_number: String?,
-    val updated_at: String?,
+    val siretNumber: String?,
+    val updatedAt: String?,
     val uuid: String?
 ):Parcelable {
     constructor(parcel: Parcel) : this(
@@ -28,14 +28,14 @@ data class CompanyModel(
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(company_name)
-        parcel.writeString(created_at)
+        parcel.writeString(companyName)
+        parcel.writeString(createdAt)
         parcel.writeString(email)
         parcel.writeString(location)
         parcel.writeString(phone)
         parcel.writeString(role)
-        parcel.writeString(siret_number)
-        parcel.writeString(updated_at)
+        parcel.writeString(siretNumber)
+        parcel.writeString(updatedAt)
         parcel.writeString(uuid)
     }
 

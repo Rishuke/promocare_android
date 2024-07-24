@@ -2,14 +2,8 @@ package com.esgi.promocare_android.viewmodel.annonce
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
-import com.esgi.promocare_android.models.annonce.AnnonceDto
-import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.annonce.CreateAnnonceDto
-import com.esgi.promocare_android.models.annonce.ReturnAnnonceDto
 import com.esgi.promocare_android.models.annonce.ReturnCreateAnnonceDto
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.network.annonce_services.AnnonceRepository
@@ -17,7 +11,6 @@ import com.esgi.promocare_android.views.company_annonce.CompanyAnnonceActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.math.log
 
 class CreateAnnonceViewModel(private val annonceRepository: AnnonceRepository) {
     var title:String = ""

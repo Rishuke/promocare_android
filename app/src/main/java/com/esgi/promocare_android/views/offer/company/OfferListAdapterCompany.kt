@@ -10,9 +10,8 @@ import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.offer.GetOfferCompany
 import com.esgi.promocare_android.utils.handleDate
 import com.esgi.promocare_android.utils.loadImage
-import com.esgi.promocare_android.views.user_annonce.AnnonceUserOnClickListener
 
-class OfferListAdapterCompany(var offers:MutableList<GetOfferCompany>,val offerClickHander: DisplayCompanyDetail): RecyclerView.Adapter<OfferListAdapterCompany.OfferViewHolder>() {
+class OfferListAdapterCompany(private var offers:MutableList<GetOfferCompany>, private val offerClickHander: DisplayCompanyDetail): RecyclerView.Adapter<OfferListAdapterCompany.OfferViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OfferViewHolder {
         val offerView = LayoutInflater.from(parent.context)
             .inflate(R.layout.cell_layout_offer, parent, false)
@@ -33,27 +32,25 @@ class OfferListAdapterCompany(var offers:MutableList<GetOfferCompany>,val offerC
     }
 
     inner class OfferViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private var imageAnnonce : ImageView
-        private var annonceTitle : TextView
-        private var companyName : TextView
-        private var date : TextView
-
-        init {
-            imageAnnonce = itemView.findViewById(R.id.offer_image_view_company)
-            annonceTitle = itemView.findViewById(R.id.offer_anonce_title_text_view_company)
-            companyName = itemView.findViewById(R.id.offer_company_name_text_view_company)
-            date = itemView.findViewById(R.id.offer_date_text_view_company)
-        }
+        private var imageAnnonce : ImageView = itemView.findViewById(R.id.offer_image_view_company)
+        private var annonceTitle : TextView = itemView.findViewById(R.id.offer_anonce_title_text_view_company)
+        private var companyName : TextView = itemView.findViewById(R.id.offer_company_name_text_view_company)
+        private var date : TextView = itemView.findViewById(R.id.offer_date_text_view_company)
 
         fun bind(offer : GetOfferCompany) {
             loadImage(imageAnnonce,offer.annonce.type)
             annonceTitle.text = offer.annonce.title
-            companyName.text = "Envoyer à ${offer.user.last_name} ${offer.user.first_name}"
-            if(offer.offer.created_at!=null){
-                date.text = handleDate(offer.offer.created_at)
+            companyName.text = buildString {
+                append("Envoyer à ")
+                append(offer.user.lastName)
+                append(" ")
+                append(offer.user.firstName)
+            }
+            if(offer.offer.createdAt!=null){
+                date.text = handleDate(offer.offer.createdAt)
             }
             else{
-                date.text = "Date inconnue"
+                date.text = itemView.context.getString(R.string.date_inconnu_within_inner_class)
             }
         }
     }

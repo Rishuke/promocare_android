@@ -8,8 +8,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Offer
-import com.esgi.promocare_android.views.conversations.company.ConversationCompanyActivity
-import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity.Companion.ANNONCE_MODEL_EXTRA
 
 class PostCompanyOfferLocationActivity: AppCompatActivity(){
 
@@ -37,7 +35,7 @@ class PostCompanyOfferLocationActivity: AppCompatActivity(){
         nextScreen.setOnClickListener {
             if (location.text.toString().isEmpty()){
                 error.visibility = TextView.VISIBLE
-                error.text = "Veuillez remplir les champs"
+                error.text = getString(R.string.veuillez_remplir_les_champs)
             }else{
                 Offer.getCreateOfferCompanyViewModel().location = location.text.toString()
                 val intent = Intent(this, PostCompanyOfferPriceActivity::class.java)

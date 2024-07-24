@@ -2,7 +2,6 @@ package com.esgi.promocare_android.views.user_annonce
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -11,14 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.data.Annonce
 import com.esgi.promocare_android.fragment.SearchBarFragment
-import com.esgi.promocare_android.fragment.searchBarHandler
+import com.esgi.promocare_android.fragment.SearchBarHandler
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.utils.searchInAnnonce
 import com.esgi.promocare_android.views.NavigationUtilUser
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class AnnonceUserActivity : AppCompatActivity(), searchBarHandler, AnnonceUserOnClickListener {
+class AnnonceUserActivity : AppCompatActivity(), SearchBarHandler, AnnonceUserOnClickListener {
 
     companion object {
         const val ANNONCE_MODEL_EXTRA = "ANNONCE_MODEL_EXTRA"

@@ -33,11 +33,11 @@ class PostCompanyOfferPriceActivity:AppCompatActivity() {
         nextScreen.setOnClickListener {
             if (price.text.toString().isEmpty()){
                 error.visibility = TextView.VISIBLE
-                error.text = "Le prix est obligatoire"
+                error.text = getString(R.string.le_prix_est_obligatoire)
             }
             else if (price.text.toString().toInt()==0){
                 error.visibility = TextView.VISIBLE
-                error.text = "Le prix ne peut pas être 0"
+                error.text = getString(R.string.le_prix_ne_peut_pas_tre_0)
             }
             else{
                 Offer.getCreateOfferCompanyViewModel().price = price.text.toString() + "€ par séance"

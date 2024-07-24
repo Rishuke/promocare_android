@@ -27,12 +27,14 @@ class ChoseDescription: AppCompatActivity(){
         this.next.setOnClickListener {
             val description = this.descritpion.text.toString()
             if (description.length > 1000) {
-                this.error.text = "La description ne doit pas dépasser 1000 caractères"
+                this.error.text =
+                    getString(R.string.la_description_ne_doit_pas_d_passer_1000_caract_res)
                 error.visibility = TextView.VISIBLE
                 return@setOnClickListener
             }
-            if (description == "" || description == null || description.length < 25) {
-                this.error.text = "La description ne doit pas être vide ou inférieur à 25 caractères"
+            if (description == "" || description.length < 25) {
+                this.error.text =
+                    getString(R.string.la_description_ne_doit_pas_tre_vide_ou_inf_rieur_25_caract_res)
                 error.visibility = TextView.VISIBLE
                 return@setOnClickListener
             }

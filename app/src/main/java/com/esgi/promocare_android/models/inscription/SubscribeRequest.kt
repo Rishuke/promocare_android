@@ -1,4 +1,11 @@
 package com.esgi.promocare_android.models.inscription
 
-data class SubscribeRequest(val email : String, val password : String, val first_name : String, val last_name : String)
+import com.google.gson.annotations.SerializedName
+
+data class SubscribeRequest(
+    val email : String,
+    val password : String,
+    @SerializedName(value = "first_name")val firstName : String,
+    @SerializedName(value = "last_name")val lastName : String
+)
 

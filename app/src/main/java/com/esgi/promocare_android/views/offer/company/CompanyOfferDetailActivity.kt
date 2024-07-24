@@ -5,6 +5,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.IntentCompat
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.models.annonce.AnnonceModel
 import com.esgi.promocare_android.models.offer.OfferModel
@@ -14,7 +15,6 @@ import com.esgi.promocare_android.utils.loadImage
 import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity.Companion.ANNONCE
 import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity.Companion.OFFER
 import com.esgi.promocare_android.views.offer.company.CompanyOfferActivity.Companion.USER
-import com.esgi.promocare_android.views.user_annonce.AnnonceUserActivity.Companion.ANNONCE_MODEL_EXTRA
 
 class CompanyOfferDetailActivity:AppCompatActivity() {
     private lateinit var imageAnnonce : ImageView
@@ -52,13 +52,13 @@ class CompanyOfferDetailActivity:AppCompatActivity() {
 
     private fun getIntentExtra(){
         if (this.intent.hasExtra(ANNONCE)) {
-            this.annonce = intent.getParcelableExtra<AnnonceModel>(ANNONCE)!!
+            this.annonce = IntentCompat.getParcelableExtra(this.intent, ANNONCE,AnnonceModel::class.java)!!
         }
         if (this.intent.hasExtra(OFFER)) {
-            this.offer = intent.getParcelableExtra<OfferModel>(OFFER)!!
+            this.offer = IntentCompat.getParcelableExtra(this.intent, OFFER,OfferModel::class.java)!!
         }
         if (this.intent.hasExtra(USER)) {
-            this.user = intent.getParcelableExtra<UserModel>(USER)!!
+            this.user = IntentCompat.getParcelableExtra(this.intent, USER,UserModel::class.java)!!
         }
     }
 
@@ -80,21 +80,29 @@ class CompanyOfferDetailActivity:AppCompatActivity() {
         }
 
         loadImage(imageAnnonce,annonce.type)
-        sender.text = "Envoyé par ${user.first_name} ${user.last_name}"
+        sender.text = buildString {
+            append("Envoyé par ")
+            append(user.firstName)
+            append(" ")
+            append(user.lastName)
+        }
         titleAnnonce.text = annonce.title
         descriptionAnnonce.text = annonce.description
         if(annonce.createdAt != null){
             dateAnnonce.text = handleDate(annonce.createdAt!!)
         }
         else{
-            dateAnnonce.text = "Date inconnue"
+            dateAnnonce.text = getString(R.string.date_inconnue)
         }
         var offerDate = "Date inconnue"
-        if(offer.created_at != null){
-            offerDate = handleDate(offer.created_at!!)
+        if(offer.createdAt != null){
+            offerDate = handleDate(offer.createdAt!!)
         }
 
-        val text = "Envoyé à ${user.first_name} ${user.last_name} le ${offerDate} , le status est ${offer.status}. Voici un résumé de votre offre : \n\n"
-        offerText.text = text + offer.text
+        val text = "Envoyé à ${user.firstName} ${user.lastName} le $offerDate , le status est ${offer.status}. Voici un résumé de votre offre : \n\n"
+        offerText.text = buildString {
+            append(text)
+            append(offer.text)
+        }
     }
 }
