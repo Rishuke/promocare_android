@@ -11,7 +11,7 @@ android {
         applicationId = "com.esgi.promocare_android"
         minSdk = 27
         targetSdk = 34
-        versionCode = 5
+        versionCode = 6
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
