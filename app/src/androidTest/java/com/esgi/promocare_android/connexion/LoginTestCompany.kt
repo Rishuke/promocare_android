@@ -26,6 +26,15 @@ class LoginTestCompany {
     }
 
     @Test
+    fun isOkConnexion(){
+        Thread.sleep(1000)
+        onView(withId(R.id.connection_company_button)).perform(click())
+        Thread.sleep(1000)
+        onView(withId(R.id.company_annonce_search_bar)).check(matches(isDisplayed()))
+        assertNotEquals(Credential.token, "Bearer ")
+    }
+
+    @Test
     fun isErrorDisplayedCompanySideUsername() {
         Thread.sleep(1000)
         onView(withId(R.id.connection_company_username))
@@ -45,14 +54,7 @@ class LoginTestCompany {
         onView(withId(R.id.connection_company_error)).check(matches(isDisplayed()))
     }
 
-    @Test
-    fun isOkConnexion(){
-        Thread.sleep(1000)
-        onView(withId(R.id.connection_company_button)).perform(click())
-        Thread.sleep(1000)
-        onView(withId(R.id.company_annonce_search_bar)).check(matches(isDisplayed()))
-        assertNotEquals(Credential.token, "Bearer ")
-    }
+
 
     @Test
     fun goToUser(){

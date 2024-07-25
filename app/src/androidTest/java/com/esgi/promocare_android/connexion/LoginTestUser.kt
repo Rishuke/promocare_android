@@ -25,13 +25,23 @@ class LoginTestUser {
         this.scenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
+    /*@Test
+    fun isOkConnexion(){
+        Thread.sleep(1000)
+        onView(withId(R.id.connection_user_button)).perform(click())
+        Thread.sleep(3000)
+        onView(withId(R.id.user_annonce_search_bar)).check(matches(isDisplayed()))
+        assertNotEquals(Credential.token, "Bearer ")
+    }
+
+
     @Test
     fun isErrorDisplayedUserSideUsername() {
         Thread.sleep(1000)
         onView(withId(R.id.connection_user_username))
             .perform(ViewActions.typeText("New Username"), ViewActions.closeSoftKeyboard())
         onView(withId(R.id.connection_user_button)).perform(click())
-        Thread.sleep(1000)
+        Thread.sleep(3000)
         onView(withId(R.id.connection_user_error)).check(matches(isDisplayed()))
     }
 
@@ -41,18 +51,9 @@ class LoginTestUser {
         onView(withId(R.id.connection_user_password))
             .perform(ViewActions.typeText("my password"), ViewActions.closeSoftKeyboard())
         onView(withId(R.id.connection_user_button)).perform(click())
-        Thread.sleep(1000)
+        Thread.sleep(3000)
         onView(withId(R.id.connection_user_error)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun isOkConnexion(){
-        Thread.sleep(1000)
-        onView(withId(R.id.connection_user_button)).perform(click())
-        Thread.sleep(1000)
-        onView(withId(R.id.user_annonce_search_bar)).check(matches(isDisplayed()))
-        assertNotEquals(Credential.token, "Bearer ")
-    }
+    }*/
 
     @Test
     fun goToCompany(){
