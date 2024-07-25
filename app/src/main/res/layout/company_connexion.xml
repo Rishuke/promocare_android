@@ -11,6 +11,7 @@
         android:id="@+id/navigation_image_company"
         android:layout_width="match_parent"
         android:layout_height="205dp"
+        android:contentDescription="@string/image_promocare"
         android:scaleType="centerCrop"
         android:src="@drawable/promocare" />
 
@@ -31,8 +32,6 @@
         android:id="@+id/connection_company_username"
         android:layout_width="300dp"
         android:layout_height="80dp"
-
-
         android:gravity="center"
         android:hint="@string/user_connection_email_placeholder"
         android:text="greAAAAeazeeeaaaaaeAtest@gmail.com"
@@ -70,7 +69,6 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-
         android:text="@string/connection_user_button_text"
         android:backgroundTint="#1E90FF"
         android:textColor="#FFFFFF"

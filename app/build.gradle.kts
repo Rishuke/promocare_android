@@ -15,7 +15,7 @@ android {
         applicationId = "com.esgi.promocare_android"
         minSdk = 27
         targetSdk = 34
-        versionCode = 8
+        versionCode = 9
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -40,6 +40,9 @@ android {
 }
 
 dependencies {
+
+    androidTestImplementation(libs.mockwebserver)
+
     implementation(libs.glide)
     implementation(libs.retrofit)
     implementation(libs.gson)
