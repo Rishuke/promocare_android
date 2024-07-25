@@ -10,7 +10,7 @@ tests_apk_path('app/build/outputs/apk/androidTest/debug/app-debug-androidTest.ap
 locales(['en-US', 'fr-FR', 'it-IT'])
 
 # clear all previously generated screenshots in your local output directory before creating new ones
-clear_previous_screenshots(false)
+clear_previous_screenshots(true)
 
 # For more information about all available options run
 #   fastlane screengrab --help
