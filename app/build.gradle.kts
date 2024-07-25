@@ -36,6 +36,9 @@ android {
 }
 
 dependencies {
+
+    androidTestImplementation(libs.mockwebserver)
+
     implementation(libs.glide)
     implementation(libs.retrofit)
     implementation(libs.gson)

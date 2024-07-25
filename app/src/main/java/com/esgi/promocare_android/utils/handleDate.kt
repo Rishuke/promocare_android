@@ -28,5 +28,8 @@ fun handleDateShort(date:String): String {
     val month = date.substring(5, 7).toInt()
     val day = date.substring(8, 10)
 
-    return "$day/$month/$year"
+    return if(month < 10)
+        "$day/0$month/$year"
+    else
+        "$day/$month/$year"
 }

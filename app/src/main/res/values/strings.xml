@@ -124,5 +124,6 @@
     <string name="non_renseign_non_renseign">Non renseigné - Non renseigné</string>
     <string name="le_prix_est_obligatoire">Le prix est obligatoire</string>
     <string name="le_prix_ne_peut_pas_tre_0">Le prix ne peut pas être 0</string>
+    <string name="image_promocare">IMAGE PROMOCARE</string>
 
 </resources>
