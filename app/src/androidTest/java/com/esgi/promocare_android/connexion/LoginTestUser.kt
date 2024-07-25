@@ -7,13 +7,17 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.esgi.promocare_android.R
 import com.esgi.promocare_android.network.Credential
 import com.esgi.promocare_android.views.MainActivity
 import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
 
+
+@RunWith(AndroidJUnit4::class)
 class LoginTestUser {
     private var scenario: ActivityScenario<MainActivity>? = null
     @Before

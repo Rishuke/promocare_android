@@ -13,6 +13,7 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
+<<<<<<< HEAD
       <SelectionState runConfigName="isErrorDisplayedUserSide()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
@@ -26,6 +27,9 @@
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="AnnonceTestUserSide">
+=======
+      <SelectionState runConfigName="test_todos_list_is_displayed()">
+>>>>>>> 351e4374f20df351ee09a838ae05f80227a06652
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
