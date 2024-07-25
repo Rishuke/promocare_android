@@ -3,13 +3,13 @@
   <component name="AndroidTestResultsUserPreferences">
     <option name="androidTestResultsTableState">
       <map>
-        <entry key="249954055">
+        <entry key="-1102474156">
           <value>
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
-                  <entry key="Medium_Phone_API_33_2" value="120" />
+                  <entry key="Medium_Phone_API_33" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
               </option>
@@ -22,6 +22,7 @@
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
+                  <entry key="Medium_Phone_API_33" value="120" />
                   <entry key="Medium_Phone_API_33_2" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
@@ -56,12 +57,40 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="179580529">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Medium_Phone_API_33" value="120" />
+                  <entry key="Tests" value="360" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
+        <entry key="249954055">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Medium_Phone_API_33" value="120" />
+                  <entry key="Medium_Phone_API_33_2" value="120" />
+                  <entry key="Tests" value="360" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="1977231923">
           <value>
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
+                  <entry key="Medium_Phone_API_33" value="120" />
                   <entry key="Medium_Phone_API_33_2" value="120" />
                   <entry key="Tests" value="360" />
                 </map>

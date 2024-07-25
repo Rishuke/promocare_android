@@ -59,4 +59,10 @@ platform :android do
       )
 
     end
+
+  desc "Capture screenshots"
+  lane :screengrab do
+    screengrab
+  end
+
 end
