@@ -1,4 +1,4 @@
-package com.esgi.promocare_android.util
+/*package com.esgi.promocare_android.util
 
 import android.view.View
 import androidx.appcompat.widget.SearchView
@@ -23,4 +23,4 @@ fun setSearchViewQuery(query: String, submit: Boolean): ViewAction {
             searchView.setQuery(query, submit)
         }
     })
-}
+}*/

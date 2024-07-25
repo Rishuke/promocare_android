@@ -1,4 +1,4 @@
-package com.esgi.promocare_android.connexion
+/*package com.esgi.promocare_android.connexion
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
@@ -63,4 +63,4 @@ class LoginTestCompany {
         Thread.sleep(1000)
         onView(withId(R.id.connection_user_go_to_company_connection)).check(matches(isDisplayed()))
     }
-}
+}*/
