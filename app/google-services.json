@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "119698707717",
+    "project_id": "promocare-project",
+    "storage_bucket": "promocare-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119698707717:android:bd9a9eda3484df6b91936c",
+        "android_client_info": {
+          "package_name": "com.esgi.promocare_android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOBr_OsrB0UUANS-UGBe4NiOvO_NdOFwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
