@@ -13,11 +13,17 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
+import org.junit.Rule
 import tools.fastlane.screengrab.Screengrab
+import tools.fastlane.screengrab.locale.LocaleTestRule
 
 
 @RunWith(AndroidJUnit4::class)
 class ScreenGrabTest {
+    @Rule
+    @JvmField
+    val localeTestRule = LocaleTestRule()
+
     @Test
     fun useAppContext() {
         // Context of the app under test.
@@ -29,10 +35,8 @@ class ScreenGrabTest {
     fun test_todos_list_is_displayed() {
         ActivityScenario.launch(MainActivity::class.java)
         Thread.sleep(1000)
-        // Screenshot avant
         onView(withId(R.id.connection_user_password)).check(matches(isDisplayed()))
-        // Screenshot après
-
         Screengrab.screenshot("screenshot_main_activity_todo")
+        Thread.sleep(1000)
     }
 }
