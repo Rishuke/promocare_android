@@ -50,23 +50,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setButtons() {
-        sendConnection()
+        sendConnexion.setOnClickListener {
+            sendConnection()
+        }
         goToInscription()
         goToCompany()
-        forceCrashButton.setOnClickListener {
-            forceCrash()
-        }
     }
 
     private fun sendConnection() {
-        sendConnexion.setOnClickListener {
-            if (usernameText.text.isEmpty() || passwordText.text.isEmpty()) {
-                val crashlytics = FirebaseCrashlytics.getInstance()
-                crashlytics.setCustomKey("login_error", "username_or_password_empty")
-                errorText.setText(R.string.user_connection_empty_error)
-                errorText.visibility = TextView.VISIBLE
-                return@setOnClickListener
+        if (usernameText.text.isEmpty() || passwordText.text.isEmpty()) {
+            val crashlytics = FirebaseCrashlytics.getInstance()
+            crashlytics.setCustomKey("login_error", "username_or_password_empty")
+            errorText.setText(R.string.user_connection_empty_error)
+            errorText.visibility = TextView.VISIBLE
+            forceCrashButton = sendConnexion
+            forceCrashButton.setOnClickListener {
+                forceCrash()
             }
+            return
+        } else {
+            // Proceed with login
             InscriptionConnexion.getLoginViewModel().sendLoginRequest(
                 LoginRequest(usernameText.text.toString(), passwordText.text.toString()),
                 errorText,
